@@ -33,8 +33,9 @@ return (
 <div className = "user-form">
 
 <Form>
+
 <label>
-First Name
+Username*
 <Field
 type="text"
 name="firstname"
@@ -50,9 +51,28 @@ placeholder = "first name"
 {/*add errors touch/error*/}
 
 </label> 
+{/*username form field*/}
+
+{/* <label>
+First Name
+<Field
+type="text"
+name="firstname"
+placeholder = "first name"
+/>
+
+{touched.firstname && errors.firstname && (
+    <p className = "errors">
+            {errors.firstname}
+            </p>
+)} */}
+
+{/*add errors touch/error*/}
+
+{/* </label>  */}
 {/*first name form field*/}
 
-<label>
+{/* <label>
 Last Name
 <Field
 type="text"
@@ -64,15 +84,15 @@ placeholder = "last name"
     <p className = "errors">
             {errors.lastname}
             </p>
-)}
+)} */}
 
 {/*add errors touch/error*/}
 
-</label> 
-{/*last name form field*/}
+{/* </label> 
+last name form field */}
 
 <label>
-Email
+Email*
 <Field
 type = "email"
 name = "email"
@@ -88,7 +108,7 @@ placeholder = "email"
 </label>  {/*email form field*/}
 
 <label>
-Password
+Password*
 <Field
 type = "text"
 name = "password"
@@ -106,24 +126,25 @@ placeholder = "password"
 </label>  {/*pass form field*/}
 
 
-
-<label className = "checkbox">
-Terms Of Sevice
-<Field 
-type = "checkbox"
-name = "terms"
-checked = {values.terms}
+<label>
+Password Confirm*
+<Field
+type = "text"
+name = "password"
+placeholder = "password confirm"
 />
 
-{touched.terms && errors.terms && (
+{touched.password && errors.password && (
     <p className = "errors">
-            {errors.terms}
+            {errors.password}
             </p>
 )}
 
-</label>
 
-{/*checkbox(TOS) form field*/}
+
+</label>  {/*pass confirm form field*/}
+
+
 
 <button type ="sbumit">
 Sign Up!
