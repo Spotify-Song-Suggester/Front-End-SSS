@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import FormikForm from './components/RegistrationForm';
+
 function App() {
   return (
     <div className="App">
@@ -13,6 +14,8 @@ function App() {
        <span>Sign In</span> <span>Sign Up</span>
        </div>
       <FormikForm />
+    
+   
     
     </div>
   );

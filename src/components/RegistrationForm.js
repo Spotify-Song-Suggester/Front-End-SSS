@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {withFormik, Form, Field} from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+
 //use Formik form
 //first name, last name, email, pass, terms(checkbox)
 //set state for initial inputs
@@ -153,6 +154,7 @@ Sign Up!
 
 
 </Form>
+
 {/* {users.map(user => {
 return (
 <ul key= {user.id}>
@@ -177,8 +179,8 @@ return {
     lastname: props.lastname || "",
     email: props.email || "",
     password: props.password || "",
-    terms: props.terms || false
 };
+
 }, //pass props to new users?
 
 validationSchema: Yup.object().shape({
@@ -189,6 +191,8 @@ password:Yup.string().required("password required!")
 }),
 
 //validation for inputs
+
+
 
 handleSubmit(
 values, {setStatus, resetForm}
