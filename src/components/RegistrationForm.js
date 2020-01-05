@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
+// import {Link} from "react-router-dom";
 import {withFormik, Form, Field} from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 
 //use Formik form
-//first name, last name, email, pass, terms(checkbox)
+//first name, last name, email, pass,
 //set state for initial inputs
 //use effect for data changes
 //set what to do on status change. if does-render function. spread array values to add on to new. dependency array is status b/c thats what affect is watching for-status change(data change) 
@@ -39,13 +40,13 @@ return (
 Username*
 <Field
 type="text"
-name="firstname"
-placeholder = "first name"
+name="username"
+placeholder = "user name"
 />
 
-{touched.firstname && errors.firstname && (
+{touched.username && errors.username && (
     <p className = "errors">
-            {errors.firstname}
+            {errors.username}
             </p>
 )}
 
@@ -131,13 +132,13 @@ placeholder = "password"
 Password Confirm*
 <Field
 type = "text"
-name = "password"
+name = "passwordconfirm"
 placeholder = "password confirm"
 />
 
-{touched.password && errors.password && (
+{touched.passwordconfirm && errors.passwordconfirm && (
     <p className = "errors">
-            {errors.password}
+            {errors.passwordconfirm}
             </p>
 )}
 
@@ -147,7 +148,7 @@ placeholder = "password confirm"
 
 
 
-<button type ="sbumit">
+<button type ="sbumit"> 
 Sign Up!
 </button>
 {/*submit button form field*/}
@@ -175,19 +176,19 @@ return (
 const FormikForm = withFormik ({
 mapPropsToValues(props){
 return {
-    firstname: props.firstname || "",
-    lastname: props.lastname || "",
+    username: props.username || "",
     email: props.email || "",
     password: props.password || "",
+    passwordconfirm: props.passwordconfirm || ""
 };
 
 }, //pass props to new users?
 
 validationSchema: Yup.object().shape({
-firstname :Yup.string().required("first name required!"),
-lastname :Yup.string().required("last name required!"),
-email: Yup.string().required("email required!"),
-password:Yup.string().required("password required!")
+username:Yup.string().required("Username required!"),
+email:Yup.string().required("email required!"),
+password:Yup.string().required("password required!"),
+passwordconfirm:Yup.string().required("password confirmation required!")
 }),
 
 //validation for inputs
@@ -212,6 +213,7 @@ resetForm();
 console.log("nope", error.response)
 );
 }}) (RegistrationForm);
+
 
 //submit to axios placeholder for data inputs
 //console log response that comes back WITH data entered(if worked)

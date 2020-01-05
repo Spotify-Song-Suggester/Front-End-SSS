@@ -1,23 +1,31 @@
 import React from 'react';
 import './App.css';
 import FormikForm from './components/RegistrationForm';
-
+// import styled from 'styled-components';
+import {Logo} from './Styles/AppStyling';
+import {Global} from './Styles/AppStyling';
+import {Welcome} from './Styles/AppStyling';
+import {Intro} from './Styles/AppStyling';
+import {Signup} from './Styles/AppStyling';
+import {Signin} from './Styles/AppStyling';
 function App() {
   return (
-    <div className="App">
+    <Global>
+      <Logo>
+        Symphinity
+      </Logo>
       <div className = "welcome">
-       <h1>Welcome</h1>
-       <p>Hello, please continue through our sign up process to have your account ceated.</p>
+       <Welcome>Welcome</Welcome>
+       <Intro>Hello, please continue through our sign up process to have your account ceated.</Intro>
        </div>
        <div className = "sign-up">
-        
-       <span>Sign In</span> <span>Sign Up</span>
+        <Signin>Sign In</Signin> <Signup>Sign Up</Signup>
        </div>
       <FormikForm />
     
    
     
-    </div>
+    </Global>
   );
 }
 
