@@ -144,12 +144,12 @@ name = "password"
 
  {/*pass form field*/}
 
-<div className = "PassConfirm-label">
+<div className = "passConfirm-label">
 <label>
 Password Confirm*
 
 
-<div className = "field">
+<div className = "passConfirm-field">
 <Field
 type = "text"
 name = "passwordconfirm"
