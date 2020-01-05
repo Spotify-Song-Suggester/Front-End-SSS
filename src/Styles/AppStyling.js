@@ -8,15 +8,9 @@ width: 414px;
 height: 896px;
 
 background: #0E0B20;
-font-family: Abril Fatface;
-font-style: normal;
-font-weight: normal;
-font-size: 12px;
-line-height: 16px;
-
-color: #C4C4C4;
 
 ` //global styling for app
+
 
 
 export const Logo = styled.div`

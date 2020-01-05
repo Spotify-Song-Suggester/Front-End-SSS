@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import {withFormik, Form, Field} from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import {UsernameLabel, EmailLabel, PasswordConfirmLabel, PasswordLabel, UsernameField, EmailField, SignupButton,SignUpWords} from "../Styles/FormStyling";
 
 //use Formik form
 //first name, last name, email, pass,
@@ -32,16 +33,19 @@ status && setUsers(users => [
 },[status]);
 
 return (
-<div className = "user-form">
+
 
 <Form>
 
+<UsernameLabel>
 <label>
 Username*
+</label> 
+</UsernameLabel>
+<UsernameField>
 <Field
 type="text"
 name="username"
-placeholder = "user name"
 />
 
 {touched.username && errors.username && (
@@ -49,10 +53,9 @@ placeholder = "user name"
             {errors.username}
             </p>
 )}
-
+</UsernameField>
 {/*add errors touch/error*/}
 
-</label> 
 {/*username form field*/}
 
 {/* <label>
@@ -92,30 +95,42 @@ placeholder = "last name"
 
 {/* </label> 
 last name form field */}
+<EmailLabel>
 
 <label>
 Email*
+
+<EmailField>
 <Field
 type = "email"
 name = "email"
-placeholder = "email"
 />
+
 
 {touched.email && errors.email && (
    <p>
     {errors.email}
             </p>
 )}
+</EmailField>
 
-</label>  {/*email form field*/}
 
+</label> 
+</EmailLabel>
+
+ {/*email form field*/}
+<PasswordLabel>
 <label>
 Password*
+
+
+<div className = "field">
 <Field
 type = "text"
 name = "password"
-placeholder = "password"
+
 />
+</div>
 
 {touched.password && errors.password && (
     <p className = "errors">
@@ -123,18 +138,22 @@ placeholder = "password"
             </p>
 )}
 
+</label> 
+</PasswordLabel>
 
+ {/*pass form field*/}
 
-</label>  {/*pass form field*/}
-
-
+<PasswordConfirmLabel>
 <label>
 Password Confirm*
+
+
+<div className = "field">
 <Field
 type = "text"
 name = "passwordconfirm"
-placeholder = "password confirm"
 />
+</div>
 
 {touched.passwordconfirm && errors.passwordconfirm && (
     <p className = "errors">
@@ -143,20 +162,25 @@ placeholder = "password confirm"
 )}
 
 
+</label>
+</PasswordConfirmLabel>
+  {/*pass confirm form field*/}
 
-</label>  {/*pass confirm form field*/}
 
 
-
-<button type ="sbumit"> 
+<button type ="submit">
+<SignupButton>
+    <SignUpWords>
 Sign Up!
+</SignUpWords>
+</SignupButton>
 </button>
 {/*submit button form field*/}
 
 
 </Form>
 
-{/* {users.map(user => {
+/* {users.map(user => {
 return (
 <ul key= {user.id}>
    <li> First Name: {user.firstname}</li>
@@ -167,8 +191,7 @@ return (
 
 </ul>
 );
-})}  */}
-</div>
+})}  */
 );
 };
 //map for user data to display on screen after entered.
