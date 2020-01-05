@@ -3,7 +3,8 @@ import React, {useState, useEffect} from "react";
 import {withFormik, Form, Field} from "formik";
 import axios from "axios";
 import * as Yup from "yup";
-import {UsernameLabel, EmailLabel, PasswordConfirmLabel, PasswordLabel, UsernameField, EmailField, SignupButton,SignUpWords} from "../Styles/FormStyling";
+import "../Form.css";
+// import {UsernameLabel, EmailLabel, PasswordConfirmLabel, PasswordLabel, UsernameField, EmailField, SignupButton,SignUpWords} from "../Styles/FormStyling";
 
 //use Formik form
 //first name, last name, email, pass,
@@ -37,12 +38,12 @@ return (
 
 <Form>
 
-<UsernameLabel>
+<div className = "username-label">
 <label>
 Username*
 </label> 
-</UsernameLabel>
-<UsernameField>
+</div>
+<div className = "username-field">
 <Field
 type="text"
 name="username"
@@ -53,7 +54,7 @@ name="username"
             {errors.username}
             </p>
 )}
-</UsernameField>
+</div>
 {/*add errors touch/error*/}
 
 {/*username form field*/}
@@ -95,12 +96,12 @@ placeholder = "last name"
 
 {/* </label> 
 last name form field */}
-<EmailLabel>
+<div className = "email-label">
 
 <label>
 Email*
 
-<EmailField>
+<div className = "email-field">
 <Field
 type = "email"
 name = "email"
@@ -112,14 +113,14 @@ name = "email"
     {errors.email}
             </p>
 )}
-</EmailField>
+</div>
 
 
 </label> 
-</EmailLabel>
+</div>
 
  {/*email form field*/}
-<PasswordLabel>
+<div className = "password-label">
 <label>
 Password*
 
@@ -139,11 +140,11 @@ name = "password"
 )}
 
 </label> 
-</PasswordLabel>
+</div>
 
  {/*pass form field*/}
 
-<PasswordConfirmLabel>
+<div className = "PassConfirm-label">
 <label>
 Password Confirm*
 
@@ -163,17 +164,17 @@ name = "passwordconfirm"
 
 
 </label>
-</PasswordConfirmLabel>
+</div>
   {/*pass confirm form field*/}
 
 
 
 <button type ="submit">
-<SignupButton>
-    <SignUpWords>
+
+ <span className = "button-text">
 Sign Up!
-</SignUpWords>
-</SignupButton>
+</span>
+
 </button>
 {/*submit button form field*/}
 

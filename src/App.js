@@ -2,24 +2,24 @@ import React from 'react';
 import './App.css';
 import FormikForm from './components/RegistrationForm';
 // import styled from 'styled-components';
-import {Logo,Global, Welcome, Intro, Signup, Signin} from './Styles/AppStyling';
+// import {Logo,Global, Welcome, Intro, Signup, Signin} from './Styles/AppStyling';
 function App() {
   return (
-    <Global>
-      <Logo>
+    <div className = "App-container">
+      <div className = "logo">
         Symphinity
-      </Logo>
+      </div>
       <div className = "welcome">
-       <Welcome>Welcome</Welcome>
-       <Intro>Hello, please continue through our sign up process to have your account ceated.</Intro>
+       <h1>Welcome</h1>
+       <p>Hello, please continue through our sign up process to have your account ceated.</p>
        </div>
        <div className = "sign-up">
-        <Signin>Sign In</Signin> <Signup>Sign Up</Signup>
+        <span>Sign In</span> <span>Sign Up</span>
        </div>
       
       <FormikForm /> 
     
-    </Global>
+    </div>
   );
 }
 
