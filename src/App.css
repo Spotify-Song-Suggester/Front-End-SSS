@@ -1,4 +1,4 @@
-.app-container{
+/* .app-container{
     font-family: Abril Fatface;
 font-style: normal;
 font-weight: normal;
@@ -6,7 +6,7 @@ font-size: 12px;
 line-height: 16px;
 
 color: #C4C4C4;
-}
+} */
 
 .logo{
     position: absolute;
@@ -21,6 +21,7 @@ font-weight: normal;
 font-size: 40px;
 line-height: 50px;
 text-align: center;
+color:#EF019F;
 
 text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 } /*logo end*/
@@ -85,7 +86,6 @@ left: 27.78%;
 right: 50.72%;
 top: 30.58%;
 bottom: 66.41%;
-
 font-family: Abril Fatface;
 font-style: normal;
 font-weight: normal;

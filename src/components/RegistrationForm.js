@@ -100,13 +100,13 @@ last name form field */}
 
 <label>
 Email*
-
+</label> 
+</div>
 <div className = "email-field">
 <Field
 type = "email"
 name = "email"
 />
-
 
 {touched.email && errors.email && (
    <p>
@@ -116,14 +116,12 @@ name = "email"
 </div>
 
 
-</label> 
-</div>
-
  {/*email form field*/}
 <div className = "password-label">
 <label>
 Password*
-
+</label> 
+</div>
 
 <div className = "field">
 <Field
@@ -131,23 +129,23 @@ type = "text"
 name = "password"
 
 />
-</div>
+
 
 {touched.password && errors.password && (
     <p className = "errors">
             {errors.password}
             </p>
 )}
-
-</label> 
 </div>
+
 
  {/*pass form field*/}
 
 <div className = "passConfirm-label">
 <label>
 Password Confirm*
-
+</label>
+</div>
 
 <div className = "passConfirm-field">
 <Field
@@ -163,8 +161,7 @@ name = "passwordconfirm"
 )}
 
 
-</label>
-</div>
+
   {/*pass confirm form field*/}
 
 
