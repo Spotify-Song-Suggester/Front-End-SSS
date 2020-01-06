@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import {withFormik, Form, Field} from "formik";
 import axios from "axios";
 import * as Yup from "yup";
-import "../Form.css";
+
 // import {UsernameLabel, EmailLabel, PasswordConfirmLabel, PasswordLabel, UsernameField, EmailField, SignupButton,SignUpWords} from "../Styles/FormStyling";
 
 //use Formik form
@@ -55,47 +55,8 @@ name="username"
             </p>
 )}
 </div>
-{/*add errors touch/error*/}
 
-{/*username form field*/}
 
-{/* <label>
-First Name
-<Field
-type="text"
-name="firstname"
-placeholder = "first name"
-/>
-
-{touched.firstname && errors.firstname && (
-    <p className = "errors">
-            {errors.firstname}
-            </p>
-)} */}
-
-{/*add errors touch/error*/}
-
-{/* </label>  */}
-{/*first name form field*/}
-
-{/* <label>
-Last Name
-<Field
-type="text"
-name="lastname"
-placeholder = "last name"
-/>
-
-{touched.lastname && errors.lastname && (
-    <p className = "errors">
-            {errors.lastname}
-            </p>
-)} */}
-
-{/*add errors touch/error*/}
-
-{/* </label> 
-last name form field */}
 <div className = "email-label">
 
 <label>
@@ -178,21 +139,9 @@ Sign Up!
 
 </Form>
 
-/* {users.map(user => {
-return (
-<ul key= {user.id}>
-   <li> First Name: {user.firstname}</li>
-   <li> Last Name: {user.lastname}</li>
-   <li> Email: {user.email}</li>
-   <li> Password: {user.password}</li>
-<li>Terms: {String(user.terms)}</li>
 
-</ul>
-);
-})}  */
 );
 };
-//map for user data to display on screen after entered.
 
 const FormikForm = withFormik ({
 mapPropsToValues(props){
@@ -206,10 +155,10 @@ return {
 }, //pass props to new users?
 
 validationSchema: Yup.object().shape({
-username:Yup.string().required("Username required!"),
-email:Yup.string().required("email required!"),
+username:Yup.string().required("username required!"),
+email:Yup.string().required("valid email required!"),
 password:Yup.string().required("password required!"),
-passwordconfirm:Yup.string().required("password confirmation required!")
+passwordconfirm:Yup.string().required("please confirm passowrd")
 }),
 
 //validation for inputs
@@ -221,7 +170,7 @@ values, {setStatus, resetForm}
 ) {
 console.log("submitted" ,values); //console log values inputted on submit. 'post' console log shows results came bck
 axios
-.post ("https://reqres.in/api/users/", values)
+.post ("https://reqres.in/api/auth/register", values)
 
 .then (res => {
 console.log("worked", res);
@@ -231,7 +180,7 @@ resetForm();
 })
 
 .catch(error =>
-console.log("nope", error.response)
+console.log(error.response)
 );
 }}) (RegistrationForm);
 
