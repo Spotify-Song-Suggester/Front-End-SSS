@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Montserrat|Muli&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -19,8 +21,16 @@ body {
     background: #0E0B20;    
     font-size: 1.8rem;
     color: #fff;
-
+    font-family: 'Muli', sans-serif;
   
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Abril Fatface', cursive;
+}
+
+label {
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* code {
