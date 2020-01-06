@@ -1,14 +1,13 @@
 import React from 'react';
+// import logo from './logo.svg';
+// import './App.css';
+import Welcome from './components/pages/Welcome';
 import SignUpWelcome from './components/pages/SignUpWelcome';
-// import styled from 'styled-components';
-// import {Logo,Global, Welcome, Intro, Signup, Signin} from './Styles/AppStyling';
+
 function App() {
   return (
-
-    <div className = "App-container">
-    <div className = "logo">
-      Symphinity
-    </div>
+    <div className="App">
+      <Welcome />,
     <SignUpWelcome/>
   </div>
       
