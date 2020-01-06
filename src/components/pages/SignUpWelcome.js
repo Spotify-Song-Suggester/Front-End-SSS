@@ -1,7 +1,7 @@
 import React from 'react';
-import FormikForm from '../../components/RegistrationForm';
+import RegistrationForm from '../RegistrationForm';
 
-const WelcomePage = props => {
+const SignUpWelcome = props => {
     return (
     <div className = "welcome">
         <h1>Welcome</h1>
@@ -10,12 +10,11 @@ const WelcomePage = props => {
      </div>
      
      <div className = "sign-in">
-      <span>Sign In</span> <span>Sign Up</span>
-     </div>
-    
-    <FormikForm /> 
-    </div>
-    )
-};
+      <p>Sign In</p>{/*link to sign in component form*/} <p>Sign Up</p>{/*link to sign up component form*/}
 
-export default WelcomePage;
+     </div>
+   <RegistrationForm/>
+    </div>
+    );
+    };
+export default SignUpWelcome;

@@ -1,6 +1,5 @@
 import React from 'react';
-import WelcomePage from './components/pages/WelcomePage';
-
+import SignUpWelcome from './components/pages/SignUpWelcome';
 // import styled from 'styled-components';
 // import {Logo,Global, Welcome, Intro, Signup, Signin} from './Styles/AppStyling';
 function App() {
@@ -10,7 +9,7 @@ function App() {
     <div className = "logo">
       Symphinity
     </div>
-  <WelcomePage/>
+    <SignUpWelcome/>
   </div>
       
    

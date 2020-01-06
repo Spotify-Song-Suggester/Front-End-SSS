@@ -4,6 +4,7 @@ import {withFormik, Form, Field} from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 
+
 // import {UsernameLabel, EmailLabel, PasswordConfirmLabel, PasswordLabel, UsernameField, EmailField, SignupButton,SignUpWords} from "../Styles/FormStyling";
 
 //use Formik form
@@ -11,7 +12,8 @@ import * as Yup from "yup";
 //set state for initial inputs
 //use effect for data changes
 //set what to do on status change. if does-render function. spread array values to add on to new. dependency array is status b/c thats what affect is watching for-status change(data change) 
-const RegistrationForm = ({
+const RegistrationForm = (
+    {
     values, errors, touched, status
     
     }) =>{
@@ -34,6 +36,7 @@ status && setUsers(users => [
 },[status]);
 
 return (
+
 
 
 <Form>
@@ -144,8 +147,8 @@ Sign Up!
 };
 
 const FormikForm = withFormik ({
-mapPropsToValues(props){
-return {
+mapPropsToValues(props){  
+return { 
     username: props.username || "",
     email: props.email || "",
     password: props.password || "",
