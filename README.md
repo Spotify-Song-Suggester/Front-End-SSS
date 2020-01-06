@@ -7,7 +7,7 @@ During development, make sure that you are on your firstname-lastname branch. Wh
 - `npm install` (this will ensure any dependencies that were installed by others are updated for you)
 - `npm start`
 
-Make sure to post what you're working on to Slack 
+Make sure to post what you're working on to Slack.
 
 *When you've completed a feature, or arrived at a good milestone* 
 - Send pull request to the `development` branch; add team as reviewers
