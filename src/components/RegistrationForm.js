@@ -104,7 +104,7 @@ name = "password"
 
  {/*pass form field*/}
 
-<div className = "passConfirm-label">
+{/* <div className = "passConfirm-label">
 <label>
 Password Confirm*
 </label>
@@ -121,7 +121,7 @@ name = "passwordconfirm"
     <p className = "errors">
             {errors.passwordconfirm}
             </p>
-)}
+)} */}
 
 
 

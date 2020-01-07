@@ -38,7 +38,8 @@ export default withFormik({
         // const { username, password } = values;
         axiosWithAuth()
         .post('/login',  values )
-        // axios.get('https://postman-echo.com/basic-auth', values)
+        // axios
+        // .get('https://postman-echo.com/basic-auth', values)
 
             .then(res => {
                 console.log(res.data.message);
