@@ -43,6 +43,7 @@ export default withFormik({
 
             .then(res => {
                 console.log(res.data.message);
+                console.log(res);
                 localStorage.setItem('token', res.data.token);
                 // handleSuccessfulLogin();
                 console.log('Login successful!')
