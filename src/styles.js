@@ -14,6 +14,10 @@ export const mainText = '#fff';
 
 export const maxContentWidth = '90%';
 
+export const mainFont = "'Muli', sans-serif";
+export const headingFont = "'Abril Fatface', cursive";
+export const formLabelFont = "'Montserrat', sans-serif";
+
 export const MainContent = styled.div`
     margin: 0 auto;
     width: ${maxContentWidth};
@@ -54,7 +58,7 @@ const button = `
         rgba(239, 1, 159, 0) 100%);
     box-shadow:
         0px 4px 4px rgba(0, 0, 0, 0.25),
-        0px 4px 4px rgba(0, 0, 0, 0.25),
+        0px 4px 4px rgba(0, 0, 0, 0.25),          
         0px 4px 4px rgba(0, 0, 0, 0.25),
         inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     
@@ -71,4 +75,8 @@ export const LargeButton = styled.button`
     letter-spacing: 3.6px;
     font-weight: bold;
     border-radius: 4.5rem;
+`;
+
+export const CenterText = styled.div`
+    text-align: center;
 `;
