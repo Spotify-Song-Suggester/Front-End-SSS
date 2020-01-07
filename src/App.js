@@ -8,9 +8,9 @@ import Main from './components/pages/Main';
 function App() {
   return (
     <div className="App">
-      <Main />
-      {/* <Welcome />,
-    <SignUpWelcome/>, */}
+      {/* <Main /> */}
+      <Welcome />,
+    <SignUpWelcome/>,
     
   </div>
       
