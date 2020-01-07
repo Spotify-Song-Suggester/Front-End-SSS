@@ -76,3 +76,7 @@ export const LargeButton = styled.button`
     font-weight: bold;
     border-radius: 4.5rem;
 `;
+
+export const CenterText = styled.div`
+    text-align: center;
+`;

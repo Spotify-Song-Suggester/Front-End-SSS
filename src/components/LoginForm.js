@@ -2,21 +2,15 @@ import React from 'react';
 import { withFormik, Field } from 'formik';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import axios from 'axios';
-import { StyledField, LargeButton } from  '../styles.js';
+import { StyledField, LargeButton, CenterText } from  '../styles.js';
 import styled from 'styled-components';
-
-const StyledForm = styled.form`
-    .center {
-        text-align: center;
-    }
-`;
 
 
 const LoginForm = props => {
     const { handleSubmit, errors, isSubmitting } = props;
 
     return (
-        <StyledForm onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             {errors.invalidCredentials && 
             <p style={{color: 'red'}}>Invalid credentials</p>}
             <StyledField>
@@ -31,11 +25,11 @@ const LoginForm = props => {
                     <Field type="password" name="password" />
                 </label>
             </StyledField>
-            <div className="center">
+            <CenterText>
                 <LargeButton type="submit" disabled={isSubmitting}>Login</LargeButton>
                 <p>Don't have an account? <a href="#">Sign Up</a></p>
-            </div>
-        </StyledForm>
+            </CenterText>
+        </form>
     );
 };
 
