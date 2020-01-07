@@ -18,7 +18,7 @@ const SuccessPage = (
 
 <button>
     Continue
-</button>
+</button> {/*button to continue to dash*/}
 
         </div>
     </div>
