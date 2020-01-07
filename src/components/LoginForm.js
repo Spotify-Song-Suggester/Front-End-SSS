@@ -53,7 +53,7 @@ export default withFormik({
     handleSubmit: (values, {props, setSubmitting, setErrors }) => {
         // const { username, password } = values;
         axiosWithAuth()
-        .post('/login',  values )
+        .post('/auth/login',  values )
         // axios
         // .get('https://postman-echo.com/basic-auth', values)
 

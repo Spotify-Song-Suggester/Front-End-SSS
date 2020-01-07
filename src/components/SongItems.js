@@ -1,12 +1,16 @@
 //song items to display here
 //import to song short list
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchSongs } from '../actions'
 import SongCard from './SongCard';
 
 const SongItems = ({ fetchSongs, ...props}) => {
        //song items props data to display
+    useEffect(() => {
+        fetchSongs()
+    }, [fetchSongs])
+
     if (props.isFetching) {
         return (<p>fetching songs</p>)
     };
@@ -14,7 +18,7 @@ const SongItems = ({ fetchSongs, ...props}) => {
     return(
         <div>
             {props.error && <p>{props.error}</p>}
-            {props.songs.map((song, index) => <SongCard song={song} key={index}/>)}
+            {props.songs.map((song, index) => <SongCard song={song} key={song.id}/>)}
         </div>
     )
 }
