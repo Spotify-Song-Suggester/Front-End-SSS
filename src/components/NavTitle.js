@@ -3,8 +3,10 @@
 
 import React from 'react';
 
-const NavTitle = (
+ const NavTitle = (
     <div>
         navigation dropdown here
     </div>
 )
+export default NavTitle;
+

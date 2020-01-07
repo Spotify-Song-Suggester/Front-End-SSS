@@ -2,12 +2,20 @@
 //will display rec song items component
 //pass props
 import React from 'react';
-
+import RecSongItems from '../components/SongItems';
 const RecSongsList = props =>{
     return(
 
         <div>
-            Recommened song items displayed here. props passed 
+            <div>
+            <span>Recommened Playlists</span><span>
+                View All
+            </span>
+            </div>
+            
+            <div>
+            <RecSongItems/>
+            </div>
         </div>
     )
 }
