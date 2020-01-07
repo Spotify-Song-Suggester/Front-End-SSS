@@ -58,7 +58,7 @@ export default withFormik({
                 localStorage.setItem('token', res.data.token);
                 // handleSuccessfulLogin();
                 console.log('Login successful!')
-                props.history.push('/success');
+                props.history.push('/');
             })
             .catch(err => {
                 console.warn(err);
