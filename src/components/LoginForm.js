@@ -40,6 +40,7 @@ const LoginForm = props => {
 const handleSuccessfulLogin = () => {
     // redirect user to correct logged-in view
     console.log('Login successful!');
+
 };
 
 export default withFormik({

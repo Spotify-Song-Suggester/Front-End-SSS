@@ -3,12 +3,14 @@ import React from 'react';
 // import './App.css';
 import Welcome from './components/pages/Welcome';
 import SignUpWelcome from './components/pages/SignUpWelcome';
+import Main from './components/pages/Main';
 
 function App() {
   return (
     <div className="App">
-      <Welcome />,
-    <SignUpWelcome/>,
+      <Main />
+      {/* <Welcome />,
+    <SignUpWelcome/>, */}
     
   </div>
       
