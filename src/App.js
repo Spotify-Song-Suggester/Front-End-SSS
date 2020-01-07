@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PrivateRoute from './routes/PrivateRoute';
 import SuccessPage from './components/pages/SuccessPage';
 import Welcome from './components/pages/Welcome';
+import Main from './components/pages/Main';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <div className="App">
         <Route exact path={['/login', '/register']} component={Welcome} />
         <PrivateRoute exact path='/success' component={SuccessPage} />
+        <PrivateRoute exact path='/' component={Main} />
       </div>
     </Router>    
   );
