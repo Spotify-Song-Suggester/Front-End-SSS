@@ -7,6 +7,8 @@ import welcomeBg from '../../Images/welcome-bg.png';
 import logo from '../../Images/Symphinity.png';
 import { MainContent } from '../../styles';
 import { Route } from 'react-router-dom';
+import Main from '../pages/Main';
+import FavPlaylist from '../FavPlaylist';
 
 
 // *** NOTE ***
@@ -37,7 +39,8 @@ const Welcome = props => {
                 <SignUpWelcome />
 
                 <Route exact path="/login">
-                    <LoginForm />
+                    {/* <LoginForm /> */}
+                    <FavPlaylist/>
                 </Route>
                 <Route exact path="/register">
                     <RegistrationForm />

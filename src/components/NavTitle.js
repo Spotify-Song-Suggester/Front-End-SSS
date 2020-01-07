@@ -5,9 +5,11 @@ import React from 'react';
 
  const NavTitle = props => {
     return (
-        <h2>
-            {props.title}
-        </h2>
+       <h2>Dashboard</h2> 
+        // <h2>
+        
+        //     {props.title}
+        // </h2>
     );
  };
 export default NavTitle;

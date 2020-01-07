@@ -1,5 +1,6 @@
 //parent component for dashboard components held here. Will render Main.js to App.js
 import React from 'react';
+import {Route} from 'react-router-dom';
 import NavTitle from '../NavTitle';
 import UserAvatar from '../UserAvatar';
 import Search from '../Search';
@@ -8,6 +9,7 @@ import RecSongList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
 import logo from '../../Images/Symphinity.png';
 import styled from 'styled-components';
+import FavSongList from '../FavSongList';
 
 const StyledNav = styled.nav`
     display: flex;
@@ -43,6 +45,9 @@ const StyledInput = styled.input`
 
 const Main = () => {
     return (
+        
+                    
+               
         <MainContent>
             <StyledLogo>
                 <img src={logo} alt="Symphinity" />
@@ -52,7 +57,9 @@ const Main = () => {
                 <UserAvatar />
             </StyledNav>
             <StyledInput type="text" placeholder="Search" />
+            <FavSongList/>
         </MainContent>
+        
     );
 };
 

@@ -7,8 +7,10 @@ import Main from './components/pages/Main';
 
 function App() {
   return (
+    
     <Router>
       <div className="App">
+      
         <Route exact path={['/login', '/register']} component={Welcome} />
         <PrivateRoute exact path='/success' component={SuccessPage} />
         <PrivateRoute exact path='/' component={Main} />

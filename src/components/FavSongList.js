@@ -1,9 +1,12 @@
-//song items to display here
-//import to song short list
-import React from 'react';
+//full list of songs here
+//import song items
+
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import SongItems from './SongItems';
 import styled from 'styled-components';
 
-function SongItems(props){
+export default function FavSongsList(props){
 
     const DummyData = ([
         {
@@ -58,34 +61,31 @@ function SongItems(props){
             time_signature   : '4',
         },
     ])
-   console.log("props returned", props);
-   return (
-    <div>
-        Fav Song List
-     {DummyData.map((songs, index) => {
-         return (
-             <div>
-             key={index}
-             name={songs.artist}
-             track={songs.track}
-             valence ={songs.valence}
-            danceability={songs.danceability},
-            acousticness ={songs.acounsticness}
-            speechiness={songs.speechiness}
-            tempo={songs.tempo}
-            energy ={songs.energy}
-            duration={songs.duration_ms}
-            loudness={songs.loudness}
-            instrumentalness={songs.instrumentalness}
-            liveness={songs.liveness}
-            key ={songs.key}
-            mode={songs.mode}
-            time_signature={songs.time_signature}
-             </div>
-         );
-     })} 
-    </div>
-);
-}
+    const [favSongs, setFavSongs] = useState([]);
+    // useEffect (() => {
+    //     axios
+    //     .get(`https://spotify-song-suggester-backend.herokuapp.com/api/songs/:id/1`)
+    //     .then (response =>{
+    //         console.log(response.output);
+    //         setFavSongs(response.Output);
+    //     })
+    //     .catch (error =>{
+    //         console.log("error", error);
+    //     });
+    // },[]);
 
-export default SongItems;
+    return (
+        <div>
+            Fav Song List
+         {DummyData.map((songs, index) => {
+             return (
+                 <div>
+                 key = {index }
+                name: { songs.artist },
+                 track: { songs.track }
+                 </div>
+             );
+         })} 
+        </div>
+    );
+        }
