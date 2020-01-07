@@ -1,7 +1,8 @@
 import React from 'react';
 import { withFormik, Field } from 'formik';
 import axiosWithAuth from '../utils/AxiosWithAuth';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { setUserID } from '../actions';
 import { StyledField, LargeButton } from  '../styles.js';
 import styled from 'styled-components';
 
@@ -45,7 +46,7 @@ const LoginForm = props => {
 
 // };
 
-export default withFormik({
+const FormikLoginForm = withFormik({
     mapPropsToValues: ({ username, password }) => ({
         username: username || '',
         password: password || ''
@@ -64,6 +65,7 @@ export default withFormik({
                 // handleSuccessfulLogin();
                 console.log('Login successful!')
                 console.log(props)
+                props.setUserID(res.data.id)
                 props.history.push('/');
             })
             .catch(err => {
@@ -77,3 +79,5 @@ export default withFormik({
             });
     }
 })(LoginForm);
+
+export default connect(null, { setUserID })(FormikLoginForm);
