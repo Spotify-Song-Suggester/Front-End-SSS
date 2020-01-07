@@ -25,7 +25,7 @@ const Welcome = props => {
             <div className="logo">
                 <img src={logo} alt="Symphinity" />
             </div>
-            <h2>Welcome</h2>
+            <h1>Welcome</h1>
             <p>Hello, please log in.</p>
             <LoginForm />
         </StyledWelcome>
