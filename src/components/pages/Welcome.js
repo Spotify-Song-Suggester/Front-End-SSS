@@ -3,6 +3,7 @@ import LoginForm from '../LoginForm';
 import styled from 'styled-components';
 import welcomeBg from '../../Images/welcome-bg.png';
 import logo from '../../Images/Symphinity.png';
+import { MainContent } from '../../styles';
 
 
 // *** NOTE ***
@@ -15,19 +16,30 @@ const StyledWelcome = styled.div`
     height: 100vh;
 
     .logo {
+        margin-top: 7.5rem;
+        margin-bottom: 6rem;
         text-align: center;
     }
+
+    .welcome-msg {
+        margin-bottom: 6rem;
+    }
+
 `;
 
 const Welcome = props => {
     return (
         <StyledWelcome>
-            <div className="logo">
-                <img src={logo} alt="Symphinity" />
-            </div>
-            <h2>Welcome</h2>
-            <p>Hello, please log in.</p>
-            <LoginForm />
+            <MainContent>
+                <div className="logo">
+                    <img src={logo} alt="Symphinity" />
+                </div>
+                <div className="welcome-msg">
+                    <h1>Welcome</h1>
+                    <p>Hello, please log in.</p>
+                </div>
+                <LoginForm />
+            </MainContent>
         </StyledWelcome>
     );
 };

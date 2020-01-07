@@ -3,10 +3,12 @@
 
 import React from 'react';
 
- const NavTitle = (
-    <div>
-        navigation dropdown here
-    </div>
-)
+ const NavTitle = props => {
+    return (
+        <h2>
+            {props.title}
+        </h2>
+    );
+ };
 export default NavTitle;
 
