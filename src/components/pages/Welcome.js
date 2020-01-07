@@ -24,10 +24,6 @@ const StyledWelcome = styled.div`
         text-align: center;
     }
 
-    .welcome-msg {
-        margin-bottom: 6rem;
-    }
-
 `;
 
 const Welcome = props => {
