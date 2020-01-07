@@ -8,6 +8,7 @@ import RecSongList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
 import logo from '../../Images/Symphinity.png';
 import styled from 'styled-components';
+import SongItems from '../SongItems';
 
 const StyledNav = styled.nav`
     display: flex;
@@ -52,6 +53,7 @@ const Main = () => {
                 <UserAvatar />
             </StyledNav>
             <StyledInput type="text" placeholder="Search" />
+            <SongItems/>
         </MainContent>
     );
 };

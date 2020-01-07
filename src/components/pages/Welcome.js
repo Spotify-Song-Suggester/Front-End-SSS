@@ -37,10 +37,10 @@ const Welcome = props => {
                 <SignUpWelcome />
 
                 <Route exact path="/login">
-                    <LoginForm />
+                    <LoginForm {...props} />
                 </Route>
                 <Route exact path="/register">
-                    <RegistrationForm />
+                    <RegistrationForm {...props} />
                 </Route>
             </MainContent>
         </StyledWelcome>
