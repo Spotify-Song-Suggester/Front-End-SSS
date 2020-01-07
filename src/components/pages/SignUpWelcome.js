@@ -1,13 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 const SignUpWelcome = props => {
 
     return (
         <div className = "welcome">
             <h1>Welcome</h1>
-            <div className = "intro">
-                <p>Hello, please continue through our sign up process to have your account created.</p>
+            <div className="welcome-msg">
+                <Route exact path="/register">
+                    <p>Hello, please continue through our sign up process to have your account created.</p>
+                </Route>
+                <Route exact path="/login">
+                    <p>Hello, please log in.</p>
+                </Route>
             </div>
             <div className = "sign-in">
                 <Link to='/login'>Sign In</Link>{/*link to sign in component form*/} 

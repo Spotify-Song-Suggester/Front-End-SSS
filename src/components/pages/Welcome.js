@@ -1,9 +1,12 @@
 import React from 'react';
 import LoginForm from '../LoginForm';
+import RegistrationForm from '../RegistrationForm';
+import SignUpWelcome from './SignUpWelcome';
 import styled from 'styled-components';
 import welcomeBg from '../../Images/welcome-bg.png';
 import logo from '../../Images/Symphinity.png';
 import { MainContent } from '../../styles';
+import { Route } from 'react-router-dom';
 
 
 // *** NOTE ***
@@ -34,11 +37,15 @@ const Welcome = props => {
                 <div className="logo">
                     <img src={logo} alt="Symphinity" />
                 </div>
-                <div className="welcome-msg">
-                    <h1>Welcome</h1>
-                    <p>Hello, please log in.</p>
-                </div>
-                <LoginForm />
+
+                <SignUpWelcome />
+
+                <Route exact path="/login">
+                    <LoginForm />
+                </Route>
+                <Route exact path="/register">
+                    <RegistrationForm />
+                </Route>
             </MainContent>
         </StyledWelcome>
     );
