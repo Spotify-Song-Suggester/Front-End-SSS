@@ -11,7 +11,7 @@ function App() {
       <div className="App">
         <Route exact path={['/login', '/register']} component={Welcome} />
         <PrivateRoute exact path='/success' component={SuccessPage} />
-        <PrivateRoute exact path='/' component={Main} />
+        <PrivateRoute path='/' component={Main} />
       </div>
     </Router>    
   );

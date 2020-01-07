@@ -1,5 +1,5 @@
 //parent component for dashboard components held here. Will render Main.js to App.js
-import React from 'react';
+import React, { useState } from 'react';
 import NavTitle from '../NavTitle';
 import UserAvatar from '../UserAvatar';
 import Search from '../Search';
@@ -8,6 +8,8 @@ import RecSongList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
 import logo from '../../Images/Symphinity.png';
 import styled from 'styled-components';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import SearchFeed from '../SearchFeed';
 
 const StyledNav = styled.nav`
     display: flex;
@@ -42,6 +44,20 @@ const StyledInput = styled.input`
 `;
 
 const Main = () => {
+    
+    const [searchTerm, setSearchTerm] = useState('');
+    const history = useHistory();
+
+    const performSearchOnEnter = e => {
+        // set regardless of whether user hit enter or not
+        setSearchTerm(e.target.value);
+        if(e.key === 'Enter') {
+            // enter key pressed
+            history.push('/search');
+        }
+
+    }
+
     return (
         <MainContent>
             <StyledLogo>
@@ -51,7 +67,19 @@ const Main = () => {
                 <NavTitle title="Dashboard" />
                 <UserAvatar />
             </StyledNav>
-            <StyledInput type="text" placeholder="Search" />
+
+            <StyledInput
+                type="text"
+                placeholder="Search"
+                defaultValue={searchTerm}
+                onKeyUp={performSearchOnEnter}
+            />
+
+            <Switch>
+                <Route path="/search">
+                    <SearchFeed term={searchTerm} />
+                </Route>
+            </Switch>
         </MainContent>
     );
 };
