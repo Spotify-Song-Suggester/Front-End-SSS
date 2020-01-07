@@ -157,7 +157,7 @@ const FormikForm = withFormik({
     ) {
         console.log("submitted", values); //console log values inputted on submit. 'post' console log shows results came bck
         axiosWithAuth()
-            .post("/register", values)
+            .post("/auth/register", values)
             // axios
             //.post ("https://reqres.in/api/auth/register", values)
 

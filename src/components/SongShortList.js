@@ -1,8 +1,9 @@
 //list of songs data to display for each song
 //import Song items here
-
 import React from 'react'
+import { connect } from 'react-redux';
 import SongItems from '../components/SongItems';
+
 const SongShortList = props =>{
 
     return(
@@ -19,4 +20,10 @@ const SongShortList = props =>{
     )
 }
 
-export default SongShortList;
+const mapStateToProps = state => {
+    return {
+        userID: state.userID
+    }
+}
+
+export default connect(mapStateToProps, {})(SongShortList);

@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from '../LoginForm';
+import FormikLoginForm from '../LoginForm';
 import RegistrationForm from '../RegistrationForm';
 import SignUpWelcome from './SignUpWelcome';
 import styled from 'styled-components';
@@ -37,7 +37,7 @@ const Welcome = props => {
                 <SignUpWelcome />
 
                 <Route exact path="/login">
-                    <LoginForm {...props} />
+                    <FormikLoginForm {...props} />
                 </Route>
                 <Route exact path="/register">
                     <RegistrationForm {...props} />
