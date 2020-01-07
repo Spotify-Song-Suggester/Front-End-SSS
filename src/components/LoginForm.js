@@ -4,6 +4,7 @@ import axiosWithAuth from '../utils/AxiosWithAuth';
 import axios from 'axios';
 import { StyledField, LargeButton, CenterText } from  '../styles.js';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 const LoginForm = props => {
@@ -27,7 +28,7 @@ const LoginForm = props => {
             </StyledField>
             <CenterText>
                 <LargeButton type="submit" disabled={isSubmitting}>Login</LargeButton>
-                <p>Don't have an account? <a href="#">Sign Up</a></p>
+                <p>Don't have an account? <Link to="/register">Sign Up</Link></p>
             </CenterText>
         </form>
     );
