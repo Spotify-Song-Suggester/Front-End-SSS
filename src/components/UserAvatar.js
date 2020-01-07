@@ -3,11 +3,12 @@
 
 import React from 'react';
 
-const UserAvatar = (
-
-    <div>
-        dropdown for logout here
-    </div>
-)
+const UserAvatar = props => {
+    return (
+        <div>
+            avatar
+        </div>
+    );
+};
 
 export default UserAvatar;
