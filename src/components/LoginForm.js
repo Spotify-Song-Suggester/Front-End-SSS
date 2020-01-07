@@ -23,6 +23,7 @@ const LoginForm = props => {
                 </label>
             </StyledField>
             <LargeButton type="submit" disabled={isSubmitting}>Login</LargeButton>
+            <p className="sign-up-link">Don't have an account? <a href="#">Sign Up</a></p>
         </form>
     );
 };
