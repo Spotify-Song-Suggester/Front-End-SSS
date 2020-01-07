@@ -37,8 +37,6 @@ status && setUsers(users => [
 
 return (
 
-
-
 <Form>
 
 <div className = "username-label">

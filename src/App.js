@@ -8,11 +8,11 @@ function App() {
   return (
     <div className="App">
       <Welcome />,
-    <SignUpWelcome/>
+    <SignUpWelcome/>,
+    
   </div>
       
    
-    
   );
 }
 
