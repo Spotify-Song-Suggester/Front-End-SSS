@@ -1,20 +1,21 @@
 import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-import Welcome from './components/pages/Welcome';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import PrivateRoute from './routes/PrivateRoute';
+import LoginForm from './components/LoginForm';
 import SignUpWelcome from './components/pages/SignUpWelcome';
-import Main from './components/pages/Main';
+import SuccessPage from './components/pages/SuccessPage';
+import FormikForm from './components/RegistrationForm';
 
 function App() {
   return (
-    <div className="App">
-      {/* <Main /> */}
-      <Welcome />,
-    <SignUpWelcome/>,
-    
-  </div>
-      
-   
+    <Router>
+      <div className="App">
+        <Route exact path={['/login', '/register']} component={SignUpWelcome} />
+        <Route exact path='/login' component={LoginForm} />
+        <Route exact path='/register' component={FormikForm} />
+        <PrivateRoute exact path='/success' component={SuccessPage} />
+      </div>
+    </Router>    
   );
 }
 

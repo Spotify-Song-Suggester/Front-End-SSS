@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 // import {Link} from "react-router-dom";
 import {withFormik, Form, Field} from "formik";
-import axios from "axios";
+import axiosWithAuth from "../utils/AxiosWithAuth";
+import axios from 'axios';
 import * as Yup from "yup";
 
 
@@ -103,7 +104,7 @@ name = "password"
 
  {/*pass form field*/}
 
-<div className = "passConfirm-label">
+{/* <div className = "passConfirm-label">
 <label>
 Password Confirm*
 </label>
@@ -120,7 +121,7 @@ name = "passwordconfirm"
     <p className = "errors">
             {errors.passwordconfirm}
             </p>
-)}
+)} */}
 
 
 
@@ -150,7 +151,7 @@ return {
     username: props.username || "",
     email: props.email || "",
     password: props.password || "",
-    passwordconfirm: props.passwordconfirm || ""
+    // passwordconfirm: props.passwordconfirm || ""
 };
 
 }, //pass props to new users?
@@ -159,7 +160,7 @@ validationSchema: Yup.object().shape({
 username:Yup.string().required("username required!"),
 email:Yup.string().required("valid email required!"),
 password:Yup.string().required("password required!"),
-passwordconfirm:Yup.string().required("please confirm passowrd")
+// passwordconfirm:Yup.string().required("please confirm passowrd")
 }),
 
 //validation for inputs
@@ -170,8 +171,11 @@ handleSubmit(
 values, {setStatus, resetForm}
 ) {
 console.log("submitted" ,values); //console log values inputted on submit. 'post' console log shows results came bck
-axios
-.post ("https://reqres.in/api/auth/register", values)
+axiosWithAuth()
+    .post ("/register", values)
+// axios
+//.post ("https://reqres.in/api/auth/register", values)
+
 
 .then (res => {
 console.log("worked", res);
