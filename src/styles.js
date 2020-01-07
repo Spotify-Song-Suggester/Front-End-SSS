@@ -12,6 +12,13 @@ export const warmBlue = '#959AB1';
 
 export const mainText = '#fff';
 
+export const maxContentWidth = '90%';
+
+export const MainContent = styled.div`
+    margin: 0 auto;
+    width: ${maxContentWidth};
+`;
+
 export const StyledField = styled.div`
 
     margin-bottom: 2rem;
@@ -59,9 +66,9 @@ const button = `
 
 export const LargeButton = styled.button`
     ${button}
-    display: block;
     width: 80%;
     text-transform: uppercase;
     letter-spacing: 3.6px;
+    font-weight: bold;
     border-radius: 4.5rem;
 `;
