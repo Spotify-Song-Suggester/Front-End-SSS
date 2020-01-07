@@ -1,18 +1,19 @@
 import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import PrivateRoute from './routes/PrivateRoute';
+import SuccessPage from './components/pages/SuccessPage';
 import Welcome from './components/pages/Welcome';
-import SignUpWelcome from './components/pages/SignUpWelcome';
+import Main from './components/pages/Main';
 
 function App() {
   return (
-    <div className="App">
-      <Welcome />,
-    <SignUpWelcome/>,
-    
-  </div>
-      
-   
+    <Router>
+      <div className="App">
+        <Route exact path={['/login', '/register']} component={Welcome} />
+        <PrivateRoute exact path='/success' component={SuccessPage} />
+        <PrivateRoute exact path='/' component={Main} />
+      </div>
+    </Router>    
   );
 }
 

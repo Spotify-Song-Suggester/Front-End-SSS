@@ -1,6 +1,11 @@
 import React from 'react';
 import { withFormik, Field } from 'formik';
+import axiosWithAuth from '../utils/AxiosWithAuth';
 import axios from 'axios';
+import { StyledField, LargeButton, CenterText } from  '../styles.js';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 
 const LoginForm = props => {
     const { handleSubmit, errors, isSubmitting } = props;
@@ -9,42 +14,60 @@ const LoginForm = props => {
         <form onSubmit={handleSubmit}>
             {errors.invalidCredentials && 
             <p style={{color: 'red'}}>Invalid credentials</p>}
-            <label>
-                Email / Username
-                <Field type="text" name="email" />
-            </label>
-            <label>
-                Password
-                <Field type="password" name="password" />
-            </label>
-            <button type="submit" disabled={isSubmitting}>Login</button>
+            <StyledField>
+                <label>
+                    Username
+                    <Field type="text" name="username" />
+                </label>
+            </StyledField>
+            <StyledField>
+                <label>
+                    Password
+                    <Field type="password" name="password" />
+                </label>
+            </StyledField>
+            <CenterText>
+                <LargeButton type="submit" disabled={isSubmitting}>Login</LargeButton>
+                <p>Don't have an account? <Link to="/register">Sign Up</Link></p>
+            </CenterText>
         </form>
     );
 };
 
-const handleSuccessfulLogin = () => {
-    // redirect user to correct logged-in view
-    console.log('Login successful!');
-};
+// const handleSuccessfulLogin = () => {
+//     // redirect user to correct logged-in view
+//     console.log('Login successful!');
+
+// };
 
 export default withFormik({
-    mapPropsToValues: () => ({
-        email: '',
-        password: ''
+    mapPropsToValues: (props) => ({
+        username: props.username || '',
+        password: props.password || ''
     }),
-    handleSubmit: (values, { setSubmitting, setErrors }) => {
-        const { email, password } = values;
-        axios.get('https://postman-echo.com/basic-auth', { email, password })
+    handleSubmit: (values, {props, setSubmitting, setErrors }) => {
+        // const { username, password } = values;
+        axiosWithAuth()
+        .post('/login',  values )
+        // axios
+        // .get('https://postman-echo.com/basic-auth', values)
+
             .then(res => {
+                console.log(res.data.message);
                 console.log(res);
-                handleSuccessfulLogin();
+                localStorage.setItem('token', res.data.token);
+                // handleSuccessfulLogin();
+                console.log('Login successful!')
+                props.history.push('/success');
             })
             .catch(err => {
                 console.warn(err);
+                setSubmitting(false);
                 setErrors({ invalidCredentials: true });
             })
             .finally(() => {
-                setSubmitting(false);
+                // setSubmitting(false);
+                // causes memory leak on login, after history.push it's already unmounted
             });
     }
 })(LoginForm);

@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 // import {Link} from "react-router-dom";
-import {withFormik, Form, Field} from "formik";
-import axios from "axios";
+import { withFormik, Form, Field } from "formik";
+import axiosWithAuth from "../utils/AxiosWithAuth";
+import axios from 'axios';
 import * as Yup from "yup";
+import { StyledField, LargeButton, CenterText } from  '../styles.js';
 
 
 // import {UsernameLabel, EmailLabel, PasswordConfirmLabel, PasswordLabel, UsernameField, EmailField, SignupButton,SignUpWords} from "../Styles/FormStyling";
@@ -14,96 +16,85 @@ import * as Yup from "yup";
 //set what to do on status change. if does-render function. spread array values to add on to new. dependency array is status b/c thats what affect is watching for-status change(data change) 
 const RegistrationForm = (
     {
-    values, errors, touched, status
-    
-    }) =>{
-        // console.log ("values", values);
-        // console.log ("erros", errors);
-        // console.log ("touched", touched);
-    
-    
-        //state for initial form data
-        const [users, setUsers] = useState([]);
-    
-        //effect for fom data changes
-        useEffect(() => {
-            console.log("status change", status);
-    
+        values, errors, touched, status
 
-status && setUsers(users => [
-    ...users, status
-]);
-},[status]);
-
-return (
-
-<Form>
-
-<div className = "username-label">
-<label>
-Username*
-</label> 
-</div>
-<div className = "username-field">
-<Field
-type="text"
-name="username"
-/>
-
-{touched.username && errors.username && (
-    <p className = "errors">
-            {errors.username}
-            </p>
-)}
-</div>
+    }) => {
+    // console.log ("values", values);
+    // console.log ("erros", errors);
+    // console.log ("touched", touched);
 
 
-<div className = "email-label">
+    //state for initial form data
+    const [users, setUsers] = useState([]);
 
-<label>
-Email*
-</label> 
-</div>
-<div className = "email-field">
-<Field
-type = "email"
-name = "email"
-/>
-
-{touched.email && errors.email && (
-   <p>
-    {errors.email}
-            </p>
-)}
-</div>
+    //effect for fom data changes
+    useEffect(() => {
+        console.log("status change", status);
 
 
- {/*email form field*/}
-<div className = "password-label">
-<label>
-Password*
-</label> 
-</div>
+        status && setUsers(users => [
+            ...users, status
+        ]);
+    }, [status]);
 
-<div className = "field">
-<Field
-type = "text"
-name = "password"
+    return (
 
-/>
+        <Form>
+            <StyledField>
+                <label>
+                    Username*
+                </label>
+                <Field
+                    type="text"
+                    name="username"
+                />
+
+                {touched.username && errors.username && (
+                    <p className="errors">
+                        {errors.username}
+                    </p>
+                )}
+            </StyledField>
+
+            <StyledField>
+                <label>
+                    Email*
+                </label>
+                <Field
+                    type="email"
+                    name="email"
+                />
+
+                {touched.email && errors.email && (
+                    <p>
+                        {errors.email}
+                    </p>
+                )}
+            </StyledField>
+
+            {/*email form field*/}
+            <StyledField>
+                <label>
+                    Password*
+                </label>
 
 
-{touched.password && errors.password && (
-    <p className = "errors">
-            {errors.password}
-            </p>
-)}
-</div>
+                <Field
+                    type="text"
+                    name="password"
 
+                />
 
- {/*pass form field*/}
+                {touched.password && errors.password && (
+                    <p className="errors">
+                        {errors.password}
+                    </p>
+                )}
+            </StyledField>
 
-<div className = "passConfirm-label">
+            {/*pass form field*/}
+
+            {/* <div className = "passConfirm-label">
 <label>
 Password Confirm*
 </label>
@@ -120,70 +111,69 @@ name = "passwordconfirm"
     <p className = "errors">
             {errors.passwordconfirm}
             </p>
-)}
+)} */}
 
 
 
-  {/*pass confirm form field*/}
+            {/*pass confirm form field*/}
+            <CenterText>
+                <LargeButton type="submit">
+                    Sign Up!
+                </LargeButton>
+            </CenterText>
+            {/*submit button form field*/}
 
 
-
-<button type ="submit">
-
- <span className = "button-text">
-Sign Up!
-</span>
-
-</button>
-{/*submit button form field*/}
+        </Form>
 
 
-</Form>
-
-
-);
+    );
 };
 
-const FormikForm = withFormik ({
-mapPropsToValues(props){  
-return { 
-    username: props.username || "",
-    email: props.email || "",
-    password: props.password || "",
-    passwordconfirm: props.passwordconfirm || ""
-};
+const FormikForm = withFormik({
+    mapPropsToValues(props) {
+        return {
+            username: props.username || "",
+            email: props.email || "",
+            password: props.password || "",
+            // passwordconfirm: props.passwordconfirm || ""
+        };
 
-}, //pass props to new users?
+    }, //pass props to new users?
 
-validationSchema: Yup.object().shape({
-username:Yup.string().required("username required!"),
-email:Yup.string().required("valid email required!"),
-password:Yup.string().required("password required!"),
-passwordconfirm:Yup.string().required("please confirm passowrd")
-}),
+    validationSchema: Yup.object().shape({
+        username: Yup.string().required("username required!"),
+        email: Yup.string().required("valid email required!"),
+        password: Yup.string().required("password required!"),
+        // passwordconfirm:Yup.string().required("please confirm passowrd")
+    }),
 
-//validation for inputs
+    //validation for inputs
 
 
 
-handleSubmit(
-values, {setStatus, resetForm}
-) {
-console.log("submitted" ,values); //console log values inputted on submit. 'post' console log shows results came bck
-axios
-.post ("https://reqres.in/api/auth/register", values)
+    handleSubmit(
+        values, { setStatus, resetForm }
+    ) {
+        console.log("submitted", values); //console log values inputted on submit. 'post' console log shows results came bck
+        axiosWithAuth()
+            .post("/register", values)
+            // axios
+            //.post ("https://reqres.in/api/auth/register", values)
 
-.then (res => {
-console.log("worked", res);
-setStatus(res.data);
 
-resetForm();
-})
+            .then(res => {
+                console.log("worked", res);
+                setStatus(res.data);
 
-.catch(error =>
-console.log(error.response)
-);
-}}) (RegistrationForm);
+                resetForm();
+            })
+
+            .catch(error =>
+                console.log(error.response)
+            );
+    }
+})(RegistrationForm);
 
 
 //submit to axios placeholder for data inputs

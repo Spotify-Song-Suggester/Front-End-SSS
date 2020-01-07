@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const SuccessPage = (
-    <div>
+const SuccessPage = () => {
+    return(
+        <div className = "page-container">
         <h1>Thank You</h1>
         <div>
         <h1>Success</h1>
@@ -22,6 +23,8 @@ const SuccessPage = (
 
         </div>
     </div>
-);
+    )
+
+    };
 
 export default SuccessPage;
