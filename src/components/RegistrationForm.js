@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 // import {Link} from "react-router-dom";
 import {withFormik, Form, Field} from "formik";
 import axiosWithAuth from "../utils/AxiosWithAuth";
+import axios from 'axios';
 import * as Yup from "yup";
 
 
@@ -171,7 +172,10 @@ values, {setStatus, resetForm}
 ) {
 console.log("submitted" ,values); //console log values inputted on submit. 'post' console log shows results came bck
 axiosWithAuth()
-.post ("/register", values)
+    .post ("/register", values)
+// axios
+//.post ("https://reqres.in/api/auth/register", values)
+
 
 .then (res => {
 console.log("worked", res);

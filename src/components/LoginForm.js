@@ -1,6 +1,7 @@
 import React from 'react';
 import { withFormik, Field } from 'formik';
 import axiosWithAuth from '../utils/AxiosWithAuth';
+import axios from 'axios';
 
 
 const LoginForm = props => {
@@ -37,6 +38,8 @@ export default withFormik({
         // const { username, password } = values;
         axiosWithAuth()
         .post('/login',  values )
+        // axios.get('https://postman-echo.com/basic-auth', values)
+
             .then(res => {
                 console.log(res.data.message);
                 localStorage.setItem('token', res.data.token);
