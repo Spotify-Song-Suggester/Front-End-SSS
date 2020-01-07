@@ -7,9 +7,14 @@ import SongCard from './SongCard';
 
 const SongItems = ({ fetchSongs, ...props}) => {
        //song items props data to display
+    if (props.isFetching) {
+        return (<p>fetching songs</p>)
+    };
+
     return(
         <div>
-             {props.songs.map((song, index) => <SongCard song={song} key={index}/>)}
+            {props.error && <p>{props.error}</p>}
+            {props.songs.map((song, index) => <SongCard song={song} key={index}/>)}
         </div>
     )
 }
