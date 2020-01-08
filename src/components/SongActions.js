@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { mainText, coolBlue, formLabelFont } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
+import { useHistory } from 'react-router-dom';
 
 const StyledSongActions = styled.div`
     display: flex;
@@ -64,6 +65,9 @@ const addSongToFavorites = (song, userID) => {
 const SongActions = props => {
 
     const { song, userID } = props;
+
+    const history = useHistory();
+
     return (
         <StyledSongActions>
             <div className="actions">
@@ -71,7 +75,7 @@ const SongActions = props => {
                     {song.track}
                 </div>
                 <ul>
-                    <li><button>View Song</button></li>
+                    <li><button onClick={() => history.push(`/song/${song.id}`)}>View Song</button></li>
                     <li><button onClick={() => addSongToFavorites(song, userID)}>Like Song</button></li>
                 </ul>
             </div>
