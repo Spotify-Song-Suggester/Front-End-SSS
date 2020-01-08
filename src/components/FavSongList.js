@@ -3,8 +3,8 @@
 //shown on click of "viewl all" from Song Short List
 
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import SongItems from './SongItems';
+// import axiosWithAuth from '../utils/AxiosWithAuth';
+// import SongItems from './SongItems';
 import styled from 'styled-components';
 
 export default function FavSongsList(props){
@@ -62,22 +62,22 @@ export default function FavSongsList(props){
             time_signature   : '4',
         },
     ])
-    const [favSongs, setFavSongs] = useState([]);
+    // const [favSongs, setFavSongs] = useState([]);
     // useEffect (() => {
-    //     axios
-    //     .get(`https://spotify-song-suggester-backend.herokuapp.com/api/songs/:id/1`)
+    //     axiosWithAuth()
+    //     .get(`/api/songs/:id/favorites`)
     //     .then (response =>{
-    //         console.log(response.output);
-    //         setFavSongs(response.Output);
+    //         console.log(response);
+    //         setFavSongs(response.data);
     //     })
     //     .catch (error =>{
     //         console.log("error", error);
     //     });
-    // },[]);
+    // },[id]);
 
     return (
         <div>
-            Fav Song List
+            Fav Songs Full List
          {DummyData.map((songs, index) => {
              return (
                  <div>

@@ -8,7 +8,7 @@ import logo from '../../Images/Symphinity.png';
 import { MainContent } from '../../styles';
 import { Route } from 'react-router-dom';
 import Main from '../pages/Main';
-import FavPlaylist from '../FavPlaylist';
+
 
 
 // *** NOTE ***
@@ -39,12 +39,7 @@ const Welcome = props => {
                 <SignUpWelcome />
 
                 <Route exact path="/login">
-<<<<<<< HEAD
-                    {/* <LoginForm /> */}
-                    <FavPlaylist/>
-=======
                     <FormikLoginForm {...props} />
->>>>>>> f3f8951fb9fd2eea582e0e25d55dbe76a5966b4a
                 </Route>
                 <Route exact path="/register">
                     <RegistrationForm {...props} />

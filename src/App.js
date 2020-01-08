@@ -6,18 +6,20 @@ import Welcome from './components/pages/Welcome';
 import Main from './components/pages/Main';
 import SongItems from './components/SongItems';
 import SongShortList from './components/SongShortList';
-
+import FavSongList from './components/FavSongList';
+import FavPlaylist from './components/FavPlaylist';
 function App() {
   return (
     
     <Router>
       <div className="App">
-      
+    
         <Route exact path={['/login', '/register']} component={Welcome} />
-        <PrivateRoute exact path='/success' component={SuccessPage} />
+        <Route exact path='/success' component={SuccessPage} />
         <PrivateRoute exact path='/' component={Main} />
         <PrivateRoute exact path='/feed' component={SongItems} />
         <PrivateRoute exact path='/favorites' component={SongShortList} />
+        <PrivateRoute exact path ='/favplaylist' component ={FavPlaylist}/>
       </div>
     </Router>    
   );

@@ -3,7 +3,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import SongItems from '../components/SongItems';
-
+import {Link} from 'react-router-dom';
 const SongShortList = props =>{
 
  
@@ -11,8 +11,8 @@ const SongShortList = props =>{
         
         <div>
             <div>
-            <span>Featured Playlists</span> <span>View All
-            </span>
+            <span>Featured Playlists</span> <Link to={`/favPlaylist/`}>View All
+            </Link>
          
             <SongItems/>
             </div>

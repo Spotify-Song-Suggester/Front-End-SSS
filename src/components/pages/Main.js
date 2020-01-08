@@ -1,4 +1,4 @@
-//parent component for dashboard components held here. Will render Main.js to App.js
+//parent component for dashboard components held here
 import React from 'react';
 import {Route} from 'react-router-dom';
 import NavTitle from '../NavTitle';
@@ -9,11 +9,8 @@ import RecSongList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
 import logo from '../../Images/Symphinity.png';
 import styled from 'styled-components';
-<<<<<<< HEAD
-import FavSongList from '../FavSongList';
-=======
 import SongItems from '../SongItems';
->>>>>>> f3f8951fb9fd2eea582e0e25d55dbe76a5966b4a
+
 
 const StyledNav = styled.nav`
     display: flex;
@@ -61,11 +58,8 @@ const Main = () => {
                 <UserAvatar />
             </StyledNav>
             <StyledInput type="text" placeholder="Search" />
-<<<<<<< HEAD
-            <FavSongList/>
-=======
-            <SongItems/>
->>>>>>> f3f8951fb9fd2eea582e0e25d55dbe76a5966b4a
+            {/* <SongItems/> */}
+<SongShortList/>
         </MainContent>
         
     );
