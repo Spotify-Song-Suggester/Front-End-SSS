@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { mainText, offWhite } from '../styles';
 import albumCover from '../Images/album-cover.jpg';
+import { useHistory } from 'react-router-dom';
 
 const StyledSearchFeedItem = styled.div`
     display: flex;
@@ -36,16 +37,29 @@ const StyledSearchFeedItem = styled.div`
             padding-bottom: 3rem;
         }
     }
+
+    .song-cover,
+    .song-info {
+        cursor: pointer;
+    }
 `;
+
 
 const SearchFeedItem = props => {
     const { song, onActionsPress } = props;
+
+    const history = useHistory();
+
+    const goToSong = (song) => {
+        history.push(`/song/${song.id}`);
+    };
+
     return (
         <StyledSearchFeedItem>
-            <div className="song-cover">
+            <div className="song-cover" onClick={() => goToSong(song)}>
                 <img src={albumCover} alt="album cover" />
             </div>
-            <div className="song-info">
+            <div className="song-info" onClick={() => goToSong(song)}>
                 <ul>
                     <li><strong>{song.track}</strong></li>
                     <li>{song.artist}</li>
