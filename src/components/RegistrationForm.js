@@ -153,11 +153,11 @@ const FormikForm = withFormik({
 
 
     handleSubmit(
-        values, { setStatus, resetForm }
+        values, { props, setStatus, resetForm }
     ) {
         console.log("submitted", values); //console log values inputted on submit. 'post' console log shows results came bck
         axiosWithAuth()
-            .post("/register", values)
+            .post("/auth/register", values)
             // axios
             //.post ("https://reqres.in/api/auth/register", values)
 
@@ -165,8 +165,8 @@ const FormikForm = withFormik({
             .then(res => {
                 console.log("worked", res);
                 setStatus(res.data);
-
                 resetForm();
+                props.history.push('/login');
             })
 
             .catch(error =>

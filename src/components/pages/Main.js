@@ -10,6 +10,7 @@ import logo from '../../Images/Symphinity.png';
 import styled from 'styled-components';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import SearchFeed from '../SearchFeed';
+import SongItems from '../SongItems';
 
 const StyledNav = styled.nav`
     display: flex;
@@ -80,6 +81,8 @@ const Main = () => {
                     <SearchFeed term={searchTerm} />
                 </Route>
             </Switch>
+            <StyledInput type="text" placeholder="Search" />
+            <SongItems/>
         </MainContent>
     );
 };

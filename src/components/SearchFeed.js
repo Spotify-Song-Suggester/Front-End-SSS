@@ -16,14 +16,14 @@ const SearchFeed = props => {
     useEffect(() => {
         axiosWithAuth().get(`${api}/api/songs`)
             .then(res => {
-                setFilteredSongs(res);
+                setFilteredSongs(res.data);
             })
             .catch(err => console.warn(err));
     }, [term]);
 
     return (
         <StyledSearchFeed>
-            {filteredSongs && filteredSongs.map(song => (
+            {filteredSongs.length && filteredSongs.map(song => (
                 <SearchFeedItem key={song.id} song={song} />
             ))}
         </StyledSearchFeed>

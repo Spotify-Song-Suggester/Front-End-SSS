@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 const SuccessPage = () => {
@@ -17,9 +18,9 @@ const SuccessPage = () => {
         </div>
         <div>
 
-<button>
+<Link to='/login'>
     Continue
-</button>
+</Link>
 
         </div>
     </div>
