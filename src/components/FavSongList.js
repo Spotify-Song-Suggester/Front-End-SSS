@@ -8,7 +8,9 @@ import SongItems from './SongItems';
 // import axiosWithAuth from '../utils/AxiosWithAuth';
 import styled from 'styled-components';
 import {Link, Route} from 'react-router-dom';
-import {Styledtop, StyledViews, StyledTopHolder,} from '../styles';
+import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
+import albumCover from '../Images/album-cover.jpg';
+
 
 const StyledFavContainer = styled.div `
 border: 2px solid red;
@@ -18,8 +20,6 @@ background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
 `
-
-
 const StyledBoxes = styled.div`
 border: 3px solid green;
 border-radius:4px;
@@ -32,11 +32,9 @@ box-sizing:border-box;
 
 width: 165.6px;
 height: 176.64px;
-
-background: url(.jpg), #311E1C;
+background: url(${albumCover});
+    background-repeat: no-repeat; #311E1C
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);`
-
-
 
 
 export default function FavSongsList(props){
@@ -94,10 +92,10 @@ export default function FavSongsList(props){
         },
     ])
     const [favSongs, setFavSongs] = useState([]);
-    // const [favSongs, setFavSongs] = useState([]);
+    //const api = 'https://spotify-song-suggester-backend.herokuapp.com';
     // useEffect (() => {
     //     axiosWithAuth()
-    //     .get(`/api/songs/:id/favorites`)
+    //     .get(`${/api/songs/:id/favorites}`)
     //     .then (response =>{
     //       
     //         console.log(response);
