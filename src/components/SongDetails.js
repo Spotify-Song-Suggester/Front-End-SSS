@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import albumCover from '../Images/album-cover.jpg';
 import styled from 'styled-components';
-import { mainText } from '../styles';
+import { mainText, formLabelFont } from '../styles';
+import sampleVisualization from '../Images/sample-visualization.png';
 
 const StyledSongDetails = styled.div`
+
+    .go-back {
+        display: block;
+        margin-top: 1rem;
+    }
+
     .album-cover {
         position: relative;
         margin-top: 1.5rem;
@@ -37,6 +44,25 @@ const StyledSongDetails = styled.div`
             cursor: pointer;
         }
     }
+
+    .song-info {
+        border-bottom: 1px solid ${mainText};
+        margin-bottom: 1.5rem;
+        p {
+            font-size: 1.8rem; 
+            font-family: ${formLabelFont}
+        }
+        .underlined {
+            text-decoration: underline;
+        }
+    }
+
+    .song-visualization {
+        img {
+            max-width: 100%;
+            border: 6px solid ${mainText}
+        }
+    }
 `;
 
 const SongDetails = props => {
@@ -45,17 +71,35 @@ const SongDetails = props => {
 
     const { id } = useParams();
 
+    const history = useHistory();
+
     const [song] = useState(songs.find(s => s.id === parseInt(id)) || null);
 
     return (
         <StyledSongDetails>
             {song ? (
             <div>
+                <a className="go-back" onClick={() => history.goBack()}>← Back</a>
                 <div className="album-cover">
                     <img src={albumCover} alt={`${song.album} album cover`} />
                     <div className="song-actions">
                         ...
                     </div>
+                </div>
+                <div className="song-info">
+                    <p className="underlined">
+                        Artist: {song.artist}
+                    </p>
+                    <p className="underlined">
+                        Album: {song.album || 'N/A'}
+                    </p>
+                    <p>
+                        Track: {song.track}
+                    </p>
+                </div>
+                <div className="song-visualization">
+                    {/* TEST VISUALIZATIO       N */}
+                    <img src={sampleVisualization} alt="Song visualization" />
                 </div>
             </div>)
             : <p>Song not found.</p>}
