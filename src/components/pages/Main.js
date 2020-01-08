@@ -4,7 +4,7 @@ import NavTitle from '../NavTitle';
 import UserAvatar from '../UserAvatar';
 import Search from '../Search';
 import SongShortList from '../SongShortList';
-import RecSongList from '../RecSongsList';
+import RecSongsList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
 import logo from '../../Images/Symphinity.png';
 import styled from 'styled-components';
@@ -81,15 +81,16 @@ const Main = () => {
                 <Route path="/search">
                     <SearchFeed term={searchTerm} />
                 </Route>
-                {/* <Route path="/">
+                 {/* <Route path="/">
                     <SongItems/>
                     
                 </Route> */}
-                
             
-            
-            </Switch>
-            <SongShortList/>
+            </Switch> 
+
+             <SongShortList/>
+            <RecSongsList/>
+
         </MainContent>
       
     );

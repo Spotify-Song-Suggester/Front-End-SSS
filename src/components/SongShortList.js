@@ -38,6 +38,12 @@ display:flex;
 flex-wrap:wrap;
 `
 
+const ArtistText = styled.h2`
+color:black;
+`
+const TrackText = styled.h3`
+color:red;
+`
 //boxes same size for now, enlarge on hover/click?
 
 const SongShortList = props => {
@@ -154,8 +160,8 @@ const SongShortList = props => {
             <StyledShortBoxes>
             
                  {/* key = {index } */}
-                name: { songs.artist }
-                 track: { songs.track }
+                <ArtistText>{ songs.artist }</ArtistText>
+                <TrackText> - { songs.track }</TrackText>
                  
                   
                  </StyledShortBoxes>

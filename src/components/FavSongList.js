@@ -111,7 +111,7 @@ export default function FavSongsList(props){
         <StyledFavContainer>
             <StyledTopHolder>
            <Styledtop>
-           Featured Playlist</Styledtop>
+          All Featured Playlist</Styledtop>
          <Link to={`/`}><StyledViews>View Less</StyledViews>
             </Link>
 

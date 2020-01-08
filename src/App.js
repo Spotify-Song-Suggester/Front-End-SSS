@@ -21,6 +21,7 @@ function App() {
         <PrivateRoute path='/' component={Main} />
         <PrivateRoute exact path='/feed' component={SongItems} />
         <PrivateRoute exact path='/favorites' component={SongShortList} />
+        
         <PrivateRoute exact path ='/allfavorites' component ={FavPlaylist}/>
       </div>
     </Router>    
