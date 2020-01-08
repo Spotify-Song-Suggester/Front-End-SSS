@@ -17,10 +17,11 @@ const StyledSearchFeedItem = styled.div`
     }
     
     .song-actions {
+        font-size: 2rem;
         cursor: pointer;
         color: ${mainText};
         align-self: center;
-        justify-self: flex-end;
+        margin-left: auto;
     }
 
     ul {
