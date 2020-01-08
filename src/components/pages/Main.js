@@ -42,15 +42,15 @@ const StyledInput = styled.input`
     color: ${mainText}
 `;
 
-const Main = () => {
+const Main = (props) => {
     return (
         <MainContent>
             <StyledLogo>
                 <img src={logo} alt="Symphinity" />
             </StyledLogo>
             <StyledNav>
-                <NavTitle title="Dashboard" />
-                <UserAvatar />
+                <NavTitle title="Dashboard"/>
+                <UserAvatar/>
             </StyledNav>
             <StyledInput type="text" placeholder="Search" />
             <SongItems/>

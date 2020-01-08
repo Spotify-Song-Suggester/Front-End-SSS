@@ -5,7 +5,6 @@ const SongCard = (props) => {
         <div className='song-card'>
             <h3>{props.song.track}</h3>
             <h4>{props.song.artist}</h4>
-            <p>duration ms:{props.song.duration_ms}</p>
             <p>dancability:{props.song.danceability}</p>
             <p>energy:{props.song.energy}</p>
             <p>key:{props.song.key}</p>
@@ -18,6 +17,7 @@ const SongCard = (props) => {
             <p>valence:{props.song.valence}</p>
             <p>tempo:{props.song.tempo}</p>
             <p>time signature:{props.song.time_signature}</p>
+            <p>duration ms:{props.song.duration_ms}</p>
         </div>
     )
 };
