@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import SongActions from './SongActions';
 import albumCover from '../Images/album-cover.jpg';
 import styled from 'styled-components';
 import { mainText, formLabelFont } from '../styles';
@@ -73,7 +74,9 @@ const SongDetails = props => {
 
     const history = useHistory();
 
-    const [song] = useState(songs.find(s => s.id === parseInt(id)) || null);
+    const [song] = useState(songs && songs.find(s => s.id === parseInt(id)) || null);
+
+    const [songActionsOpen, setSongActionsOpen] = useState(false);
 
     return (
         <StyledSongDetails>
@@ -82,7 +85,7 @@ const SongDetails = props => {
                 <a className="go-back" onClick={() => history.goBack()}>← Back</a>
                 <div className="album-cover">
                     <img src={albumCover} alt={`${song.album} album cover`} />
-                    <div className="song-actions">
+                    <div className="song-actions" onClick={() => setSongActionsOpen(!songActionsOpen)}>
                         ...
                     </div>
                 </div>
@@ -98,12 +101,12 @@ const SongDetails = props => {
                     </p>
                 </div>
                 <div className="song-visualization">
-                    {/* TEST VISUALIZATIO       N */}
+                    {/* TEST VISUALIZATION */}
                     <img src={sampleVisualization} alt="Song visualization" />
                 </div>
+                {songActionsOpen && <SongActions song={song} />}
             </div>)
             : <p>Song not found.</p>}
-            
         </StyledSongDetails>
     );
 };
