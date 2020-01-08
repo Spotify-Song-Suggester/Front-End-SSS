@@ -1,17 +1,23 @@
 import React from 'react';
 import { withFormik, Field } from 'formik';
 import axiosWithAuth from '../utils/AxiosWithAuth';
-import axios from 'axios';
-import { StyledField, LargeButton, CenterText } from  '../styles.js';
+import { connect } from 'react-redux';
+import { setUserID } from '../actions';
+import { StyledField, LargeButton } from  '../styles.js';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
+const StyledForm = styled.form`
+    .center {
+        text-align: center;
+    }
+`;
 
 
 const LoginForm = props => {
     const { handleSubmit, errors, isSubmitting } = props;
 
     return (
-        <form onSubmit={handleSubmit}>
+        <StyledForm onSubmit={handleSubmit}>
             {errors.invalidCredentials && 
             <p style={{color: 'red'}}>Invalid credentials</p>}
             <StyledField>
@@ -26,11 +32,11 @@ const LoginForm = props => {
                     <Field type="password" name="password" />
                 </label>
             </StyledField>
-            <CenterText>
+            <div className="center">
                 <LargeButton type="submit" disabled={isSubmitting}>Login</LargeButton>
-                <p>Don't have an account? <Link to="/register">Sign Up</Link></p>
-            </CenterText>
-        </form>
+                <p>Don't have an account? <a href="#">Sign Up</a></p>
+            </div>
+        </StyledForm>
     );
 };
 
@@ -40,15 +46,15 @@ const LoginForm = props => {
 
 // };
 
-export default withFormik({
-    mapPropsToValues: (props) => ({
-        username: props.username || '',
-        password: props.password || ''
+const FormikLoginForm = withFormik({
+    mapPropsToValues: ({ username, password }) => ({
+        username: username || '',
+        password: password || ''
     }),
     handleSubmit: (values, {props, setSubmitting, setErrors }) => {
         // const { username, password } = values;
         axiosWithAuth()
-        .post('/login',  values )
+        .post('/auth/login',  values )
         // axios
         // .get('https://postman-echo.com/basic-auth', values)
 
@@ -58,7 +64,9 @@ export default withFormik({
                 localStorage.setItem('token', res.data.token);
                 // handleSuccessfulLogin();
                 console.log('Login successful!')
-                props.history.push('/success');
+                console.log(props)
+                props.setUserID(res.data.id)
+                props.history.push('/');
             })
             .catch(err => {
                 console.warn(err);
@@ -71,3 +79,5 @@ export default withFormik({
             });
     }
 })(LoginForm);
+
+export default connect(null, { setUserID })(FormikLoginForm);

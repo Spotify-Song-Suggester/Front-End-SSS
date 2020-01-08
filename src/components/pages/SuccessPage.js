@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 
 const SuccessPage = () => {
@@ -17,9 +18,13 @@ const SuccessPage = () => {
         </div>
         <div>
 
-<button>
+<Link to='/login'>
     Continue
+<<<<<<< HEAD
 </button> {/*button to continue to dash*/}
+=======
+</Link>
+>>>>>>> f3f8951fb9fd2eea582e0e25d55dbe76a5966b4a
 
         </div>
     </div>
