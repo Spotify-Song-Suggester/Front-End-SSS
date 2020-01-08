@@ -3,6 +3,8 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import avatar from '../Images/avatar.jpg';
+import { connect } from 'react-redux';
 
 
 const UserAvatar = props => {
@@ -10,12 +12,18 @@ const UserAvatar = props => {
 
     return (
         <div>
-        <div style={{cursor:'pointer'}} onClick={() => setShowMenu(!showMenu)}>
-            avatar
+        <div style={{width:'50px', height:'50px', borderRadius:'100%',background: `url(${avatar})`,objectFit:'fill',cursor:'pointer'}} onClick={() => setShowMenu(!showMenu)}>
+            {props.userID}
         </div>
         {showMenu && <Link to='/login'><span onClick={()=>localStorage.removeItem('token')}>logout</span></Link>}
         </div>
     );
 };
 
-export default UserAvatar;
+const mapStateToProps = state => {
+    return {
+        userID: state.userID
+    }
+}
+
+export default connect(mapStateToProps, {})(UserAvatar);
