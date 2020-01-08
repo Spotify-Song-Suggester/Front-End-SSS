@@ -11,6 +11,8 @@ import styled from 'styled-components';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import SearchFeed from '../SearchFeed';
 import SongItems from '../SongItems';
+import FavPlaylist from '../FavPlaylist';
+
 
 const StyledNav = styled.nav`
     display: flex;
@@ -74,17 +76,22 @@ const Main = () => {
                 defaultValue={searchTerm}
                 onKeyUp={performSearchOnEnter}
             />
-
+ 
             <Switch>
                 <Route path="/search">
                     <SearchFeed term={searchTerm} />
                 </Route>
-                <Route path="/">
+                {/* <Route path="/">
                     <SongItems/>
-                </Route>
-            </Switch>
+                    
+                </Route> */}
+                
             
+            
+            </Switch>
+            <SongShortList/>
         </MainContent>
+      
     );
 };
 

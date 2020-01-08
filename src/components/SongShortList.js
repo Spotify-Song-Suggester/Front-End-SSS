@@ -3,27 +3,55 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import SongItems from '../components/SongItems';
+import {Link, Switch, Route, NavLink} from 'react-router-dom';
+import styled from 'styled-components';
+import {Styledtop, StyledViews} from '../styles';
 
-const SongShortList = props =>{
 
+
+
+const StyledShortList = styled.div`
+border:2px solid green;
+display:flex;
+align-self: flex-start;
+flex-wrap:wrap;
+box-sizing:border-box;
+width: 100%;
+
+
+` //boxes same size for now, enlarge on hover/click?
+
+const SongShortList = props => {
+   
     return(
-        <div>
+
+       
+    
             <div>
-            <span>Featured Playlists</span> <span>View All
-            </span>
-            </div>
-            <div>
+           <h3> SONG SHORT LIST</h3>
+           <Styledtop>
+            Featured Playlists  </Styledtop>
+            <NavLink to={`/allfavorites`}>  
+            <StyledViews> View All   </StyledViews>
+            </NavLink>
+          
+         
+<Route  path = {`/allfavorites`}>
+
+</Route>
+
+            <StyledShortList>
+       
             <SongItems/>
+
+            </StyledShortList>
             </div>
-            {/* some songs to display here with props for each song */}
-        </div>
+            
     )
 }
-
 const mapStateToProps = state => {
     return {
         userID: state.userID
     }
 }
-
 export default connect(mapStateToProps, {})(SongShortList);
