@@ -79,9 +79,11 @@ const Main = () => {
                 <Route path="/search">
                     <SearchFeed term={searchTerm} />
                 </Route>
+                <Route path="/">
+                    <SongItems/>
+                </Route>
             </Switch>
-            <StyledInput type="text" placeholder="Search" />
-            <SongItems/>
+            
         </MainContent>
     );
 };
