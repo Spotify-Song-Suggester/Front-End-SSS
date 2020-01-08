@@ -6,7 +6,6 @@ import Welcome from './components/pages/Welcome';
 import Main from './components/pages/Main';
 import SongItems from './components/SongItems';
 import SongShortList from './components/SongShortList';
-import FavSongList from './components/FavSongList';
 import FavPlaylist from './components/FavPlaylist';
 function App() {
   return (
@@ -19,7 +18,7 @@ function App() {
         <PrivateRoute path='/' component={Main} />
         <PrivateRoute exact path='/feed' component={SongItems} />
         <PrivateRoute exact path='/favorites' component={SongShortList} />
-        <PrivateRoute exact path ='/favPlaylist' component ={FavPlaylist}/>
+        <PrivateRoute exact path ='/allfavorites' component ={FavPlaylist}/>
       </div>
     </Router>    
   );
