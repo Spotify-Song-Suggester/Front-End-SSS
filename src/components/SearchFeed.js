@@ -28,9 +28,12 @@ const SearchFeed = props => {
 
     return (
         <StyledSearchFeed>
-            {filteredSongs.length && filteredSongs.map(song => (
+            {filteredSongs.length ? (filteredSongs.map(song => (
                 <SearchFeedItem key={song.id} song={song} onActionsPress={setSongForActions} />
-            ))}
+            )))
+            :
+            <p>No results.</p>
+        }
             {songForActions && <SongActions song={songForActions} hasViewOption />}
         </StyledSearchFeed>
     );
