@@ -3,6 +3,7 @@
 //clicking on song cards routes to song details
 import React from 'react';
 import FavSongList from './FavSongList';
+
 import {Link} from 'react-router-dom';
 
 const FavPlaylist = props => {
@@ -10,10 +11,9 @@ const FavPlaylist = props => {
         <div>
         <span>Featured Playlist</span> <Link to={`/`}><span>View Less</span>
             </Link>
-  
+
     <FavSongList/>
 </div>
 )
     }
-
     export default FavPlaylist;
