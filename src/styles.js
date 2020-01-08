@@ -81,3 +81,40 @@ export const LargeButton = styled.button`
 export const CenterText = styled.div`
     text-align: center;
 `;
+
+//styles for "playlist/view more-less at top of pages"
+
+
+
+export const Styledtop = styled.span`
+position: absolute;
+width: 157px;
+height: 26px;
+left: 19px;
+top: 178px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+
+color: #FFFFFF;
+`
+
+
+export const StyledViews = styled.span`
+position: absolute;
+width: 76px;
+height: 18px;
+left: 332px;
+top: 181px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 12px;
+
+color: #FFFFFF;
+`

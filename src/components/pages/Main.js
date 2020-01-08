@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-//parent component for dashboard components held here
-import React from 'react';
-import {Route} from 'react-router-dom';
-=======
 //parent component for dashboard components held here. Will render Main.js to App.js
 import React, { useState } from 'react';
->>>>>>> 8c37ac5e26029a687f208bfdcef775ce72a1e138
 import NavTitle from '../NavTitle';
 import UserAvatar from '../UserAvatar';
 import Search from '../Search';
@@ -77,11 +71,6 @@ const Main = () => {
                 <NavTitle title="Dashboard" />
                 <UserAvatar />
             </StyledNav>
-<<<<<<< HEAD
-            <StyledInput type="text" placeholder="Search" />
-            {/* <SongItems/> */}
-<SongShortList/>
-=======
 
             <StyledInput
                 type="text"
@@ -94,12 +83,12 @@ const Main = () => {
                 <Route path="/search">
                     <SearchFeed term={searchTerm} />
                 </Route>
-                <Route path="/">
+                {/* <Route path="/">
                     <SongItems/>
-                </Route>
+                </Route> */}
             </Switch>
             
->>>>>>> 8c37ac5e26029a687f208bfdcef775ce72a1e138
+            <SongShortList/>
         </MainContent>
         
     );

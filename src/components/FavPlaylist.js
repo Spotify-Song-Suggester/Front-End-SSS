@@ -3,17 +3,24 @@
 //clicking on song cards routes to song details
 import React from 'react';
 import FavSongList from './FavSongList';
+import {Link, Route, useRouteMatch, useParams} from 'react-router-dom';
+import styled from 'styled-components';
+import {Styledtop, StyledViews} from '../styles';
 
-import {Link} from 'react-router-dom';
+
+
+
 
 const FavPlaylist = props => {
     return (
-        <div>
-        <span>Featured Playlist</span> <Link to={`/`}><span>View Less</span>
+        <Styledtop>
+        Featured Playlist
+         <Link to={`/`}><StyledViews>View Less</StyledViews>
             </Link>
+            
 
     <FavSongList/>
-</div>
+</Styledtop>
 )
     }
     export default FavPlaylist;
