@@ -38,7 +38,7 @@ const SearchFeed = props => {
             {filteredSongs.length && filteredSongs.map(song => (
                 <SearchFeedItem key={song.id} song={song} onActionsPress={setSongForActions} />
             ))}
-            {songForActions && <SongActions song={songForActions} />}
+            {songForActions && <SongActions song={songForActions} hasViewOption />}
         </StyledSearchFeed>
     );
 };
