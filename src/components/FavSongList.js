@@ -8,6 +8,37 @@ import SongItems from './SongItems';
 // import axiosWithAuth from '../utils/AxiosWithAuth';
 import styled from 'styled-components';
 
+
+const StyledFavContainer = styled.div `
+border: 2px solid red;
+position: relative;
+width: 414px;
+height: 1300px;
+overflow-y: scroll;
+
+background: #0E0B20;
+
+`
+
+const StyledBoxes = styled.div`
+border: 3px solid green;
+border-radius:4px;
+position: absolute;
+left: 6.76%;
+right: 53.24%;
+top: 16.77%;
+bottom: 69.64%;
+box-sizing:border-box;
+
+width: 165.6px;
+height: 176.64px;
+
+background: url(.jpg), #311E1C;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);`
+
+
+
+
 export default function FavSongsList(props){
     const DummyData = ([
         {
@@ -79,18 +110,21 @@ export default function FavSongsList(props){
     
 
     return (
-        <div>
-          
-            Fav Songs Full List
+        <StyledFavContainer>
+           
+         
+            <h3>Fav Songs Full List</h3>
          {DummyData.map((songs, index) => {
              return (
-                 <div>
-                 key = {index }
-                name: { songs.artist },
-                 track: { songs.track }
-                 </div>
+                <StyledBoxes>
+            
+                 {/* key = {index } */}
+                name={ songs.artist }
+                 track= { songs.track }
+                  
+                   </StyledBoxes>
              );
          })} 
-        </div>
+        </StyledFavContainer>
     );
         }

@@ -10,7 +10,6 @@ import {Styledtop, StyledViews} from '../styles';
 
 
 
-
 const FavPlaylist = props => {
     return (
         <Styledtop>
