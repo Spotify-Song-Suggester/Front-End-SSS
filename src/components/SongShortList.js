@@ -14,9 +14,12 @@ const SongShortList = props => {
         <div>
             <div>
            <h3> SONG SHORT LIST</h3>
-            <span>Featured Playlists</span> 
-             <Link to={`/favPlaylist`}> <StyledViews>View All</StyledViews>
+           <Styledtop>
+            Featured Playlists  </Styledtop>
+            <Link to={`/favPlaylist`}>  <StyledViews> View All   </StyledViews>
             </Link>
+          
+         
             <SongItems/>
             </div>
             

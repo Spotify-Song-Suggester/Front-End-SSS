@@ -7,14 +7,12 @@ import axios from 'axios';
 import SongItems from './SongItems';
 // import axiosWithAuth from '../utils/AxiosWithAuth';
 import styled from 'styled-components';
-
+import {Link} from 'react-router-dom';
+import {Styledtop, StyledViews} from '../styles';
 
 const StyledFavContainer = styled.div `
 border: 2px solid red;
-position: relative;
-width: 414px;
-height: 1300px;
-overflow-y: scroll;
+
 
 background: #0E0B20;
 
@@ -111,8 +109,11 @@ export default function FavSongsList(props){
 
     return (
         <StyledFavContainer>
-           
-         
+           <Styledtop>
+           Featured Playlist</Styledtop>
+         <Link to={`/`}><StyledViews>View Less</StyledViews>
+            </Link>
+            
             <h3>Fav Songs Full List</h3>
          {DummyData.map((songs, index) => {
              return (
