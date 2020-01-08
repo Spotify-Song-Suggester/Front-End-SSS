@@ -24,6 +24,7 @@ const StyledSearchFeedItem = styled.div`
     }
 
     ul {
+        padding-left: 2rem;
         display: flex;
         flex-direction: column;
         list-style-type: none;

@@ -50,9 +50,8 @@ const Main = () => {
     const history = useHistory();
 
     const performSearchOnEnter = e => {
-        // set regardless of whether user hit enter or not
-        setSearchTerm(e.target.value);
         if(e.key === 'Enter') {
+            setSearchTerm(e.target.value);
             // enter key pressed
             history.push('/search');
         }

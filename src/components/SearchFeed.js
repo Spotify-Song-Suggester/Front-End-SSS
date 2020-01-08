@@ -16,7 +16,16 @@ const SearchFeed = props => {
     useEffect(() => {
         axiosWithAuth().get(`${api}/api/songs`)
             .then(res => {
-                setFilteredSongs(res.data);
+
+                // filter based on search input
+                const termLower = term.toLowerCase();
+                const filtered = res.data.filter(song => {
+                    if(song.track.toLowerCase().includes(termLower)
+                    || song.artist.toLowerCase().includes(termLower)) {
+                        return true;
+                    }
+                });
+                setFilteredSongs(filtered);
             })
             .catch(err => console.warn(err));
     }, [term]);

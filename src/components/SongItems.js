@@ -17,7 +17,7 @@ const SongItems = ({ fetchSongs, ...props}) => {
 
     return(
         <div>
-            {props.error && <p>{props.error}</p>}
+            {/* {props.error && <p>{props.error}</p>} this was erroring */}
             {props.songs.map(song => <SongCard song={song} key={song.id}/>)}
         </div>
     )
