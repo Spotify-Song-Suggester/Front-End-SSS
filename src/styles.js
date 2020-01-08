@@ -81,3 +81,45 @@ export const LargeButton = styled.button`
 export const CenterText = styled.div`
     text-align: center;
 `;
+
+//styles for "playlist/view more-less at top of pages"
+
+
+
+export const StyledTopHolder = styled.div`
+display:flex;
+border:2px solid purple;
+width:100%;
+justify-content:space-between
+
+`
+export const Styledtop = styled.span`
+
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+
+
+color: #FFFFFF;
+`
+
+
+export const StyledViews = styled.span`
+
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+
+color: #FFFFFF;
+`
+
+//favs/recommened view ALL view styling for boxes
+
+export const StyledBoxHolder = styled.div`
+border:2px solid pink;
+
+`
