@@ -10,7 +10,7 @@ const UserAvatar = props => {
 
     return (
         <div>
-        <div onClick={() => setShowMenu(!showMenu)}>
+        <div style={{cursor:'pointer'}} onClick={() => setShowMenu(!showMenu)}>
             avatar
         </div>
         {showMenu && <Link to='/login'><span onClick={()=>localStorage.removeItem('token')}>logout</span></Link>}
