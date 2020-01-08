@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { mainText, coolBlue, formLabelFont } from '../styles';
+import axiosWithAuth from '../utils/AxiosWithAuth';
 
 const StyledSongActions = styled.div`
     display: flex;
@@ -46,9 +48,22 @@ const StyledSongActions = styled.div`
     }
 `;
 
+const addSongToFavorites = (song, userID) => {
+    const api = 'https://spotify-song-suggester-backend.herokuapp.com';
+
+    axiosWithAuth().post(`${api}/api/songs/save`, {
+        users_id: parseInt(userID),
+        songs_id: song.id
+    })
+    .then(res => {
+        alert('Song saved to favorites');
+    })
+    .catch(err => alert(err));
+};
+
 const SongActions = props => {
 
-    const { song } = props;
+    const { song, userID } = props;
     return (
         <StyledSongActions>
             <div className="actions">
@@ -57,7 +72,7 @@ const SongActions = props => {
                 </div>
                 <ul>
                     <li><button>View Song</button></li>
-                    <li><button>Like Song</button></li>
+                    <li><button onClick={() => addSongToFavorites(song, userID)}>Like Song</button></li>
                 </ul>
             </div>
         </StyledSongActions>
@@ -65,4 +80,10 @@ const SongActions = props => {
 
 };
 
-export default SongActions;
+const mapStateToProps = state => {
+    return {
+        userID: state.userID
+    };
+};
+
+export default connect(mapStateToProps)(SongActions);
