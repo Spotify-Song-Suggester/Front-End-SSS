@@ -38,7 +38,7 @@ const StyledSearchFeedItem = styled.div`
 `;
 
 const SearchFeedItem = props => {
-    const { song } = props;
+    const { song, onActionsPress } = props;
     return (
         <StyledSearchFeedItem>
             <div className="song-cover">
@@ -51,7 +51,7 @@ const SearchFeedItem = props => {
                     <li>Length: {song.time_signature}</li>
                 </ul>
             </div>
-            <div className="song-actions">
+            <div className="song-actions" onClick={() => onActionsPress(song)}>
                 ...
             </div>
         </StyledSearchFeedItem> 

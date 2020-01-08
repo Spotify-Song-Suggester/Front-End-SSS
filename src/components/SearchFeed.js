@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SearchFeedItem from './SearchFeedItem';
 import axiosWithAuth from '../utils/AxiosWithAuth';
+import SongActions from './SongActions';
 
 const StyledSearchFeed = styled.div`
     
@@ -12,6 +13,8 @@ const SearchFeed = props => {
     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
 
     const [filteredSongs, setFilteredSongs] = useState([]);
+
+    const [songForActions, setSongForActions] = useState(null);
 
     useEffect(() => {
         axiosWithAuth().get(`${api}/api/songs`)
@@ -33,8 +36,9 @@ const SearchFeed = props => {
     return (
         <StyledSearchFeed>
             {filteredSongs.length && filteredSongs.map(song => (
-                <SearchFeedItem key={song.id} song={song} />
+                <SearchFeedItem key={song.id} song={song} onActionsPress={setSongForActions} />
             ))}
+            {songForActions && <SongActions song={songForActions} />}
         </StyledSearchFeed>
     );
 };
