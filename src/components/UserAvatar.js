@@ -1,12 +1,19 @@
 //avatar displayed here with onclick to display dropdown with logout here
 //will route back to Welcome page
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const UserAvatar = props => {
+    const [showMenu, setShowMenu] = useState(false)
+
     return (
         <div>
+        <div style={{cursor:'pointer'}} onClick={() => setShowMenu(!showMenu)}>
             avatar
+        </div>
+        {showMenu && <Link to='/login'><span onClick={()=>localStorage.removeItem('token')}>logout</span></Link>}
         </div>
     );
 };
