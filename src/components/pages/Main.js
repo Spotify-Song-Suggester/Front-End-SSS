@@ -64,8 +64,8 @@ const Main = () => {
                 <img src={logo} alt="Symphinity" />
             </StyledLogo>
             <StyledNav>
-                <NavTitle title="Dashboard" />
-                <UserAvatar />
+                <NavTitle title="Dashboard"/>
+                <UserAvatar/>
             </StyledNav>
 
             <StyledInput
