@@ -8,20 +8,22 @@ import SongItems from './SongItems';
 // import axiosWithAuth from '../utils/AxiosWithAuth';
 import styled from 'styled-components';
 import {Link, Route} from 'react-router-dom';
-import {Styledtop, StyledViews} from '../styles';
+import {Styledtop, StyledViews, StyledTopHolder,} from '../styles';
 
 const StyledFavContainer = styled.div `
 border: 2px solid red;
-
-
+box-sizing:border-box;
+width:100%;
 background: #0E0B20;
-
+display:flex;
+flex-wrap:wrap;
 `
+
 
 const StyledBoxes = styled.div`
 border: 3px solid green;
 border-radius:4px;
-position: absolute;
+
 left: 6.76%;
 right: 53.24%;
 top: 16.77%;
@@ -109,6 +111,7 @@ export default function FavSongsList(props){
 
     return (
         <StyledFavContainer>
+            <StyledTopHolder>
            <Styledtop>
            Featured Playlist</Styledtop>
          <Link to={`/`}><StyledViews>View Less</StyledViews>
@@ -117,16 +120,18 @@ export default function FavSongsList(props){
             <Route path = {`/`}>
 
 </Route>
-            <h3>Fav Songs Full List</h3>
+</StyledTopHolder>
          {DummyData.map((songs, index) => {
              return (
+                 <div className = "box-holder">
                 <StyledBoxes>
             
                  {/* key = {index } */}
-                name={ songs.artist }
-                 track= { songs.track }
+                name: { songs.artist }
+                 track: { songs.track }
                   
                    </StyledBoxes>
+                   </div>
              );
          })} 
         </StyledFavContainer>

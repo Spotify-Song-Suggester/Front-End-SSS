@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import SearchFeed from '../SearchFeed';
 import SongItems from '../SongItems';
+import FavPlaylist from '../FavPlaylist';
 
 
 const StyledNav = styled.nav`
@@ -80,18 +81,15 @@ const Main = () => {
                 <Route path="/search">
                     <SearchFeed term={searchTerm} />
                 </Route>
-                <Route path="/">
+                {/* <Route path="/">
                     <SongItems/>
                     
-                </Route>
-                <Route path = "/favorites">
-                <SongShortList/> 
+                </Route> */}
                 
-                </Route>
-               
-
+            
+            
             </Switch>
-        
+            <SongShortList/>
         </MainContent>
       
     );

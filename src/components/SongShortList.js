@@ -16,8 +16,8 @@ display:flex;
 align-self: flex-start;
 flex-wrap:wrap;
 box-sizing:border-box;
-width: 165.6px;
-height: 176.64px
+width: 100%;
+
 
 ` //boxes same size for now, enlarge on hover/click?
 

@@ -5,13 +5,15 @@ import React from 'react';
 import FavSongList from './FavSongList';
 import {Link, Route, useRouteMatch, useParams} from 'react-router-dom';
 import styled from 'styled-components';
-
+import { maxContentWidth, mainText } from '../styles';
 
 const StyledPlaylistPage = styled.div`
-position: relative;
-width: 414px;
-height: 1300px;
-
+//position: relative;
+display:flex;
+flex-wrap:wrap;
+flex-direction:row;
+width:100%;
+border:2px solid orange;
 background: #0E0B20;
 `
 

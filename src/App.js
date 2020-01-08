@@ -7,6 +7,8 @@ import Main from './components/pages/Main';
 import SongItems from './components/SongItems';
 import SongShortList from './components/SongShortList';
 import FavPlaylist from './components/FavPlaylist';
+import NavTitle from './components/NavTitle';
+
 function App() {
   return (
     
@@ -15,6 +17,7 @@ function App() {
     
         <Route exact path={['/login', '/register']} component={Welcome} />
         <PrivateRoute exact path='/success' component={SuccessPage} />
+        <PrivateRoute exact path={[ '/', '/feed', '/favorites']} component={NavTitle} />
         <PrivateRoute path='/' component={Main} />
         <PrivateRoute exact path='/feed' component={SongItems} />
         <PrivateRoute exact path='/favorites' component={SongShortList} />
