@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 //parent component for dashboard components held here
 import React from 'react';
 import {Route} from 'react-router-dom';
+=======
+//parent component for dashboard components held here. Will render Main.js to App.js
+import React, { useState } from 'react';
+>>>>>>> 8c37ac5e26029a687f208bfdcef775ce72a1e138
 import NavTitle from '../NavTitle';
 import UserAvatar from '../UserAvatar';
 import Search from '../Search';
@@ -9,6 +14,8 @@ import RecSongList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
 import logo from '../../Images/Symphinity.png';
 import styled from 'styled-components';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import SearchFeed from '../SearchFeed';
 import SongItems from '../SongItems';
 
 
@@ -45,6 +52,19 @@ const StyledInput = styled.input`
 `;
 
 const Main = () => {
+    
+    const [searchTerm, setSearchTerm] = useState('');
+    const history = useHistory();
+
+    const performSearchOnEnter = e => {
+        if(e.key === 'Enter') {
+            setSearchTerm(e.target.value);
+            // enter key pressed
+            history.push('/search');
+        }
+
+    }
+
     return (
         
                     
@@ -57,9 +77,29 @@ const Main = () => {
                 <NavTitle title="Dashboard" />
                 <UserAvatar />
             </StyledNav>
+<<<<<<< HEAD
             <StyledInput type="text" placeholder="Search" />
             {/* <SongItems/> */}
 <SongShortList/>
+=======
+
+            <StyledInput
+                type="text"
+                placeholder="Search"
+                defaultValue={searchTerm}
+                onKeyUp={performSearchOnEnter}
+            />
+
+            <Switch>
+                <Route path="/search">
+                    <SearchFeed term={searchTerm} />
+                </Route>
+                <Route path="/">
+                    <SongItems/>
+                </Route>
+            </Switch>
+            
+>>>>>>> 8c37ac5e26029a687f208bfdcef775ce72a1e138
         </MainContent>
         
     );

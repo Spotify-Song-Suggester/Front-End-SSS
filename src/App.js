@@ -15,8 +15,8 @@ function App() {
       <div className="App">
     
         <Route exact path={['/login', '/register']} component={Welcome} />
-        <Route exact path='/success' component={SuccessPage} />
-        <PrivateRoute exact path='/' component={Main} />
+        <PrivateRoute exact path='/success' component={SuccessPage} />
+        <PrivateRoute path='/' component={Main} />
         <PrivateRoute exact path='/feed' component={SongItems} />
         <PrivateRoute exact path='/favorites' component={SongShortList} />
         <PrivateRoute exact path ='/favplaylist' component ={FavPlaylist}/>

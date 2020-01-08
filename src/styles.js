@@ -11,6 +11,7 @@ export const popstarPurple = '#780150';
 export const warmBlue = '#959AB1';
 
 export const mainText = '#fff';
+export const offWhite = '#FDFEFF';
 
 export const maxContentWidth = '90%';
 
