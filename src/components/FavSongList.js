@@ -1,5 +1,6 @@
 //full list of songs here
 //import song items
+//shown on click of "viewl all" from Song Short List
 
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
