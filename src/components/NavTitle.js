@@ -7,11 +7,12 @@ import React from 'react';
 
  const NavTitle = props => {
     return (
-       <h2>Dashboard</h2> 
-        // <h2>
+     <div>
+        <h2>
         
-        //     {props.title}
-        // </h2>
+            {props.title}
+        </h2>
+        </div>
     );
  };
 export default NavTitle;

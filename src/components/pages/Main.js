@@ -60,16 +60,13 @@ const Main = () => {
     }
 
     return (
-        
-                    
-               
         <MainContent>
             <StyledLogo>
                 <img src={logo} alt="Symphinity" />
             </StyledLogo>
             <StyledNav>
-                <NavTitle title="Dashboard" />
-                <UserAvatar />
+                <NavTitle title="Dashboard"/>
+                <UserAvatar/>
             </StyledNav>
 
             <StyledInput
@@ -78,19 +75,25 @@ const Main = () => {
                 defaultValue={searchTerm}
                 onKeyUp={performSearchOnEnter}
             />
-
+ 
             <Switch>
                 <Route path="/search">
                     <SearchFeed term={searchTerm} />
                 </Route>
-                {/* <Route path="/">
+                <Route path="/">
                     <SongItems/>
-                </Route> */}
+                    
+                </Route>
+                <Route path = "/favorites">
+                <SongShortList/> 
+                
+                </Route>
+               
+
             </Switch>
-            
-            <SongShortList/>
-        </MainContent>
         
+        </MainContent>
+      
     );
 };
 
