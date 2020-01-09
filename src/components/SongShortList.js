@@ -3,7 +3,7 @@
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux';
 import SongItems from '../components/SongItems';
-import {Link, Switch, Route, NavLink, useParams} from 'react-router-dom';
+import {Link, Switch, Route, useRouteMatch, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
@@ -50,93 +50,31 @@ color:red;
 //boxes same size for now, enlarge on hover/click?
 
 const SongShortList = props => {
- const [favSongs, setFavSongs] = useState([]);
+ const [favSongs, setFavSongs]= useState([]);
 
- const DummyData = ([
-    {
-        artist           : 'Adele',
-        track            : 'Chasing Pavements',
-        valence          : '0.87',
-        danceability     : '0.78',
-        acousticness     : '0.87',
-        speechiness      : '0.87',
-        tempo            : '0.87',
-        energy           : '0.87',
-        duration_ms      : '0.87',
-        loudness         : '0.87',
-        instrumentalness : '0.87',
-        liveness         : '0.87',
-        key              : '9',
-        mode             : '1',
-        time_signature   : '4',
-    },
-    {
-        artist           : 'CHIKA',
-        track            : 'High Rises',
-        valence          : '0.87',
-        danceability     : '0.78',
-        acousticness     : '0.87',
-        speechiness      : '0.87',
-        tempo            : '0.87',
-        energy           : '0.87',
-        duration_ms      : '0.87',
-        loudness         : '0.87',
-        instrumentalness : '0.87',
-        liveness         : '0.87',
-        key              : '9',
-        mode             : '1',
-        time_signature   : '4',
-    },
-    {
-        artist           : 'Chance the Rapper',
-        track            : 'Pusha Man',
-        valence          : '0.87',
-        danceability     : '0.78',
-        acousticness     : '0.87',
-        speechiness      : '0.87',
-        tempo            : '0.87',
-        energy           : '0.87',
-        duration_ms      : '0.87',
-        loudness         : '0.87',
-        instrumentalness : '0.87',
-        liveness         : '0.87',
-        key              : '9',
-        mode             : '1',
-        time_signature   : '4',
-    },
-])
+ 
     
-// const {id} = useParams();
-//     useEffect (() => {
-//     const shortList = ()=>{
-//      const api = 'https://spotify-song-suggester-backend.herokuapp.com';
-//         axiosWithAuth()
-//         .get(`${api}/api/songs/:id/favorites{favorites}`)
-//         .then (response =>{
+const {id} = useParams();
+console.log("this is is", id);
+    useEffect (() => {
+    const shortList = ()=>{
+     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
+        axiosWithAuth()
+        .get(`${api}/api/songs/:id/favorites`)
+        .then (response =>{
           
-//             console.log(response);
-//             setFavSongs(response.data);
-//         })
-//         .catch (error =>{
-//             console.log("error", error);
-//         });
-//         }
-//        shortList();
-//     },[id]);
+            console.log("fav response", response);
+            setFavSongs(response.data);
+        })
+        .catch (error =>{
+            console.log("error", error);
+        });
+        }
+       shortList();
+    },[id]);
    
  return(
 
-//        <div className = "short-list">
-//            {favSongs.map(favs => (
-//                <SongItems key= {favs.id} artist = {favs.artist} />
-//            ))}
-//            </div>
-//     );
-//            }
-       
-//            function ShortList({favorites}) {
-
-//                const {artists, track} =favorites;
 
 
 
@@ -147,30 +85,42 @@ const SongShortList = props => {
             <StyledTopHolder>
            <Styledtop>
            Featured Playlists</Styledtop>
-         <Link to={`/allfavorites`}><StyledViews>View More</StyledViews>
-            </Link>
+           <Switch>
+           <Link to={`/allfavorites`}> <StyledViews>View More</StyledViews> </Link>
+           <Route path ={`/allfavorites`}>
+         </Route>
 
-            <Route path = {`/allfavorites`}>
+            
 
-</Route>
+
+</Switch>
 </StyledTopHolder>
 <StyledShortContainer>
     
-    {DummyData.map((songs, index) => {
-             return (
-                 
+    
+
+        
                 
             <StyledShortBoxes>
             
-                 {/* key = {index } */}
-                <ArtistText>{ songs.artist }</ArtistText>
-                <TrackText> - { songs.track }</TrackText>
                  
+                 
+               {/* {favSongs.map((favs, index)=>{
+                   return( 
                   
+           artist=
+               { favs.artist }
+           track={ favs.track }
+           
+                   );
+                   })} */}
+                   
+               
                  </StyledShortBoxes>
                    
-             );
-         })} </StyledShortContainer>
+            
+
+          </StyledShortContainer>
 
             {/* <SongItems/> */} {/*commented out for styling*/}
            

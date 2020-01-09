@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import albumCover from '../Images/album-cover.jpg';
-
+import SongItems from './SongItems';
 
 
 const StyledShortList = styled.div`
@@ -51,114 +51,91 @@ color:red;
 //boxes same size for now, enlarge on hover/click?
 
 const RecSongsList = props => {
-
-
- const DummyData = ([
-    {
-        artist           : 'Adele',
-        track            : 'Chasing Pavements',
-        valence          : '0.87',
-        danceability     : '0.78',
-        acousticness     : '0.87',
-        speechiness      : '0.87',
-        tempo            : '0.87',
-        energy           : '0.87',
-        duration_ms      : '0.87',
-        loudness         : '0.87',
-        instrumentalness : '0.87',
-        liveness         : '0.87',
-        key              : '9',
-        mode             : '1',
-        time_signature   : '4',
-    },
-    {
-        artist           : 'CHIKA',
-        track            : 'High Rises',
-        valence          : '0.87',
-        danceability     : '0.78',
-        acousticness     : '0.87',
-        speechiness      : '0.87',
-        tempo            : '0.87',
-        energy           : '0.87',
-        duration_ms      : '0.87',
-        loudness         : '0.87',
-        instrumentalness : '0.87',
-        liveness         : '0.87',
-        key              : '9',
-        mode             : '1',
-        time_signature   : '4',
-    },
-    {
-        artist           : 'Chance the Rapper',
-        track            : 'Pusha Man',
-        valence          : '0.87',
-        danceability     : '0.78',
-        acousticness     : '0.87',
-        speechiness      : '0.87',
-        tempo            : '0.87',
-        energy           : '0.87',
-        duration_ms      : '0.87',
-        loudness         : '0.87',
-        instrumentalness : '0.87',
-        liveness         : '0.87',
-        key              : '9',
-        mode             : '1',
-        time_signature   : '4',
-    },
-])
-    
-
+    const [recSongs, setRecSongs]= useState([]);
    
- return(
-
-
-
-
- <div className = "short-list-details">
-            
-    <StyledShortList>
-        
-            <StyledTopHolder>
-           <Styledtop>
-           Recommended Playlists</Styledtop>
-         <Link to={`/allrecfavorites`}><StyledViews>View More</StyledViews>
-            </Link>
-
-            <Route path = {`/allrecfavorites`}>
-
-</Route>
-</StyledTopHolder>
-<StyledShortContainer>
     
-    {DummyData.map((songs, index) => {
-             return (
-                 
-                
-            <StyledShortBoxes>
-            
-                 {/* key = {index } */}
-                <ArtistText>{ songs.artist }</ArtistText>
-                <TrackText> - { songs.track }</TrackText>
-                 
-                  
-                 </StyledShortBoxes>
+       
+   const {id} = useParams();
+   console.log("this is is", id);
+    //    useEffect (() => {
+    //    const recShortList = ()=>{
+    //     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
+    //        axiosWithAuth()
+    //    .get(`${api}/api/songs/:id/favorites`)
+    //        .then (response =>{
+             
+    //            console.log("fav response", response);
+    //            setRecSongs(response.data);
+    //        })
+    //        .catch (error =>{
+    //            console.log("error", error);
+    //        });
+    //        }
+    //       recShortList();
+    //    },[id]);
+      
+    return(
+   
+   
+   
+   
+    <div className = "short-list-details">
+               
+       <StyledShortList>
+           
+               <StyledTopHolder>
+              <Styledtop>
+              Recommended Playlists</Styledtop>
+              <Switch>
+              <Link to={`/allrecfavorites`}> <StyledViews>View More</StyledViews> </Link>
+              <Route path ={`/allrecfavorites`}>
+            </Route>
+   
+               
+   
+   
+   </Switch>
+   </StyledTopHolder>
+   <StyledShortContainer>
+       
+       
+   
+           
                    
-             );
-         })} </StyledShortContainer>
-
-            {/* <SongItems/> */} {/*commented out for styling*/}
+               <StyledShortBoxes>
+               
+                    
+                    
+                  {/* {favSongs.map((favs, index)=>{
+                      return( 
+                     
+              artist=
+                  { favs.artist }
+              track={ favs.track }
+              
+                      );
+                      })} */}
+                      
+                  
+                    </StyledShortBoxes>
+                      
+               
+   
+             </StyledShortContainer>
+   
+               {/* <SongItems/> */} {/*commented out for styling*/}
+              
+            </StyledShortList>
+   </div>
+   
+              
+               
+       );
+   }
+   const mapStateToProps = state => {
+       return {
+           userID: state.userID,
            
-         </StyledShortList>
-</div>
-
-           
-            
-    );
-}
-const mapStateToProps = state => {
-    return {
-        userID: state.userID,
-        
-    }
-}
-export default connect(mapStateToProps, {})(RecSongsList);
+       }
+   }
+   export default connect(mapStateToProps, {})(RecSongsList);

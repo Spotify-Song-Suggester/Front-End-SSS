@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import {Link, Route} from 'react-router-dom';
 import {Styledtop, StyledViews, StyledTopHolder, offWhite, popstarPurple} from '../styles';
 import albumCover from '../Images/album-cover.jpg';
-
+import SongItems from './SongItems';
 
 const StyledFavContainer = styled.div `
 border: 2px solid red;
@@ -49,69 +49,15 @@ const TrackTempo = styled.p`
 
 color: ${offWhite}`
 
-export default function RecSongItems(props){
-    const DummyData = ([
-        {
-            artist           : 'Adele',
-            track            : 'Chasing Pavements',
-            valence          : '0.87',
-            danceability     : '0.78',
-            acousticness     : '0.87',
-            speechiness      : '0.87',
-            tempo            : '0.87',
-            energy           : '0.87',
-            duration_ms      : '0.87',
-            loudness         : '0.87',
-            instrumentalness : '0.87',
-            liveness         : '0.87',
-            key              : '9',
-            mode             : '1',
-            time_signature   : '4',
-        },
-        {
-            artist           : 'CHIKA',
-            track            : 'High Rises',
-            valence          : '0.87',
-            danceability     : '0.78',
-            acousticness     : '0.87',
-            speechiness      : '0.87',
-            tempo            : '0.87',
-            energy           : '0.87',
-            duration_ms      : '0.87',
-            loudness         : '0.87',
-            instrumentalness : '0.87',
-            liveness         : '0.87',
-            key              : '9',
-            mode             : '1',
-            time_signature   : '4',
-        },
-        {
-            artist           : 'Chance the Rapper',
-            track            : 'Pusha Man',
-            valence          : '0.87',
-            danceability     : '0.78',
-            acousticness     : '0.87',
-            speechiness      : '0.87',
-            tempo            : '0.87',
-            energy           : '0.87',
-            duration_ms      : '0.87',
-            loudness         : '0.87',
-            instrumentalness : '0.87',
-            liveness         : '0.87',
-            key              : '9',
-            mode             : '1',
-            time_signature   : '4',
-        },
-    ])
-    const [favSongs, setFavSongs] = useState([]);
- 
+const RecSongItems = props =>{
+    console.log("props", props);
+  
     
-
     return (
         <StyledFavContainer>
             <StyledTopHolder>
            <Styledtop>
-          All Recommended Playlist</Styledtop>
+          All Featured Playlist</Styledtop>
          <Link to={`/`}><StyledViews>View Less</StyledViews>
             </Link>
 
@@ -119,21 +65,24 @@ export default function RecSongItems(props){
 
 </Route>
 </StyledTopHolder>
-         {DummyData.map((songs, index) => {
-             return (
+         
                  <div className = "box-holder">
                 <StyledBoxes>
             <StyledBoxContent>
                  {/* key = {index } */}
-                <ArtistText>{ songs.artist }</ArtistText>
-                <TrackText>{ songs.track }</TrackText>
-                         <TrackTempo>Tempo: {songs.tempo }</TrackTempo>         
-                         
+                 
+                 
+                 <SongItems
+                artist=
+                    { props.artist }
+                track= { props.track }
+                              />
                          </StyledBoxContent>   
                    </StyledBoxes>
+                   
                    </div>
-             );
-         })} 
         </StyledFavContainer>
     );
-        }
+    }
+
+    export default RecSongItems;

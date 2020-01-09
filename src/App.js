@@ -9,7 +9,10 @@ import SongShortList from './components/SongShortList';
 import FavPlaylist from './components/FavPlaylist';
 import NavTitle from './components/NavTitle';
 import RecPlaylist from './components/RecPlaylist';
-import RecSongsList from './components/RecSongsList';
+import RecSongItems from './components/RecSongItems';
+import SongDetails from './components/SongDetails';
+import FavSongList from './components/FavSongList';
+
 function App() {
   return (
     
@@ -18,13 +21,13 @@ function App() {
     
         <Route exact path={['/login', '/register']} component={Welcome} />
         <PrivateRoute exact path='/success' component={SuccessPage} />
-        <PrivateRoute exact path={[ '/', '/feed', '/favorites']} component={NavTitle} />
-        <PrivateRoute path='/' component={Main} />
+        <PrivateRoute exact path={[ '/', '/feed', '/favorites', '/recfavorites']} component={NavTitle} />
+        <PrivateRoute path={'/'} component={Main} />
         <PrivateRoute exact path='/feed' component={SongItems} />
-        <PrivateRoute exact path='/favorites' component={SongShortList} />
-        <PrivateRoute exact path='/recfavorites' component={RecSongsList} />
-        <PrivateRoute exact path ='/allfavorites' component ={FavPlaylist}/>
-        <PrivateRoute exact path ='/allrecfavorites' component ={RecPlaylist}/>
+        
+        <PrivateRoute exact path ='/allfavorites' component ={FavSongList}/>
+        <PrivateRoute exact path ='/allrecfavorites' component ={RecSongItems}/>
+        
       </div>
     </Router>    
   );

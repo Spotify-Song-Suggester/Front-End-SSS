@@ -95,22 +95,7 @@ const RegistrationForm = (
             {/*pass form field*/}
 
             {/* <div className = "passConfirm-label">
-<label>
-Password Confirm*
-</label>
-</div>
 
-<div className = "passConfirm-field">
-<Field
-type = "text"
-name = "passwordconfirm"
-/>
-</div>
-
-{touched.passwordconfirm && errors.passwordconfirm && (
-    <p className = "errors">
-            {errors.passwordconfirm}
-            </p>
 )} */}
 
 
@@ -136,7 +121,7 @@ const FormikForm = withFormik({
             username: props.username || "",
             email: props.email || "",
             password: props.password || "",
-            // passwordconfirm: props.passwordconfirm || ""
+            
         };
 
     }, //pass props to new users?
@@ -145,7 +130,7 @@ const FormikForm = withFormik({
         username: Yup.string().required("username required!"),
         email: Yup.string().required("valid email required!"),
         password: Yup.string().required("password required!"),
-        // passwordconfirm:Yup.string().required("please confirm passowrd")
+    
     }),
 
     //validation for inputs
