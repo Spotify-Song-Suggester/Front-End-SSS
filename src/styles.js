@@ -23,7 +23,7 @@ export const formLabelFont = "'Montserrat', sans-serif";
 export const MainContent = styled.div`
     margin: 0 auto;
     width: ${maxContentWidth};
-    border:2px solid black;
+    
     box-sizing:border-box;
 `;
 
@@ -91,7 +91,6 @@ export const CenterText = styled.div`
 
 export const StyledTopHolder = styled.div`
 display:flex;
-border:2px solid purple;
 width:100%;
 justify-content:space-between
 box-sizing:border-box;
@@ -124,7 +123,7 @@ color: #FFFFFF;
 //favs/recommened view ALL view styling for boxes
 
 export const StyledBoxHolder = styled.div`
-border:2px solid pink;
+
 
 `
 

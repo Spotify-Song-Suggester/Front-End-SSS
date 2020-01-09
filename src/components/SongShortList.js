@@ -22,7 +22,7 @@ margin-top:20px;
 
 `
 const StyledShortBoxes = styled.div`
-border:2px solid orange;
+
 background: url(${albumCover});
     background-repeat: no-repeat;
     border-raidus:8px;
