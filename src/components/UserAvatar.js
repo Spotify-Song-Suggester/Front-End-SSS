@@ -3,6 +3,8 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import avatar from '../Images/avatar.jpg';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import {popstarPurple, warmBlue} from '../styles';
 
@@ -18,6 +20,8 @@ display: flex;
     align-items: flex-end;
     margin:5px;
     margin-bottom:10px;
+cursor:pointer;
+
 
 
 `
@@ -29,18 +33,19 @@ const UserAvatar = props => {
 
     return (
         <div>
-            <StyledAvatar>
-        <div style={{cursor:'pointer'}} onClick={() => setShowMenu(!showMenu)}>
-            
-        </div>
+        <StyledAvatar onClick={() => setShowMenu(!showMenu)}>
+            {props.userID}
+        </StyledAvatar>
      
         {showMenu && <Link to='/login'><span onClick={()=>localStorage.removeItem('token')}> <StyledAvText>logout</StyledAvText></span></Link>}
-        </StyledAvatar>
         </div>
     );
 };
 
-export default UserAvatar;
+const mapStateToProps = state => {
+    return {
+        userID: state.userID
+    }
+}
 
-
-
+export default connect(mapStateToProps, {})(UserAvatar);
