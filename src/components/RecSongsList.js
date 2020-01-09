@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import albumCover from '../Images/album-cover.jpg';
-import SongItems from './SongItems';
+import SongCard from './SongCard';
 
 
 const StyledShortList = styled.div`
@@ -89,15 +89,17 @@ const RecSongsList = (props) => {
    </Switch>
    </StyledTopHolder>
    <StyledShortContainer>
-    
-   <Link to={`/songdetails`}>  <Route path ={`/songdetails`}></Route>
+        {recSongs.length ? recSongs.map(song => (
+   <Link to={`/song/${song.id}`}>  <Route path ={`/song/${song.id}`}></Route>
 
-        
                <StyledShortBoxes>
-
-                      
+               <SongCard song={song} key={song.id} artist = {song.artist}/> 
                     </StyledShortBoxes>
                       </Link>
+        ))
+        :
+        <p>Like some songs so we know what to recommened!</p>
+}
              </StyledShortContainer>
 
               
