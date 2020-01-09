@@ -82,6 +82,17 @@ const FavSongList = props => {
 
     }, [userID]);
 
+    const removeSong = id => {
+        axiosWithAuth().delete(`${api}/api/songs/${userID}/favorites/${id}`)
+            .then(res => {
+                setFavSongs(favSongs.filter(song => song.id !== id));
+            })
+            .catch(err => { 
+                console.warn(err);
+                alert('Could not remove song--please try again.');
+            });
+    };
+
 
     return (
         <StyledFavContainer>
@@ -97,17 +108,21 @@ const FavSongList = props => {
             <StyledBoxContainer>
 
                 {favSongs.length ? favSongs.map(song => (
-                    <Link to={`/song/${song.id}`} key={song.id}>
-                        <StyledBoxes key={song.id}>
-                            <StyledBoxContent>
-                                {/* key = {index } */}
+                    
+                        <StyledBoxes>
+                            <Link to={`/song/${song.id}`} key={song.id}>
+                                <StyledBoxContent>
+                                    {/* key = {index } */}
 
-                                <ArtistText>Artist: {song.artist}</ArtistText>
-                                <TrackText>Track: {song.track}</TrackText>
-
-                            </StyledBoxContent>
+                                    <ArtistText>Artist: {song.artist}</ArtistText>
+                                    <TrackText>Track: {song.track}</TrackText>
+                                    
+                                </StyledBoxContent>
+                                
+                            </Link>
+                            <button onClick={() => removeSong(song.id)}>Remove</button>
                         </StyledBoxes>
-                    </Link>
+                    
                 ))
                 :
                 <p>Go like some songs!</p>
