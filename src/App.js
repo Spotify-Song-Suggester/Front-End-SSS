@@ -24,9 +24,9 @@ function App() {
         <PrivateRoute exact path={[ '/', '/feed', '/favorites', '/recfavorites']} component={NavTitle} />
         <PrivateRoute path={'/'} component={Main} />
         <PrivateRoute exact path='/feed' component={SongItems} />
-        
         <PrivateRoute exact path ='/allfavorites' component ={FavSongList}/>
         <PrivateRoute exact path ='/allrecfavorites' component ={RecSongItems}/>
+        <PrivateRoute exact path = '/songdetails' component= {SongDetails}/>
         
       </div>
     </Router>    

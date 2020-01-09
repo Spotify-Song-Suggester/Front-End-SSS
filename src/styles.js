@@ -23,6 +23,7 @@ export const formLabelFont = "'Montserrat', sans-serif";
 export const MainContent = styled.div`
     margin: 0 auto;
     width: ${maxContentWidth};
+    border:2px solid black;
 `;
 
 export const StyledField = styled.div`

@@ -21,14 +21,19 @@ flex-wrap:wrap;
 
 `
 const StyledShortBoxes = styled.div`
+border:2px solid orange;
 background: url(${albumCover});
     background-repeat: no-repeat;
     border-raidus:8px;
     justify-content:space-between;
-margin:2%;
+margin:5%;
     box-sizing:border-box;
-    width: 165.6px;
-    height: 176.64px;
+    width: 110px;
+    height: 110px;
+    &:hover{
+        transform:scale(1.15);
+    
+}
     `
 
     const StyledShortContainer = styled.div `
@@ -98,13 +103,8 @@ console.log("this is is", id);
 <StyledShortContainer>
     
     
-
-        
-                
+<Link to={`/songdetails`}>  <Route path ={`/songdetails`}></Route>
             <StyledShortBoxes>
-            
-                 
-                 
                {/* {favSongs.map((favs, index)=>{
                    return( 
                   
@@ -117,18 +117,14 @@ console.log("this is is", id);
                    
                
                  </StyledShortBoxes>
-                   
-            
-
+                 
+                 </Link>
           </StyledShortContainer>
 
             {/* <SongItems/> */} {/*commented out for styling*/}
            
          </StyledShortList>
 </div>
-
-           
-            
     );
 }
 const mapStateToProps = state => {

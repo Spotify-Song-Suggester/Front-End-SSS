@@ -3,7 +3,6 @@
 //will display rec song items component
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux';
-
 import {Link, Switch, Route, NavLink, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
@@ -13,7 +12,7 @@ import SongItems from './SongItems';
 
 
 const StyledShortList = styled.div`
-border: 2px solid red;
+border: 2px solid pink;
 box-sizing:border-box;
 width:100%;
 background: #0E0B20;
@@ -22,24 +21,28 @@ flex-wrap:wrap;
 
 `
 const StyledShortBoxes = styled.div`
+border:2px solid orange;
 background: url(${albumCover});
     background-repeat: no-repeat;
     border-raidus:8px;
     justify-content:space-between;
-margin:2%;
+margin:5%;
     box-sizing:border-box;
-    width: 165.6px;
-    height: 176.64px;
+    width: 110px;
+    height: 110px;
+    &:hover{
+        transform:scale(1.1);
+    
+}
     `
 
     const StyledShortContainer = styled.div `
-border: 2px solid blue;
-box-sizing:border-box;
-width:100%;
-background: #0E0B20;
-display:flex;
-flex-wrap:wrap;
-
+    border: 2px solid green;
+    box-sizing:border-box;
+    width:100%;
+    background: #0E0B20;
+    display:flex;
+    flex-wrap:wrap;
 `
 
 const ArtistText = styled.h2`
@@ -52,9 +55,7 @@ color:red;
 
 const RecSongsList = props => {
     const [recSongs, setRecSongs]= useState([]);
-   
-    
-       
+  
    const {id} = useParams();
    console.log("this is is", id);
     //    useEffect (() => {
@@ -75,10 +76,7 @@ const RecSongsList = props => {
     //    },[id]);
       
     return(
-   
-   
-   
-   
+ 
     <div className = "short-list-details">
                
        <StyledShortList>
@@ -91,21 +89,12 @@ const RecSongsList = props => {
               <Route path ={`/allrecfavorites`}>
             </Route>
    
-               
-   
-   
    </Switch>
    </StyledTopHolder>
    <StyledShortContainer>
-       
-       
-   
-           
-                   
+    
+   <Link to={`/songdetails`}>  <Route path ={`/songdetails`}></Route>
                <StyledShortBoxes>
-               
-                    
-                    
                   {/* {favSongs.map((favs, index)=>{
                       return( 
                      
@@ -116,20 +105,15 @@ const RecSongsList = props => {
                       );
                       })} */}
                       
-                  
                     </StyledShortBoxes>
-                      
-               
-   
+                      </Link>
              </StyledShortContainer>
    
                {/* <SongItems/> */} {/*commented out for styling*/}
               
             </StyledShortList>
    </div>
-   
-              
-               
+     
        );
    }
    const mapStateToProps = state => {

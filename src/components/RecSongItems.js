@@ -72,11 +72,11 @@ const RecSongItems = props =>{
                  {/* key = {index } */}
                  
                  
-                 <SongItems
-                artist=
-                    { props.artist }
-                track= { props.track }
-                              />
+                 {/* <SongItems/> */}  {/*commented out for styling*/}
+                <h3>artist:
+                    { props.artist }</h3>
+                <h4>track:{ props.track }</h4>
+                              
                          </StyledBoxContent>   
                    </StyledBoxes>
                    

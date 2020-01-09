@@ -18,20 +18,26 @@ width:100%;
 background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
-flex-direction:space-between
 `
+
+const StyledBoxContainer = styled.div `
+border: 2px solid blue;
+box-sizing:border-box;
+width:100%;
+background: #0E0B20;
+display:flex;
+flex-wrap:wrap;
+
+`
+
 const StyledBoxes = styled.div`
 
 border-radius:4px;
-justify-content:space-evenly;
-margin:15px;
-left: 6.76%;
-right: 53.24%;
-top: 16.77%;
-bottom: 69.64%;
+justify-content:space-between;
+margin:2%;
 box-sizing:border-box;
-width: 165.6px;
-height: 176.64px;
+width: 160px;
+height: 160px;
 background: url(${albumCover});
     background-repeat: no-repeat; #311E1C
 
@@ -70,21 +76,21 @@ const FavSongList = props =>{
 </Route>
 </StyledTopHolder>
          
-                 <div className = "box-holder">
+                 <StyledBoxContainer>
                 <StyledBoxes>
             <StyledBoxContent>
                  {/* key = {index } */}
                  
                  
                  
-                artist=
-                    { props.artist }
-                track= { props.track }
+                <ArtistText>
+                   Artist: { props.artist }</ArtistText>
+               <TrackText>Track: { props.track }</TrackText>
                               
                          </StyledBoxContent>   
                    </StyledBoxes>
                    
-                   </div>
+                   </StyledBoxContainer>
         </StyledFavContainer>
     );
     }
