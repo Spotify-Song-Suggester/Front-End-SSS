@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import SongActions from './SongActions';
+import SongVisualization from './SongVisualization';
 import albumCover from '../Images/album-cover.jpg';
 import styled from 'styled-components';
 import { mainText, formLabelFont } from '../styles';
@@ -102,7 +103,8 @@ const SongDetails = props => {
                 </div>
                 <div className="song-visualization">
                     {/* TEST VISUALIZATION */}
-                    <img src={sampleVisualization} alt="Song visualization" />
+                    {/* <img src={sampleVisualization} alt="Song visualization" /> */}
+                    <SongVisualization songId={song.id} />
                 </div>
                 {songActionsOpen && <SongActions song={song} />}
             </div>)

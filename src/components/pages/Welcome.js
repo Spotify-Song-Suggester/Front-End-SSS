@@ -18,7 +18,8 @@ const StyledWelcome = styled.div`
     background: url(${welcomeBg});
     background-repeat: no-repeat;
     border: 1px solid #000000;
-    height: 100vh;
+    // height: 100vh;
+    border:2px solid red;
 
     .logo {
         margin-top: 7.5rem;

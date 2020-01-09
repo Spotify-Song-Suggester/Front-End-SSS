@@ -13,9 +13,16 @@ const StyledAvatar = styled.button`
 background-color: ${popstarPurple};
 height:32px;
 width:34px;
-border-radius:17px;
+ border-radius:17px;
+ // border: none
+display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin:5px;
+    margin-bottom:10px;
 cursor:pointer;
-// border: none
+
+
 
 `
 const StyledAvText = styled.p`
@@ -26,7 +33,7 @@ const UserAvatar = props => {
 
     return (
         <div>
-        <StyledAvatar style={{cursor:'pointer'}} onClick={() => setShowMenu(!showMenu)}>
+        <StyledAvatar onClick={() => setShowMenu(!showMenu)}>
             {props.userID}
         </StyledAvatar>
      
