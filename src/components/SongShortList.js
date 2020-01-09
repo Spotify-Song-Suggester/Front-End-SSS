@@ -12,7 +12,6 @@ import SongCard from '../components/SongCard';
 
 
 const StyledShortList = styled.div`
-
 box-sizing:border-box;
 width:100%;
 background: none;
@@ -37,7 +36,6 @@ margin:5%;
 }
     `
     const StyledShortContainer = styled.div `
-
 box-sizing:border-box;
 width:100%;
 background: none;

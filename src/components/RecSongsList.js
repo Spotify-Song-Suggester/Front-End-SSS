@@ -1,4 +1,4 @@
-//short list of Rec songs
+//SHORT list of Rec songs
 //import RecSongItems here
 //will display rec song items component
 import React, {useState, useEffect} from 'react'
@@ -41,18 +41,16 @@ margin:5%;
     display:flex;
     flex-wrap:wrap;
 `
-
-
 const RecSongsList = (props) => {
     console.log("rec props", props);
 
-    const {id} = props;
-    console.log("ID", id);
+    const {userID} = props;
+    console.log("ID", userID);
     const [recSongs, setRecSongs]= useState([]);
     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
     useEffect(() => {     
         axiosWithAuth()
-        .get(`${api}/api/songs/`)
+        .get(`${api}/api/songs/${userID}/recommendation`)
             .then(response => {
 
                 console.log("fav response", response.data);
@@ -69,9 +67,7 @@ const RecSongsList = (props) => {
             .catch(error => {
                 console.log("error", error);
         });
-    }, [id]);
-    
-
+    }, [userID]);
     return(
  
     <div className = "short-list-details">

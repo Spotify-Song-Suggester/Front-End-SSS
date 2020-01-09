@@ -36,14 +36,13 @@ background: url(${albumCover});
 const StyledBoxContent = styled.div`
 box-sizing:border-box;
 `
+
 const ArtistText = styled.h4`
 color:black;
 `
 const TrackText = styled.h5`
 color:${popstarPurple};
 `
-const TrackTempo = styled.p`
-color: ${offWhite}`
 //pass props for all songs
 const FavSongList = props => {
     console.log("props", props);
@@ -85,7 +84,8 @@ const FavSongList = props => {
                     Liked Songs</Styledtop>
                 <Link to={`/`}><StyledViews>View Less</StyledViews>
                 </Link>
-   
+
+                
             </StyledTopHolder>
 
             <StyledBoxContainer>
@@ -111,6 +111,7 @@ const FavSongList = props => {
                 <p>Go like some songs!</p>
                 }
                 
+
             </StyledBoxContainer>
         </StyledFavContainer>
     );
