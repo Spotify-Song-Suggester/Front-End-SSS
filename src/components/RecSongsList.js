@@ -21,7 +21,6 @@ flex-wrap:wrap;
 
 `
 const StyledShortBoxes = styled.div`
-border:2px solid orange;
 background: url(${albumCover});
     background-repeat: no-repeat;
     border-raidus:8px;
