@@ -55,6 +55,7 @@ const SongCard = (props) => {
             </div>
             {/* <h3>{props.song.track}</h3>
             <h4>{props.song.artist}</h4>
+        </div>
             <p>dancability:{props.song.danceability}</p>
             <p>energy:{props.song.energy}</p>
             <p>key:{props.song.key}</p>

@@ -1,11 +1,12 @@
 //list of songs data to display for each song
 //import Song items here
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import SongItems from '../components/SongItems';
-import {Link, Switch, Route, useRouteMatch, useParams} from 'react-router-dom';
+import SongCard from '../components/SongCard';
+import { Link, Switch, Route, useRouteMatch, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
+import { Styledtop, StyledViews, StyledTopHolder } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import albumCover from '../Images/album-cover.jpg';
 import SongCard from '../components/SongCard';
@@ -35,7 +36,8 @@ margin:5%;
     
 }
     `
-    const StyledShortContainer = styled.div `
+const StyledShortContainer = styled.div`
+
 box-sizing:border-box;
 width:100%;
 background: none;
@@ -45,10 +47,21 @@ flex-wrap:wrap;
 const SongShortList = (props) => {
 const {userID} = props;
 
-console.log("fav props", props);
-const api = 'https://spotify-song-suggester-backend.herokuapp.com';
+const ArtistText = styled.h2`
+color:black;
+`
+const TrackText = styled.h3`
+color:red;
+`
+//boxes same size for now, enlarge on hover/click?
 
-const [favSongs, setFavSongs] = useState([]);
+const SongShortList = (props) => {
+
+    const { userID } = props;
+
+    console.log('userID', userID);
+    const api = 'https://spotify-song-suggester-backend.herokuapp.com';
+    const [favSongs, setFavSongs] = useState([]);
     useEffect(() => {
         axiosWithAuth()
             .get(`${api}/api/songs/${userID}/favorites`)
@@ -56,6 +69,7 @@ const [favSongs, setFavSongs] = useState([]);
 
                 console.log("fav response", response);
 
+                // only want to show first 3 songs
                 let shortFilter = [];
                 for(let i = 0; i < 3; i++) {
                     if(response.data[i]) {
@@ -71,25 +85,23 @@ const [favSongs, setFavSongs] = useState([]);
 
     }, [userID]);
 
-   
- return(
- <div className = "short-list-details">
-            
-    <StyledShortList>
-        
-            <StyledTopHolder>
-           <Styledtop>
-           Favorite Playlists</Styledtop>
-           <Switch>
-           <Link to={`/allfavorites`}> <StyledViews>View More</StyledViews> </Link>
-           <Route path ={`/allfavorites`}>
-         </Route>
-</Switch>
-</StyledTopHolder>
-<StyledShortContainer>
-    
-          </StyledShortContainer>
-          {favSongs.length ? favSongs.map(song => (
+    return (
+        <div className="short-list-details">
+
+            <StyledShortList>
+
+                <StyledTopHolder>
+                    <Styledtop>
+                        Liked Songs</Styledtop>
+                    <Switch>
+                        <Link to={`/allfavorites`}> <StyledViews>View More</StyledViews> </Link>
+                        <Route path={`/allfavorites`}>
+                        </Route>
+                    </Switch>
+                </StyledTopHolder>
+                <StyledShortContainer>
+
+                    {favSongs.length ? favSongs.map(song => (
                         <Link to={`/song/${song.id}`} key={song.id}>  <Route path={`/song/${song.id}`}></Route>
                             <StyledShortBoxes>
                                 <SongCard song={song} key={song.id} artist = {song.artist}/>
@@ -99,15 +111,19 @@ const [favSongs, setFavSongs] = useState([]);
                     :
                     <p>Go like some songs!</p>
                     }
-           
-         </StyledShortList>
-</div>
+                    
+                </StyledShortContainer>
+
+                {/* <SongItems/> */} {/*commented out for styling*/}
+
+            </StyledShortList>
+        </div>
     );
 }
 const mapStateToProps = state => {
     return {
         userID: state.userID,
-        
+
     }
 }
-export default connect(mapStateToProps, {})(SongShortList);
+export default connect(mapStateToProps)(SongShortList);

@@ -62,7 +62,8 @@ const StyledSongDetails = styled.div`
     .song-visualization {
         img {
             max-width: 100%;
-            border: 6px solid ${mainText}
+            border: 6px solid ${mainText};
+            border-radius: 2rem;
         }
     }
 `;

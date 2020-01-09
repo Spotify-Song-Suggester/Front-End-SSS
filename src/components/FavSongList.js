@@ -1,12 +1,16 @@
 //full list of songs here
 //shown on click of "viewl all" from Song Short List
+
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import SongItems from './SongItems';
 import styled from 'styled-components';
 import { Link, Route } from 'react-router-dom';
 import { Styledtop, StyledViews, StyledTopHolder, offWhite, popstarPurple } from '../styles';
 import albumCover from '../Images/album-cover.jpg';
 import axiosWithAuth from '../utils/AxiosWithAuth';
+
+
 
 const StyledFavContainer = styled.div`
 margin:20px;
@@ -16,7 +20,9 @@ background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
 `
+
 const StyledBoxContainer = styled.div`
+
 box-sizing:border-box;
 width:100%;
 background: #0E0B20;
