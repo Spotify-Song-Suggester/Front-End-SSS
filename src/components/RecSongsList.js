@@ -43,26 +43,35 @@ margin:5%;
 `
 
 
-const RecSongsList = props => {
+const RecSongsList = (props) => {
+    console.log("rec props", props);
+
+    const {id} = props;
+    console.log("ID", id);
     const [recSongs, setRecSongs]= useState([]);
-  
-    //    useEffect (() => {
-    //    const recShortList = ()=>{
-    //     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
-    //        axiosWithAuth()
-    //    .get(`${api}/api/songs/:id/favorites`)
-    //        .then (response =>{
-             
-    //            console.log("fav response", response);
-    //            setRecSongs(response.data);
-    //        })
-    //        .catch (error =>{
-    //            console.log("error", error);
-    //        });
-    //        }
-    //       recShortList();
-    //    },[id]);
-      
+    const api = 'https://spotify-song-suggester-backend.herokuapp.com';
+    useEffect(() => {     
+        axiosWithAuth()
+        .get(`${api}/api/songs/`)
+            .then(response => {
+
+                console.log("fav response", response.data);
+
+                let recShortFilter = [];
+                for(let i = 0; i < 3; i++) {
+                    if(response.data[i]) {
+                        recShortFilter.push(response.data[i]);
+                    }
+                }
+
+                setRecSongs(recShortFilter);
+            })
+            .catch(error => {
+                console.log("error", error);
+        });
+    }, [id]);
+    
+
     return(
  
     <div className = "short-list-details">
@@ -82,21 +91,15 @@ const RecSongsList = props => {
    <StyledShortContainer>
     
    <Link to={`/songdetails`}>  <Route path ={`/songdetails`}></Route>
+
+        
                <StyledShortBoxes>
-                  {/* {favSongs.map((favs, index)=>{
-                      return( 
-                     
-              artist= { favs.artist }
-              track={ favs.track }
-              
-                      );
-                      })} */}
+
                       
                     </StyledShortBoxes>
                       </Link>
              </StyledShortContainer>
-   
-               {/* <SongItems/> commented out for styling */}
+
               
             </StyledShortList>
    </div>

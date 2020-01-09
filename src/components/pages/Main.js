@@ -1,8 +1,7 @@
-//parent component for dashboard components held here. Will render Main.js to App.js
+//parent component for dashboard components held here.
 import React, { useState } from 'react';
 import NavTitle from '../NavTitle';
 import UserAvatar from '../UserAvatar';
-import Search from '../Search';
 import SongShortList from '../SongShortList';
 import RecSongsList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
@@ -11,14 +10,10 @@ import welcomeBg from '../../Images/welcome-bg.png';
 import styled from 'styled-components';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import SearchFeed from '../SearchFeed';
-import SongItems from '../SongItems';
-import FavPlaylist from '../FavPlaylist';
 import FilterMenu from '../FilterMenu';
 import SongDetails from '../SongDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
-
-
 
 const StyledNav = styled.nav`
     display: flex;
@@ -73,7 +68,6 @@ const FilterButton = styled.div`
     cursor: pointer;
     color: ${mainText}
 `
-
 const Main = () => {
     
     const [searchTerm, setSearchTerm] = useState('');
@@ -121,7 +115,6 @@ const Main = () => {
             </Switch>
             <Switch>
                 <Route exact path="/">
-                    {/* <SongItems/> */}
                     <SongShortList/>
                     <RecSongsList/>
                 </Route>
@@ -131,6 +124,5 @@ const Main = () => {
       
     );
 };
-
 
 export default Main;

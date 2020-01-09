@@ -1,5 +1,5 @@
 //Navigation dopdown here
-//Will display Dashboard..click will dropdown to route to other pages(signin/featured playlists/..)
+//Will display Dashboard..click will dropdown to route to other home
 import React from 'react';
 import {Link, Route} from 'react-router-dom';
 import styled from 'styled-components';

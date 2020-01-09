@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import albumCover from '../Images/album-cover.jpg';
-
+import SongCard from '../components/SongCard';
 
 
 const StyledShortList = styled.div`
@@ -44,38 +44,35 @@ background: none;
 display:flex;
 flex-wrap:wrap;
 `
+const SongShortList = (props) => {
+const {userID} = props;
 
-//boxes same size for now, enlarge on hover/click?
-
-const SongShortList = (userID, song) => {
-     
+console.log("fav props", props);
 const api = 'https://spotify-song-suggester-backend.herokuapp.com';
-const [favSongs, setFavSongs]= useState([]);
-    useEffect (() => {
+
+const [favSongs, setFavSongs] = useState([]);
+    useEffect(() => {
         axiosWithAuth()
-        .get(`${api}/api/songs/1234/favorites`)
-        .then (response =>{
-          
-            console.log("fav response", response.data);
-    //         const shortFilter = response.data.filter(songs => {
-    //            if(songs.song.includes((id) <= '3')){
-    //            return true;
-    //            }
-    //            else{
-    //                return (
-    //                    <p>add songs to favorites</p>
-    //                )
-    //            }
-            
-    //     })
-    //     setFavSongs(shortFilter);
-    setFavSongs(response.data);
-    })
-        .catch (error =>{
-            console.log("error", error);
-        });
-       
-    },[]);
+            .get(`${api}/api/songs/${userID}/favorites`)
+            .then(response => {
+
+                console.log("fav response", response);
+
+                let shortFilter = [];
+                for(let i = 0; i < 3; i++) {
+                    if(response.data[i]) {
+                        shortFilter.push(response.data[i]);
+                    }
+                }
+
+                setFavSongs(shortFilter);
+            })
+            .catch(error => {
+                console.log("error", error);
+            });
+
+    }, [userID]);
+
    
  return(
  <div className = "short-list-details">
@@ -93,21 +90,17 @@ const [favSongs, setFavSongs]= useState([]);
 </StyledTopHolder>
 <StyledShortContainer>
     
-    
-<Link to={`/song/${song.id}`}>  <Route path ={`/song/${song.id}`}></Route>
-            <StyledShortBoxes>
-               {favSongs.map(songs => (
-                   <SongItems key = {songs.id}
-                   artist={songs.artist}
-                   track={songs.track}
-                   />
-               ))}
-                 </StyledShortBoxes>
-                 
-                 </Link>
           </StyledShortContainer>
-
-            {/* <SongItems/> */} {/*commented out for styling*/}
+          {favSongs.length ? favSongs.map(song => (
+                        <Link to={`/song/${song.id}`} key={song.id}>  <Route path={`/song/${song.id}`}></Route>
+                            <StyledShortBoxes>
+                                <SongCard song={song} key={song.id} artist = {song.artist}/>
+                            </StyledShortBoxes>
+                        </Link>
+                    ))
+                    :
+                    <p>Go like some songs!</p>
+                    }
            
          </StyledShortList>
 </div>

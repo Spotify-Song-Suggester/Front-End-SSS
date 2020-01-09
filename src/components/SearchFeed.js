@@ -6,7 +6,6 @@ import axiosWithAuth from '../utils/AxiosWithAuth';
 import SongActions from './SongActions';
 import { fetchSongs } from '../actions';
 
-
 const StyledSearchFeed = styled.div`
     
 `;
