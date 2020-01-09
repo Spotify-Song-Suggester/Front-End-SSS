@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import SearchFeedItem from './SearchFeedItem';
 import axiosWithAuth from '../utils/AxiosWithAuth';
@@ -8,39 +9,40 @@ const StyledSearchFeed = styled.div`
     
 `;
 const SearchFeed = props => {
-    const { term } = props;
-
-    const api = 'https://spotify-song-suggester-backend.herokuapp.com';
+    const { term, songs } = props;
 
     const [filteredSongs, setFilteredSongs] = useState([]);
 
     const [songForActions, setSongForActions] = useState(null);
 
     useEffect(() => {
-        axiosWithAuth().get(`${api}/api/songs`)
-            .then(res => {
 
-                // filter based on search input
-                const termLower = term.toLowerCase();
-                const filtered = res.data.filter(song => {
-                    if(song.track.toLowerCase().includes(termLower)
-                    || song.artist.toLowerCase().includes(termLower)) {
-                        return true;
-                    }
-                });
-                setFilteredSongs(filtered);
-            })
-            .catch(err => console.warn(err));
+        const termLower = term.toLowerCase();
+        setFilteredSongs(songs.filter(song => {
+            if(song.track.toLowerCase().includes(termLower)
+            || song.artist.toLowerCase().includes(termLower)) {
+                return true;
+            }
+        }));
     }, [term]);
 
     return (
         <StyledSearchFeed>
-            {filteredSongs.length && filteredSongs.map(song => (
+            {filteredSongs.length ? (filteredSongs.map(song => (
                 <SearchFeedItem key={song.id} song={song} onActionsPress={setSongForActions} />
-            ))}
+            )))
+            :
+            <p>No results.</p>
+        }
             {songForActions && <SongActions song={songForActions} hasViewOption />}
         </StyledSearchFeed>
     );
 };
 
-export default SearchFeed;
+const mapStateToProps = state => {
+    return {
+        songs: state.songs
+    };
+};
+
+export default connect(mapStateToProps)(SearchFeed);
