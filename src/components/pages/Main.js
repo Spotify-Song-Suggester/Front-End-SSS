@@ -12,6 +12,7 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import SearchFeed from '../SearchFeed';
 import SongItems from '../SongItems';
 import FavPlaylist from '../FavPlaylist';
+import SongDetails from '../SongDetails';
 
 
 const StyledNav = styled.nav`
@@ -81,7 +82,10 @@ const Main = () => {
                 <Route path="/search">
                     <SearchFeed term={searchTerm} />
                 </Route>
-                 {/* <Route path="/">
+                <Route path="/song/:id">
+                    <SongDetails />
+                </Route>
+                {/* <Route path="/">
                     <SongItems/>
                     
                 </Route> */}
