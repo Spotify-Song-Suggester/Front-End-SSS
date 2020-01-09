@@ -1,11 +1,12 @@
 //list of songs data to display for each song
 //import Song items here
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import SongItems from '../components/SongItems';
-import {Link, Switch, Route, useRouteMatch, useParams} from 'react-router-dom';
+import SongCard from '../components/SongCard';
+import { Link, Switch, Route, useRouteMatch, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
+import { Styledtop, StyledViews, StyledTopHolder } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import albumCover from '../Images/album-cover.jpg';
 
@@ -36,7 +37,7 @@ margin:5%;
     
 }
     `
-    const StyledShortContainer = styled.div `
+const StyledShortContainer = styled.div`
 
 box-sizing:border-box;
 width:100%;
@@ -54,90 +55,75 @@ color:red;
 `
 //boxes same size for now, enlarge on hover/click?
 
-const SongShortList = (userID, song) => {
-     
+const SongShortList = (props) => {
 
-const api = 'https://spotify-song-suggester-backend.herokuapp.com';
-const [favSongs, setFavSongs]= useState([]);
-    useEffect (() => {
+    const { userID } = props;
+
+    console.log('userID', userID);
+    const api = 'https://spotify-song-suggester-backend.herokuapp.com';
+    const [favSongs, setFavSongs] = useState([]);
+    useEffect(() => {
         axiosWithAuth()
-        .get(`${api}/api/songs/:id/favorites` , {
-            users_id: parseInt(userID),
-            songs_id: song.id
-        })
-        .then (response =>{
-          
-            console.log("fav response", response);
-    //         const shortFilter = response.data.filter(songs => {
-    //            if(songs.song.includes((id) <= '3')){
-    //            return true;
-    //            }
-    //            else{
-    //                return (
-    //                    <p>add songs to favorites</p>
-    //                )
-    //            }
-            
-    //     })
-    //     setFavSongs(shortFilter);
-    setFavSongs(response.data);
-    })
-        .catch (error =>{
-            console.log("error", error);
-        });
-       
-    },[userID]);
-   
- return(
+            .get(`${api}/api/songs/${userID}/favorites`)
+            .then(response => {
 
+                console.log("fav response", response);
 
+                // only want to show first 3 songs
+                let shortFilter = [];
+                for(let i = 0; i < 3; i++) {
+                    if(response.data[i]) {
+                        shortFilter.push(response.data[i]);
+                    }
+                }
 
+                setFavSongs(shortFilter);
+            })
+            .catch(error => {
+                console.log("error", error);
+            });
 
- <div className = "short-list-details">
-            
-    <StyledShortList>
-        
-            <StyledTopHolder>
-           <Styledtop>
-           Featured Playlists</Styledtop>
-           <Switch>
-           <Link to={`/allfavorites`}> <StyledViews>View More</StyledViews> </Link>
-           <Route path ={`/allfavorites`}>
-         </Route>
+    }, [userID]);
 
-            
+    return (
+        <div className="short-list-details">
 
+            <StyledShortList>
 
-</Switch>
-</StyledTopHolder>
-<StyledShortContainer>
-    
-    
-<Link to={`/song/${song.id}`}>  <Route path ={`/song/${song.id}`}></Route>
-            <StyledShortBoxes>
-               {favSongs.map(songs => (
-                   <SongItems key = {songs.id}
-                   artist={songs.artist}
-                   track={songs.track}
-                   />
-               ))}
-                   
-               
-                 </StyledShortBoxes>
-                 
-                 </Link>
-          </StyledShortContainer>
+                <StyledTopHolder>
+                    <Styledtop>
+                        Liked Songs</Styledtop>
+                    <Switch>
+                        <Link to={`/allfavorites`}> <StyledViews>View More</StyledViews> </Link>
+                        <Route path={`/allfavorites`}>
+                        </Route>
+                    </Switch>
+                </StyledTopHolder>
+                <StyledShortContainer>
 
-            {/* <SongItems/> */} {/*commented out for styling*/}
-           
-         </StyledShortList>
-</div>
+                    {favSongs.length ? favSongs.map(song => (
+                        <Link to={`/song/${song.id}`} key={song.id}>  <Route path={`/song/${song.id}`}></Route>
+                            <StyledShortBoxes>
+                                <SongCard song={song} key={song.id} artist = {song.artist}/>
+                            </StyledShortBoxes>
+                        </Link>
+                    ))
+                    :
+                    <p>Go like some songs!</p>
+                    }
+                    
+                </StyledShortContainer>
+
+                {/* <SongItems/> */} {/*commented out for styling*/}
+
+            </StyledShortList>
+        </div>
     );
 }
 const mapStateToProps = state => {
     return {
         userID: state.userID,
-        
+
     }
 }
-export default connect(mapStateToProps, {})(SongShortList);
+export default connect(mapStateToProps)(SongShortList);
