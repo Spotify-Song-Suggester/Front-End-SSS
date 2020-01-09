@@ -23,7 +23,7 @@ const SongVisualization = props => {
     return (
         <>
             {base64Img ?
-            (<img src={`data:image/png;base64, ${base64Img}`} alt="song visualization" />)
+            (<img src={`data:image/png;base64,${base64Img}`} alt="song visualization" />)
             :
             (<p>No visualization available.</p>)}
         </>
