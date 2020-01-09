@@ -14,6 +14,9 @@ import SongItems from '../SongItems';
 import FavPlaylist from '../FavPlaylist';
 import FilterMenu from '../FilterMenu';
 import SongDetails from '../SongDetails';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const StyledNav = styled.nav`
@@ -37,6 +40,7 @@ const StyledInput = styled.input`
     height: 4rem;
     background-color: rgba(0,0,0,0);
     border: 3px solid ${mainText};
+    border-right: none;
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
     padding-left: 2rem;
@@ -48,20 +52,26 @@ const StyledSearch = styled.div`
     display: flex
 `
 const FilterButton = styled.div`
-    align-self: flex-end;
+    display: flex
+    justify-content: flex-end;
+    align-items: center;
     height: 4rem;
     background-color: rgba(0,0,0,0);
     border: 3px solid ${mainText};
+    border-left: none;
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
-    padding-left: 2rem;
-    width: 30%;
+    padding-right: 2rem;
+    width: 10%;
     color: ${mainText}
 `
 
 const Main = () => {
     
     const [searchTerm, setSearchTerm] = useState('');
+    const [ showFilter, setShowFilter ] = useState(false);
+
+
     const history = useHistory();
 
     const performSearchOnEnter = e => {
@@ -89,30 +99,24 @@ const Main = () => {
                 defaultValue={searchTerm}
                 onKeyUp={performSearchOnEnter}
             />
-            <FilterButton>Filter</FilterButton>
+            <FilterButton onClick={()=>setShowFilter(!showFilter)}><FontAwesomeIcon icon={faFilter}/></FilterButton>
         </StyledSearch>
             <Switch>
                 <Route path="/search">
+                     {showFilter && <FilterMenu/> }  
                     <SearchFeed term={searchTerm} />
                 </Route>
                 <Route path="/song/:id">
                     <SongDetails />
                 </Route>
-               
-            
             </Switch>
             <Switch>
-            <Route exact path="/">
+                <Route exact path="/">
                     {/* <SongItems/> */}
                     <SongShortList/>
-                    {/* <SongItems/>
-                    <FilterMenu/>   */}
-            <RecSongsList/>
+                    <RecSongsList/>
                 </Route>
-             
-                </Switch>
-           
-
+            </Switch>
         </MainContent>
       
     );

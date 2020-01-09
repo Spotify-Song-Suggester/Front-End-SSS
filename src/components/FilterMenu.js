@@ -23,7 +23,7 @@ const FilterMenu = (props) => {
             <div className='filters'>
                 <p onClick={()=>filterBy('danceability')}>Dancability</p>
                 <p onClick={()=>filterBy('energy')}>Energy</p>
-                <p onClick={()=>filterBy('key')}>Key</p>
+                {/* <p onClick={()=>filterBy('key')}>Key</p> */}
                 <p onClick={()=>filterBy('acousticness')}> Acousticness</p>
                 <p onClick={()=>filterBy('instrumentalness')}> Instumentalness</p>
                 <p onClick={()=>filterBy('liveness')}>Liveness</p>

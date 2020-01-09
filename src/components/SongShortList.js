@@ -22,7 +22,7 @@ margin-top:20px;
 
 `
 const StyledShortBoxes = styled.div`
-
+border:2px solid orange;
 background: url(${albumCover});
     background-repeat: no-repeat;
     border-raidus:8px;
@@ -61,8 +61,8 @@ const api = 'https://spotify-song-suggester-backend.herokuapp.com';
 const [favSongs, setFavSongs]= useState([]);
     useEffect (() => {
         axiosWithAuth()
-        .get(`${api}/api/songs/${userID}/favorites` , {
-            // users_id: parseInt(userID),
+        .get(`${api}/api/songs/:id/favorites` , {
+            users_id: parseInt(userID),
             songs_id: song.id
         })
         .then (response =>{
