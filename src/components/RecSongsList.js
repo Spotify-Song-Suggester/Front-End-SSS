@@ -1,10 +1,9 @@
 //short list of Rec songs
 //import RecSongItems here
 //will display rec song items component
-//pass props
 import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux';
-import SongItems from '../components/SongItems';
+
 import {Link, Switch, Route, NavLink, useParams} from 'react-router-dom';
 import styled from 'styled-components';
 import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
@@ -20,12 +19,14 @@ width:100%;
 background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
+
 `
 const StyledShortBoxes = styled.div`
 background: url(${albumCover});
     background-repeat: no-repeat;
-    border:2px solid black;
-
+    border-raidus:8px;
+    justify-content:space-between;
+margin:2%;
     box-sizing:border-box;
     width: 165.6px;
     height: 176.64px;
@@ -38,6 +39,7 @@ width:100%;
 background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
+
 `
 
 const ArtistText = styled.h2`
@@ -48,8 +50,8 @@ color:red;
 `
 //boxes same size for now, enlarge on hover/click?
 
-const SongShortList = props => {
- const [favSongs, setFavSongs] = useState([]);
+const RecSongsList = props => {
+
 
  const DummyData = ([
     {
@@ -105,37 +107,10 @@ const SongShortList = props => {
     },
 ])
     
-// const {id} = useParams();
-//     useEffect (() => {
-//     const shortList = ()=>{
-//      const api = 'https://spotify-song-suggester-backend.herokuapp.com';
-//         axiosWithAuth()
-//         .get(`${api}/api/songs/:id/favorites{favorites}`)
-//         .then (response =>{
-          
-//             console.log(response);
-//             setFavSongs(response.data);
-//         })
-//         .catch (error =>{
-//             console.log("error", error);
-//         });
-//         }
-//        shortList();
-//     },[id]);
+
    
  return(
 
-//        <div className = "short-list">
-//            {favSongs.map(favs => (
-//                <SongItems key= {favs.id} artist = {favs.artist} />
-//            ))}
-//            </div>
-//     );
-//            }
-       
-//            function ShortList({favorites}) {
-
-//                const {artists, track} =favorites;
 
 
 
@@ -146,20 +121,20 @@ const SongShortList = props => {
             <StyledTopHolder>
            <Styledtop>
            Recommended Playlists</Styledtop>
-         <Link to={`/recfavorites`}><StyledViews>View More</StyledViews>
+         <Link to={`/allrecfavorites`}><StyledViews>View More</StyledViews>
             </Link>
 
-            <Route path = {`/recfavorites`}>
+            <Route path = {`/allrecfavorites`}>
 
 </Route>
 </StyledTopHolder>
 <StyledShortContainer>
-     
+    
     {DummyData.map((songs, index) => {
              return (
                  
-            <StyledShortBoxes>
                 
+            <StyledShortBoxes>
             
                  {/* key = {index } */}
                 <ArtistText>{ songs.artist }</ArtistText>
@@ -186,4 +161,4 @@ const mapStateToProps = state => {
         
     }
 }
-export default connect(mapStateToProps, {})(SongShortList);
+export default connect(mapStateToProps, {})(RecSongsList);

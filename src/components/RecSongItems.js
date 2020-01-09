@@ -1,13 +1,139 @@
-//Recommened songs by (mood,genre, saved songs?)
-//import to RecSongsList
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+// import axiosWithAuth from '../utils/AxiosWithAuth';
+import styled from 'styled-components';
+import {Link, Route} from 'react-router-dom';
+import {Styledtop, StyledViews, StyledTopHolder, offWhite, popstarPurple} from '../styles';
+import albumCover from '../Images/album-cover.jpg';
 
-import React from 'react';
 
-const RecSongItems = (
+const StyledFavContainer = styled.div `
+border: 2px solid red;
+box-sizing:border-box;
+width:100%;
+background: #0E0B20;
+display:flex;
+flex-wrap:wrap;
+flex-direction:space-between
+`
+const StyledBoxes = styled.div`
 
-    <div>
-        Recommened song items data pulled here
-    </div>
-)
+border-radius:4px;
+justify-content:space-evenly;
+margin:15px;
+left: 6.76%;
+right: 53.24%;
+top: 16.77%;
+bottom: 69.64%;
+box-sizing:border-box;
+width: 165.6px;
+height: 176.64px;
+background: url(${albumCover});
+    background-repeat: no-repeat; #311E1C
 
-export default RecSongItems;
+`
+const StyledBoxContent = styled.div`
+
+box-sizing:border-box;
+
+`
+
+const ArtistText = styled.h2`
+color:black;
+`
+const TrackText = styled.h3`
+color:${popstarPurple};
+`
+
+const TrackTempo = styled.p`
+
+color: ${offWhite}`
+
+export default function RecSongItems(props){
+    const DummyData = ([
+        {
+            artist           : 'Adele',
+            track            : 'Chasing Pavements',
+            valence          : '0.87',
+            danceability     : '0.78',
+            acousticness     : '0.87',
+            speechiness      : '0.87',
+            tempo            : '0.87',
+            energy           : '0.87',
+            duration_ms      : '0.87',
+            loudness         : '0.87',
+            instrumentalness : '0.87',
+            liveness         : '0.87',
+            key              : '9',
+            mode             : '1',
+            time_signature   : '4',
+        },
+        {
+            artist           : 'CHIKA',
+            track            : 'High Rises',
+            valence          : '0.87',
+            danceability     : '0.78',
+            acousticness     : '0.87',
+            speechiness      : '0.87',
+            tempo            : '0.87',
+            energy           : '0.87',
+            duration_ms      : '0.87',
+            loudness         : '0.87',
+            instrumentalness : '0.87',
+            liveness         : '0.87',
+            key              : '9',
+            mode             : '1',
+            time_signature   : '4',
+        },
+        {
+            artist           : 'Chance the Rapper',
+            track            : 'Pusha Man',
+            valence          : '0.87',
+            danceability     : '0.78',
+            acousticness     : '0.87',
+            speechiness      : '0.87',
+            tempo            : '0.87',
+            energy           : '0.87',
+            duration_ms      : '0.87',
+            loudness         : '0.87',
+            instrumentalness : '0.87',
+            liveness         : '0.87',
+            key              : '9',
+            mode             : '1',
+            time_signature   : '4',
+        },
+    ])
+    const [favSongs, setFavSongs] = useState([]);
+ 
+    
+
+    return (
+        <StyledFavContainer>
+            <StyledTopHolder>
+           <Styledtop>
+          All Recommended Playlist</Styledtop>
+         <Link to={`/`}><StyledViews>View Less</StyledViews>
+            </Link>
+
+            <Route path = {`/`}>
+
+</Route>
+</StyledTopHolder>
+         {DummyData.map((songs, index) => {
+             return (
+                 <div className = "box-holder">
+                <StyledBoxes>
+            <StyledBoxContent>
+                 {/* key = {index } */}
+                <ArtistText>{ songs.artist }</ArtistText>
+                <TrackText>{ songs.track }</TrackText>
+                         <TrackTempo>Tempo: {songs.tempo }</TrackTempo>         
+                         
+                         </StyledBoxContent>   
+                   </StyledBoxes>
+                   </div>
+             );
+         })} 
+        </StyledFavContainer>
+    );
+        }

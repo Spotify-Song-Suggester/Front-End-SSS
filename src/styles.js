@@ -92,6 +92,7 @@ display:flex;
 border:2px solid purple;
 width:100%;
 justify-content:space-between
+box-sizing:border-box;
 
 `
 export const Styledtop = styled.span`

@@ -8,7 +8,7 @@ import SongItems from './SongItems';
 // import axiosWithAuth from '../utils/AxiosWithAuth';
 import styled from 'styled-components';
 import {Link, Route} from 'react-router-dom';
-import {Styledtop, StyledViews, StyledTopHolder} from '../styles';
+import {Styledtop, StyledViews, StyledTopHolder, offWhite, popstarPurple} from '../styles';
 import albumCover from '../Images/album-cover.jpg';
 
 
@@ -19,23 +19,40 @@ width:100%;
 background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
+flex-direction:space-between
 `
 const StyledBoxes = styled.div`
-border: 3px solid green;
-border-radius:4px;
 
+border-radius:4px;
+justify-content:space-evenly;
+margin:15px;
 left: 6.76%;
 right: 53.24%;
 top: 16.77%;
 bottom: 69.64%;
 box-sizing:border-box;
-
 width: 165.6px;
 height: 176.64px;
 background: url(${albumCover});
     background-repeat: no-repeat; #311E1C
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);`
 
+`
+const StyledBoxContent = styled.div`
+
+box-sizing:border-box;
+
+`
+
+const ArtistText = styled.h2`
+color:black;
+`
+const TrackText = styled.h3`
+color:${popstarPurple};
+`
+
+const TrackTempo = styled.p`
+
+color: ${offWhite}`
 
 export default function FavSongsList(props){
     const DummyData = ([
@@ -123,11 +140,13 @@ export default function FavSongsList(props){
              return (
                  <div className = "box-holder">
                 <StyledBoxes>
-            
+            <StyledBoxContent>
                  {/* key = {index } */}
-                name: { songs.artist }
-                 track: { songs.track }
-                  
+                <ArtistText>{ songs.artist }</ArtistText>
+                <TrackText>{ songs.track }</TrackText>
+                         <TrackTempo>Tempo: {songs.tempo }</TrackTempo>         
+                         
+                         </StyledBoxContent>   
                    </StyledBoxes>
                    </div>
              );

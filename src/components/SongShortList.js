@@ -18,12 +18,14 @@ width:100%;
 background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
+
 `
 const StyledShortBoxes = styled.div`
 background: url(${albumCover});
     background-repeat: no-repeat;
-    border:2px solid black;
-
+    border-raidus:8px;
+    justify-content:space-between;
+margin:2%;
     box-sizing:border-box;
     width: 165.6px;
     height: 176.64px;
@@ -36,6 +38,7 @@ width:100%;
 background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
+
 `
 
 const ArtistText = styled.h2`

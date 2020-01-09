@@ -8,7 +8,8 @@ import SongItems from './components/SongItems';
 import SongShortList from './components/SongShortList';
 import FavPlaylist from './components/FavPlaylist';
 import NavTitle from './components/NavTitle';
-
+import RecPlaylist from './components/RecPlaylist';
+import RecSongsList from './components/RecSongsList';
 function App() {
   return (
     
@@ -21,8 +22,9 @@ function App() {
         <PrivateRoute path='/' component={Main} />
         <PrivateRoute exact path='/feed' component={SongItems} />
         <PrivateRoute exact path='/favorites' component={SongShortList} />
-        
+        <PrivateRoute exact path='/recfavorites' component={RecSongsList} />
         <PrivateRoute exact path ='/allfavorites' component ={FavPlaylist}/>
+        <PrivateRoute exact path ='/allrecfavorites' component ={RecPlaylist}/>
       </div>
     </Router>    
   );
