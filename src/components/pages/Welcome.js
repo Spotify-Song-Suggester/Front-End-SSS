@@ -7,10 +7,6 @@ import welcomeBg from '../../Images/welcome-bg.png';
 import logo from '../../Images/Symphinity.png';
 import { MainContent } from '../../styles';
 import { Route } from 'react-router-dom';
-import Main from '../pages/Main';
-
-
-
 // *** NOTE ***
 // This component should eventually have both the sign in and sign up components
 
@@ -18,9 +14,7 @@ const StyledWelcome = styled.div`
     background: url(${welcomeBg});
     background-repeat: no-repeat;
     border: 1px solid #000000;
-    // height: 100vh;
-    border:2px solid red;
-
+    height: 100vh;
     .logo {
         margin-top: 7.5rem;
         margin-bottom: 6rem;
@@ -38,7 +32,6 @@ const Welcome = props => {
                 </div>
 
                 <SignUpWelcome />
-
                 <Route exact path="/login">
                     <FormikLoginForm {...props} />
                 </Route>

@@ -31,7 +31,7 @@ const UserAvatar = props => {
         <div>
             <StyledAvatar>
         <div style={{cursor:'pointer'}} onClick={() => setShowMenu(!showMenu)}>
-            
+        
         </div>
      
         {showMenu && <Link to='/login'><span onClick={()=>localStorage.removeItem('token')}> <StyledAvText>logout</StyledAvText></span></Link>}

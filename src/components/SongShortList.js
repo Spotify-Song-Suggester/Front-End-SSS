@@ -15,24 +15,24 @@ const StyledShortList = styled.div`
 
 box-sizing:border-box;
 width:100%;
-background: #0E0B20;
+background: none;
 display:flex;
 flex-wrap:wrap;
 margin-top:20px;
-
+margin-bottom: 20px;
 `
 const StyledShortBoxes = styled.div`
 
 background: url(${albumCover});
     background-repeat: no-repeat;
-    border-raidus:8px;
+    border-radius:8px;
     justify-content:space-between;
 margin:5%;
     box-sizing:border-box;
     width: 110px;
     height: 110px;
     &:hover{
-        transform:scale(1.15);
+        transform:scale(1.12);
     
 }
     `
@@ -40,34 +40,23 @@ margin:5%;
 
 box-sizing:border-box;
 width:100%;
-background: #0E0B20;
+background: none;
 display:flex;
 flex-wrap:wrap;
-
 `
 
-const ArtistText = styled.h2`
-color:black;
-`
-const TrackText = styled.h3`
-color:red;
-`
 //boxes same size for now, enlarge on hover/click?
 
 const SongShortList = (userID, song) => {
      
-
 const api = 'https://spotify-song-suggester-backend.herokuapp.com';
 const [favSongs, setFavSongs]= useState([]);
     useEffect (() => {
         axiosWithAuth()
-        .get(`${api}/api/songs/:id/favorites` , {
-            users_id: parseInt(userID),
-            songs_id: song.id
-        })
+        .get(`${api}/api/songs/1234/favorites`)
         .then (response =>{
           
-            console.log("fav response", response);
+            console.log("fav response", response.data);
     //         const shortFilter = response.data.filter(songs => {
     //            if(songs.song.includes((id) <= '3')){
     //            return true;
@@ -86,28 +75,20 @@ const [favSongs, setFavSongs]= useState([]);
             console.log("error", error);
         });
        
-    },[userID]);
+    },[]);
    
  return(
-
-
-
-
  <div className = "short-list-details">
             
     <StyledShortList>
         
             <StyledTopHolder>
            <Styledtop>
-           Featured Playlists</Styledtop>
+           Favorite Playlists</Styledtop>
            <Switch>
            <Link to={`/allfavorites`}> <StyledViews>View More</StyledViews> </Link>
            <Route path ={`/allfavorites`}>
          </Route>
-
-            
-
-
 </Switch>
 </StyledTopHolder>
 <StyledShortContainer>
@@ -121,8 +102,6 @@ const [favSongs, setFavSongs]= useState([]);
                    track={songs.track}
                    />
                ))}
-                   
-               
                  </StyledShortBoxes>
                  
                  </Link>

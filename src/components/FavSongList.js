@@ -31,10 +31,9 @@ flex-wrap:wrap;
 `
 
 const StyledBoxes = styled.div`
-
 border-radius:4px;
 justify-content:space-between;
-margin:2%;
+margin:5px;
 box-sizing:border-box;
 width: 160px;
 height: 160px;
@@ -43,21 +42,15 @@ background: url(${albumCover});
 
 `
 const StyledBoxContent = styled.div`
-
 box-sizing:border-box;
 
 `
-
 const ArtistText = styled.h2`
 color:black;
 `
 const TrackText = styled.h3`
 color:${popstarPurple};
 `
-
-const TrackTempo = styled.p`
-
-color: ${offWhite}`
 //pass props for all songs
 const FavSongList = props =>{
     console.log("props", props);
@@ -82,8 +75,8 @@ const FavSongList = props =>{
                  {/* key = {index } */}
                 
                 <ArtistText>
-                   Artist: { props.artist }</ArtistText>
-               <TrackText>Track: { props.track }</TrackText>
+                   { props.artist }</ArtistText>
+               <TrackText>{ props.track }</TrackText>
                               
                          </StyledBoxContent>   
                    </StyledBoxes>

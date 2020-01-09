@@ -8,36 +8,28 @@ import { maxContentWidth, mainText } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 
 const StyledPlaylistPage = styled.div`
-//position: relative;
 display:flex;
 flex-wrap:wrap;
 flex-direction:row;
 width:100%;
-border:2px solid orange;
 background: #0E0B20;
 `
 
-
-
 export default function FavPlaylist (){
-    const [favorites, setFavorites] = useState([]);
+    // const [favorites, setFavorites] = useState([]);
 
-        const api = 'https://spotify-song-suggester-backend.herokuapp.com';
+    //     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
         
-    useEffect(()=>{
+    // useEffect(()=>{
 
-        axiosWithAuth()
-        .get(`${api}/api/songs/:id/favorites`)
-        .then(response => {
-            console.log(response);
-            setFavorites(response.data);
-        })
-        .catch(err => console.log(err));
-    });
-
-
-    
-
+    //     axiosWithAuth()
+    //     .get(`${api}/api/songs/:id/favorites`)
+    //     .then(response => {
+    //         console.log(response);
+    //         setFavorites(response.data);
+    //     })
+    //     .catch(err => console.log(err));
+    // });
 
     return (
 
@@ -53,7 +45,6 @@ export default function FavPlaylist (){
     );
 })} 
 } */}
-
 
 <FavSongList/>
 

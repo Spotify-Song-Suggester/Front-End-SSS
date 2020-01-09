@@ -22,7 +22,8 @@ font-family:${headingFont};
 `;
     return (
         
-            <Link to={`/`}>  <StyledNavTitle>
+            <Link to={`/`}> 
+             <StyledNavTitle>
               <h2>{props.title}</h2>  
             </StyledNavTitle> 
             <Route path ={`/`}></Route>

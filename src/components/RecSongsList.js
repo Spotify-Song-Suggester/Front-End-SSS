@@ -12,18 +12,18 @@ import SongItems from './SongItems';
 
 
 const StyledShortList = styled.div`
-margin-top:5px;
+margin-top:20px;
+margin-bottom: 20px;
 box-sizing:border-box;
 width:100%;
-background: #0E0B20;
+background: none;
 display:flex;
 flex-wrap:wrap;
-
 `
 const StyledShortBoxes = styled.div`
 background: url(${albumCover});
     background-repeat: no-repeat;
-    border-raidus:8px;
+    border-radius:8px;
     justify-content:space-between;
 margin:5%;
     box-sizing:border-box;
@@ -35,21 +35,13 @@ margin:5%;
 }
     `
     const StyledShortContainer = styled.div `
-
     box-sizing:border-box;
     width:100%;
-    background: #0E0B20;
+    background: none;
     display:flex;
     flex-wrap:wrap;
 `
 
-const ArtistText = styled.h2`
-color:black;
-`
-const TrackText = styled.h3`
-color:red;
-`
-//boxes same size for now, enlarge on hover/click?
 
 const RecSongsList = props => {
     const [recSongs, setRecSongs]= useState([]);
@@ -94,8 +86,7 @@ const RecSongsList = props => {
                   {/* {favSongs.map((favs, index)=>{
                       return( 
                      
-              artist=
-                  { favs.artist }
+              artist= { favs.artist }
               track={ favs.track }
               
                       );
@@ -105,7 +96,7 @@ const RecSongsList = props => {
                       </Link>
              </StyledShortContainer>
    
-               {/* <SongItems/> */} {/*commented out for styling*/}
+               {/* <SongItems/> commented out for styling */}
               
             </StyledShortList>
    </div>

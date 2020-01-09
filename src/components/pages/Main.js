@@ -7,6 +7,7 @@ import SongShortList from '../SongShortList';
 import RecSongsList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
 import logo from '../../Images/Symphinity.png';
+import welcomeBg from '../../Images/welcome-bg.png';
 import styled from 'styled-components';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import SearchFeed from '../SearchFeed';
@@ -41,6 +42,12 @@ const StyledInput = styled.input`
     width: 100%;
     color: ${mainText}
 `;
+const StyledDash = styled.div`
+background: url(${welcomeBg});
+background-repeat: no-repeat;
+border: 1px solid #000000;
+//height: 100vh;
+`
 
 const Main = () => {
     
@@ -57,6 +64,7 @@ const Main = () => {
     }
 
     return (
+        <StyledDash>
         <MainContent>
             <StyledLogo>
                 <img src={logo} alt="Symphinity" />
@@ -65,8 +73,6 @@ const Main = () => {
                 <NavTitle title="Dashboard"/>
                 <UserAvatar/>
             </StyledNav>
-            
-
             <StyledInput
                 type="text"
                 placeholder="Search"
@@ -96,6 +102,7 @@ const Main = () => {
            
 
         </MainContent>
+        </StyledDash>
       
     );
 };
