@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import SongItems from '../components/SongItems';
+import SongCard from '../components/SongCard';
 import { Link, Switch, Route, useRouteMatch, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Styledtop, StyledViews, StyledTopHolder } from '../styles';
@@ -54,9 +55,11 @@ color:red;
 `
 //boxes same size for now, enlarge on hover/click?
 
-const SongShortList = (userID, song) => {
+const SongShortList = (props) => {
 
+    const { userID } = props;
 
+    console.log('userID', userID);
     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
     const [favSongs, setFavSongs] = useState([]);
     useEffect(() => {
@@ -65,19 +68,16 @@ const SongShortList = (userID, song) => {
             .then(response => {
 
                 console.log("fav response", response);
-                //         const shortFilter = response.data.filter(songs => {
-                //            if(songs.song.includes((id) <= '3')){
-                //            return true;
-                //            }
-                //            else{
-                //                return (
-                //                    <p>add songs to favorites</p>
-                //                )
-                //            }
 
-                //     })
-                //     setFavSongs(shortFilter);
-                setFavSongs(response.data);
+                // only want to show 3 songs
+                let shortFilter = [];
+                for(let i = 0; i < 3; i++) {
+                    if(response.data[i]) {
+                        shortFilter.push(response.data[i]);
+                    }
+                }
+
+                setFavSongs(shortFilter);
             })
             .catch(error => {
                 console.log("error", error);
@@ -86,10 +86,6 @@ const SongShortList = (userID, song) => {
     }, [userID]);
 
     return (
-
-
-
-
         <div className="short-list-details">
 
             <StyledShortList>
@@ -101,28 +97,21 @@ const SongShortList = (userID, song) => {
                         <Link to={`/allfavorites`}> <StyledViews>View More</StyledViews> </Link>
                         <Route path={`/allfavorites`}>
                         </Route>
-
-
-
-
                     </Switch>
                 </StyledTopHolder>
                 <StyledShortContainer>
 
-
-                    <Link to={`/song/${song.id}`}>  <Route path={`/song/${song.id}`}></Route>
-                        <StyledShortBoxes>
-                            {favSongs.map(songs => (
-                                <SongItems key={songs.id}
-                                    artist={songs.artist}
-                                    track={songs.track}
-                                />
-                            ))}
-
-
-                        </StyledShortBoxes>
-
-                    </Link>
+                    {favSongs.length ? favSongs.map(song => (
+                        <Link to={`/song/${song.id}`}>  <Route path={`/song/${song.id}`}></Route>
+                            <StyledShortBoxes>
+                                <SongCard song={song} key={song.id} artist = {song.artist}/>
+                            </StyledShortBoxes>
+                        </Link>
+                    ))
+                    :
+                    <p>Go like some songs!</p>
+                    }
+                    
                 </StyledShortContainer>
 
                 {/* <SongItems/> */} {/*commented out for styling*/}
