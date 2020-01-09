@@ -34,7 +34,9 @@ const Welcome = props => {
         <StyledWelcome>
             <MainContent>
                 <div className="logo">
-                    <img src={logo} alt="Symphinity" />
+                    <a href="https://spotify-song-suggester.github.io/Marketing-Page-SSS/">
+                        <img src={logo} alt="Symphinity" />
+                    </a>
                 </div>
 
                 <SignUpWelcome />
