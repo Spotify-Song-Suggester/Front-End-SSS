@@ -85,7 +85,9 @@ const Main = (props) => {
     return (
         <MainContent>
             <StyledLogo>
-                <img src={logo} alt="Symphinity" />
+                <a href="https://spotify-song-suggester.github.io/Marketing-Page-SSS/">
+                    <img src={logo} alt="Symphinity" />
+                </a>
             </StyledLogo>
             <StyledNav>
                 <NavTitle title="Dashboard"/>
