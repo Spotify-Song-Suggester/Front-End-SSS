@@ -37,7 +37,12 @@ const UserAvatar = props => {
             {props.userID}
         </StyledAvatar>
      
-        {showMenu && <Link to='/login'><span onClick={()=>localStorage.removeItem('token')}> <StyledAvText>logout</StyledAvText></span></Link>}
+        {showMenu && 
+        <div className='user-menu'>
+        <Link to='/login'><span onClick={()=>localStorage.removeItem('token')}> <StyledAvText>logout</StyledAvText></span></Link>
+        <Link to='/edit'><span> <StyledAvText>edit profile</StyledAvText></span></Link>
+        </div>
+        }
         </div>
     );
 };

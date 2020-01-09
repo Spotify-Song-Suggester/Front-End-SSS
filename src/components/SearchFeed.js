@@ -20,7 +20,7 @@ const SearchFeed = ({ fetchSongs, ...props}) => {
     const [ showMore, setShowMore ] = useState(false)
 
     useEffect(() => {
-        fetchSongs()
+        fetchSongs();
         const termLower = term.toLowerCase();
         setFilteredSongs(songs.filter(song => {
             if(song.track.toLowerCase().includes(termLower)

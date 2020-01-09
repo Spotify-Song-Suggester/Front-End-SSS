@@ -12,7 +12,7 @@ const FilterMenu = (props) => {
             return b[prop] - a[prop];
         });
         const filteredArray = array.filter(song => {
-            return song[prop] >= 0.80
+            return song[prop] >= 0.50
         }).map(song => {return song })
         props.filterSongs(filteredArray);
         console.log(filteredArray)
