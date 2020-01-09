@@ -63,6 +63,7 @@ const FilterButton = styled.div`
     border-bottom-right-radius: 2rem;
     padding-right: 2rem;
     width: 10%;
+    cursor: pointer;
     color: ${mainText}
 `
 

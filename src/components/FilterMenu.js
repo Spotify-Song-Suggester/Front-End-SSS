@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { filterSongs, fetchSongs } from '../actions';
+import { MediumButton, Filter } from '../styles';
 
 const FilterMenu = (props) => {
 
@@ -21,14 +22,14 @@ const FilterMenu = (props) => {
         <div className='filter-menu'>
          <h2> Filter </h2>
             <div className='filters'>
-                <p onClick={()=>filterBy('danceability')}>Dancability</p>
-                <p onClick={()=>filterBy('energy')}>Energy</p>
+                <Filter onClick={()=>filterBy('danceability')}>Dancability</Filter>
+                <Filter onClick={()=>filterBy('energy')}>Energy</Filter>
                 {/* <p onClick={()=>filterBy('key')}>Key</p> */}
-                <p onClick={()=>filterBy('acousticness')}> Acousticness</p>
-                <p onClick={()=>filterBy('instrumentalness')}> Instumentalness</p>
-                <p onClick={()=>filterBy('liveness')}>Liveness</p>
+                <Filter onClick={()=>filterBy('acousticness')}> Acousticness</Filter>
+                <Filter onClick={()=>filterBy('instrumentalness')}> Instumentalness</Filter>
+                <Filter onClick={()=>filterBy('liveness')}>Liveness</Filter>
             </div>
-        <button onClick={()=>props.fetchSongs()}>Clear</button>
+        <MediumButton onClick={()=>props.fetchSongs()}>Clear</MediumButton>
         </div>
     )
 };

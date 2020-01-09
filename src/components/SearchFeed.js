@@ -40,13 +40,12 @@ const SearchFeed = ({ fetchSongs, ...props}) => {
 
     return (
         <StyledSearchFeed>
-            <h2>Search Results</h2>
-            {filteredSongs.length && filteredSongs.slice(0, songCount).map(song => (
+            {filteredSongs.length ? (filteredSongs.map(song => (
                 <SearchFeedItem key={song.id} song={song} onActionsPress={setSongForActions} />
-            ))})
+            )))
             :
-            (<p>No results.</p>
-
+            <p>No results.</p>
+        }
             {songForActions && <SongActions song={songForActions} hasViewOption />}
         </StyledSearchFeed>
     );
