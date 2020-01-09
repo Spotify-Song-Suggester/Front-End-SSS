@@ -85,15 +85,19 @@ const Main = () => {
                 <Route path="/song/:id">
                     <SongDetails />
                 </Route>
-                {/* <Route path="/">
-                    <SongItems/>
-                    
-                </Route> */}
+               
             
-            </Switch> 
-
-             <SongShortList/>
+            </Switch>
+            <Switch>
+            <Route exact path="/">
+                    <SongItems/>
+                    <SongShortList/>
+           
             <RecSongsList/>
+                </Route>
+             
+                </Switch>
+           
 
         </MainContent>
       
