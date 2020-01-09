@@ -79,6 +79,14 @@ export const LargeButton = styled.button`
     border-radius: 4.5rem;
 `;
 
+export const MediumButton = styled.button`
+${button}
+padding: 0.8rem 1.8rem;
+`
+export const Filter = styled.p`
+cursor: pointer;
+`
+
 export const CenterText = styled.div`
     text-align: center;
 `;

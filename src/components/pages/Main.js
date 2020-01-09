@@ -13,7 +13,11 @@ import { Route, Switch, useHistory } from 'react-router-dom';
 import SearchFeed from '../SearchFeed';
 import SongItems from '../SongItems';
 import FavPlaylist from '../FavPlaylist';
+import FilterMenu from '../FilterMenu';
 import SongDetails from '../SongDetails';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const StyledNav = styled.nav`
@@ -37,7 +41,9 @@ const StyledInput = styled.input`
     height: 4rem;
     background-color: rgba(0,0,0,0);
     border: 3px solid ${mainText};
-    border-radius: 2rem;
+    border-right: none;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
     padding-left: 2rem;
     width: 100%;
     color: ${mainText}
@@ -49,9 +55,31 @@ border: 1px solid #000000;
 //height: 100vh;
 `
 
+const StyledSearch = styled.div`
+    display: flex
+`
+const FilterButton = styled.div`
+    display: flex
+    justify-content: flex-end;
+    align-items: center;
+    height: 4rem;
+    background-color: rgba(0,0,0,0);
+    border: 3px solid ${mainText};
+    border-left: none;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding-right: 2rem;
+    width: 10%;
+    cursor: pointer;
+    color: ${mainText}
+`
+
 const Main = () => {
     
     const [searchTerm, setSearchTerm] = useState('');
+    const [ showFilter, setShowFilter ] = useState(false);
+
+
     const history = useHistory();
 
     const performSearchOnEnter = e => {
@@ -73,34 +101,31 @@ const Main = () => {
                 <NavTitle title="Dashboard"/>
                 <UserAvatar/>
             </StyledNav>
+        <StyledSearch>
             <StyledInput
                 type="text"
                 placeholder="Search"
                 defaultValue={searchTerm}
                 onKeyUp={performSearchOnEnter}
             />
- 
+            <FilterButton onClick={()=>setShowFilter(!showFilter)}><FontAwesomeIcon icon={faFilter}/></FilterButton>
+        </StyledSearch>
             <Switch>
                 <Route path="/search">
+                     {showFilter && <FilterMenu/> }  
                     <SearchFeed term={searchTerm} />
                 </Route>
                 <Route path="/song/:id">
                     <SongDetails />
                 </Route>
-               
-            
             </Switch>
             <Switch>
-            <Route exact path="/">
+                <Route exact path="/">
                     {/* <SongItems/> */}
                     <SongShortList/>
-           
-            <RecSongsList/>
+                    <RecSongsList/>
                 </Route>
-             
-                </Switch>
-           
-
+            </Switch>
         </MainContent>
         </StyledDash>
       
