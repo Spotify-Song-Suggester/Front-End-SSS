@@ -12,16 +12,16 @@ import albumCover from '../Images/album-cover.jpg';
 
 
 const StyledFavContainer = styled.div `
-border: 2px solid red;
+margin:20px;
 box-sizing:border-box;
-width:100%;
+width:90%;
 background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
 `
 
 const StyledBoxContainer = styled.div `
-border: 2px solid blue;
+
 box-sizing:border-box;
 width:100%;
 background: #0E0B20;
@@ -67,7 +67,7 @@ const FavSongList = props =>{
         <StyledFavContainer>
             <StyledTopHolder>
            <Styledtop>
-          All Featured Playlist</Styledtop>
+          All Featured Playlists</Styledtop>
          <Link to={`/`}><StyledViews>View Less</StyledViews>
             </Link>
 
@@ -80,9 +80,7 @@ const FavSongList = props =>{
                 <StyledBoxes>
             <StyledBoxContent>
                  {/* key = {index } */}
-                 
-                 
-                 
+                
                 <ArtistText>
                    Artist: { props.artist }</ArtistText>
                <TrackText>Track: { props.track }</TrackText>

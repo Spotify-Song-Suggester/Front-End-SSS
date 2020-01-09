@@ -24,6 +24,7 @@ export const MainContent = styled.div`
     margin: 0 auto;
     width: ${maxContentWidth};
     border:2px solid black;
+    box-sizing:border-box;
 `;
 
 export const StyledField = styled.div`

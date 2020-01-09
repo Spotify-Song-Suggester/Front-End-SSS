@@ -19,13 +19,8 @@ const StyledNav = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+margin:5px;
 
-     h2 {
-         font-size: 1.8rem;
-         margin: 0;
-     }
-
-     margin-bottom: 2rem;
 `;
 
 const StyledLogo = styled.div`
@@ -70,6 +65,7 @@ const Main = () => {
                 <NavTitle title="Dashboard"/>
                 <UserAvatar/>
             </StyledNav>
+            
 
             <StyledInput
                 type="text"
@@ -90,7 +86,7 @@ const Main = () => {
             </Switch>
             <Switch>
             <Route exact path="/">
-                    <SongItems/>
+                    {/* <SongItems/> */}
                     <SongShortList/>
            
             <RecSongsList/>

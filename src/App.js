@@ -29,7 +29,6 @@ function App() {
         <PrivateRoute exact path = 'recfavorites' component = {RecSongsList}/>
         <PrivateRoute exact path ='/allfavorites' component ={FavSongList}/>
         <PrivateRoute exact path ='/allrecfavorites' component ={RecSongItems}/>
-        
         <PrivateRoute exact path = '/songdetails' component= {SongDetails}/>
       </div>
     </Router>    

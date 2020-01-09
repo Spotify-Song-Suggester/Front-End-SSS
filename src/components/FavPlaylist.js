@@ -43,7 +43,7 @@ export default function FavPlaylist (){
 
         <StyledPlaylistPage>
 <div className = "fav-holder">
-{/* {favorites.map((fav, index) => {
+{/* {{favorites.map((fav, index) => {
     return(
         <FavSongList 
         key={index}
@@ -51,8 +51,8 @@ export default function FavPlaylist (){
         track={fav.track}
 />
     );
-})} */
-}
+})} 
+} */}
 
 
 <FavSongList/>

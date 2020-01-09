@@ -20,7 +20,7 @@ const SearchFeed = props => {
         axiosWithAuth().get(`${api}/api/songs`)
             .then(res => {
 
-                // filter based on search input
+                // filter based on search input0
                 const termLower = term.toLowerCase();
                 const filtered = res.data.filter(song => {
                     if(song.track.toLowerCase().includes(termLower)

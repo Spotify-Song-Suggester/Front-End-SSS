@@ -8,13 +8,12 @@ import albumCover from '../Images/album-cover.jpg';
 import SongItems from './SongItems';
 
 const StyledFavContainer = styled.div `
-border: 2px solid red;
+margin:20px;
 box-sizing:border-box;
-width:100%;
+width:90%;
 background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
-flex-direction:space-between
 `
 const StyledBoxes = styled.div`
 
@@ -57,7 +56,7 @@ const RecSongItems = props =>{
         <StyledFavContainer>
             <StyledTopHolder>
            <Styledtop>
-          All Featured Playlist</Styledtop>
+          All Recommended Playlist</Styledtop>
          <Link to={`/`}><StyledViews>View Less</StyledViews>
             </Link>
 
@@ -70,8 +69,7 @@ const RecSongItems = props =>{
                 <StyledBoxes>
             <StyledBoxContent>
                  {/* key = {index } */}
-                 
-                 
+            
                  {/* <SongItems/> */}  {/*commented out for styling*/}
                 <h3>artist:
                     { props.artist }</h3>

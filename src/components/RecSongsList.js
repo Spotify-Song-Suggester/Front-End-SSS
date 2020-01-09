@@ -12,7 +12,7 @@ import SongItems from './SongItems';
 
 
 const StyledShortList = styled.div`
-border: 2px solid pink;
+margin-top:5px;
 box-sizing:border-box;
 width:100%;
 background: #0E0B20;
@@ -35,9 +35,8 @@ margin:5%;
     
 }
     `
-
     const StyledShortContainer = styled.div `
-    border: 2px solid green;
+
     box-sizing:border-box;
     width:100%;
     background: #0E0B20;
@@ -56,8 +55,6 @@ color:red;
 const RecSongsList = props => {
     const [recSongs, setRecSongs]= useState([]);
   
-   const {id} = useParams();
-   console.log("this is is", id);
     //    useEffect (() => {
     //    const recShortList = ()=>{
     //     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
