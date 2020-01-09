@@ -69,7 +69,7 @@ const SongShortList = (props) => {
 
                 console.log("fav response", response);
 
-                // only want to show 3 songs
+                // only want to show first 3 songs
                 let shortFilter = [];
                 for(let i = 0; i < 3; i++) {
                     if(response.data[i]) {
@@ -102,7 +102,7 @@ const SongShortList = (props) => {
                 <StyledShortContainer>
 
                     {favSongs.length ? favSongs.map(song => (
-                        <Link to={`/song/${song.id}`}>  <Route path={`/song/${song.id}`}></Route>
+                        <Link to={`/song/${song.id}`} key={song.id}>  <Route path={`/song/${song.id}`}></Route>
                             <StyledShortBoxes>
                                 <SongCard song={song} key={song.id} artist = {song.artist}/>
                             </StyledShortBoxes>
