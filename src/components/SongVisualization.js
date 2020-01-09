@@ -9,14 +9,14 @@ const SongVisualization = props => {
     const [base64Img, setBase64Img] = useState(null);
 
     useEffect(() => {
-        setBase64Img(testImage());
+        //setBase64Img(testImage());
 
         axios.get(`https://spotify-song-suggestor.herokuapp.com/visual/${songId}`, {
             crossdomain: true
         })
             .then(res => {
                 console.log(res);
-                setBase64Img(res);
+                setBase64Img(res.data);
                 
             })
             .catch(err => console.warn(err));
