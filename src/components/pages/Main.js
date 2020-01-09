@@ -13,6 +13,7 @@ import SearchFeed from '../SearchFeed';
 import SongItems from '../SongItems';
 import FavPlaylist from '../FavPlaylist';
 import FilterMenu from '../FilterMenu';
+import SongDetails from '../SongDetails';
 
 
 const StyledNav = styled.nav`
@@ -41,11 +42,27 @@ const StyledInput = styled.input`
     height: 4rem;
     background-color: rgba(0,0,0,0);
     border: 3px solid ${mainText};
-    border-radius: 2rem;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
     padding-left: 2rem;
     width: 100%;
     color: ${mainText}
 `;
+
+const StyledSearch = styled.div`
+    display: flex
+`
+const FilterButton = styled.div`
+    align-self: flex-end;
+    height: 4rem;
+    background-color: rgba(0,0,0,0);
+    border: 3px solid ${mainText};
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding-left: 2rem;
+    width: 30%;
+    color: ${mainText}
+`
 
 const Main = () => {
     
@@ -70,27 +87,32 @@ const Main = () => {
                 <NavTitle title="Dashboard"/>
                 <UserAvatar/>
             </StyledNav>
-
+        <StyledSearch>
             <StyledInput
                 type="text"
                 placeholder="Search"
                 defaultValue={searchTerm}
                 onKeyUp={performSearchOnEnter}
             />
- 
+            <FilterButton>Filter</FilterButton>
+        </StyledSearch>
             <Switch>
                 <Route path="/search">
                     <SearchFeed term={searchTerm} />
                 </Route>
+                <Route path="/song/:id">
+                    <SongDetails />
+                </Route>
                 <Route path="/">
-                    <SongItems/>
-                    <FilterMenu/>
+                   
                 </Route>
                 
             
             
             </Switch>
             <SongShortList/>
+            <SongItems/>
+                    <FilterMenu/>
         </MainContent>
       
     );

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { setUserID } from '../actions';
 import { StyledField, LargeButton } from  '../styles.js';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledForm = styled.form`
     .center {
@@ -34,7 +35,7 @@ const LoginForm = props => {
             </StyledField>
             <div className="center">
                 <LargeButton type="submit" disabled={isSubmitting}>Login</LargeButton>
-                <p>Don't have an account? <a href="#">Sign Up</a></p>
+                <p>Don't have an account? <Link to="/register">Sign Up</Link></p>
             </div>
         </StyledForm>
     );

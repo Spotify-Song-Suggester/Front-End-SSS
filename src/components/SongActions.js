@@ -64,7 +64,7 @@ const addSongToFavorites = (song, userID) => {
 
 const SongActions = props => {
 
-    const { song, userID } = props;
+    const { song, hasViewOption, userID } = props;
 
     const history = useHistory();
 
@@ -75,7 +75,7 @@ const SongActions = props => {
                     {song.track}
                 </div>
                 <ul>
-                    <li><button onClick={() => history.push(`/song/${song.id}`)}>View Song</button></li>
+                    {hasViewOption && <li><button onClick={() => history.push(`/song/${song.id}`)}>View Song</button></li>}
                     <li><button onClick={() => addSongToFavorites(song, userID)}>Like Song</button></li>
                 </ul>
             </div>

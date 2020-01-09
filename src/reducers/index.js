@@ -2,9 +2,9 @@ import {
     FETCH_SONGS_START,
     FETCH_SONGS_SUCCESS,
     FETCH_SONGS_FAILURE,
-    SET_USER_ID
+    SET_USER_ID,
+    FILTER_SONGS
 } from '../actions';
-import SongCard from '../components/SongCard';
 
 const initialState = {
     songs: [
@@ -12,20 +12,20 @@ const initialState = {
             id: 1,
             artist: "Adele",
             track: "Chasing Pavements",
-            danceability: "0.78",
+            danceability: "0.58",
             energy: "0.87",
             key: "9",
             loudness: "0.87",
             mode: "1",
             speechiness: "0.87",
-            acousticness: "0.87",
+            acousticness: "0.44",
             instrumentalness: "0.87",
             liveness: "0.87",
             valence: "0.87",
             tempo: "0.87",
             duration_ms: "0.87",
             time_signature: "4"
-            }
+        }
             
     ],
     isFetching: false,
@@ -59,6 +59,11 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 userID: action.payload
+            }
+        case FILTER_SONGS:
+            return {
+                ...state,
+                songs: action.payload
             }
         default:
             return state;

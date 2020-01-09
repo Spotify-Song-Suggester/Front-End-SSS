@@ -4,6 +4,7 @@ export const FETCH_SONGS_START = 'FETCH_SONGS_START';
 export const FETCH_SONGS_SUCCESS = 'FETCH_SONGS_SUCCESS';
 export const FETCH_SONGS_FAILURE = 'FETCH_SONGS_FAILURE';
 export const SET_USER_ID = 'SET_USER_ID';
+export const FILTER_SONGS = 'FILTER_SONGS';
 
 export const fetchSongs = () => dispatch => {
 
@@ -23,3 +24,7 @@ export const fetchSongs = () => dispatch => {
 export const setUserID = id => {
     return { type: SET_USER_ID, payload: id}
 };
+
+export const filterSongs = array => {
+    return { type: FILTER_SONGS, payload: array}
+}
