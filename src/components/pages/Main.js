@@ -4,7 +4,7 @@ import NavTitle from '../NavTitle';
 import UserAvatar from '../UserAvatar';
 import Search from '../Search';
 import SongShortList from '../SongShortList';
-import RecSongList from '../RecSongsList';
+import RecSongsList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
 import logo from '../../Images/Symphinity.png';
 import styled from 'styled-components';
@@ -19,13 +19,8 @@ const StyledNav = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+margin:5px;
 
-     h2 {
-         font-size: 1.8rem;
-         margin: 0;
-     }
-
-     margin-bottom: 2rem;
 `;
 
 const StyledLogo = styled.div`
@@ -70,6 +65,7 @@ const Main = () => {
                 <NavTitle title="Dashboard"/>
                 <UserAvatar/>
             </StyledNav>
+            
 
             <StyledInput
                 type="text"
@@ -85,15 +81,20 @@ const Main = () => {
                 <Route path="/song/:id">
                     <SongDetails />
                 </Route>
-                {/* <Route path="/">
-                    <SongItems/>
-                    
-                </Route> */}
-                
-            
+               
             
             </Switch>
-            <SongShortList/>
+            <Switch>
+            <Route exact path="/">
+                    {/* <SongItems/> */}
+                    <SongShortList/>
+           
+            <RecSongsList/>
+                </Route>
+             
+                </Switch>
+           
+
         </MainContent>
       
     );
