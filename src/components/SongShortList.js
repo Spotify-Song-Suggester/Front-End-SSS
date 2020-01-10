@@ -3,12 +3,11 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import DashboardSongItem from './DashboardSongItem';
-import SongCard from '../components/SongCard';
-import { Link, Switch, Route, useRouteMatch, useParams } from 'react-router-dom';
+import { Link, Switch, Route} from 'react-router-dom';
 import styled from 'styled-components';
 import { Styledtop, StyledViews, StyledTopHolder } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
-import albumCover from '../Images/album-cover.jpg';
+
 
 
 
@@ -22,21 +21,6 @@ const StyledShortList = styled.div`
     margin-top: 20px;
 
 `
-const StyledShortBoxes = styled.div`
-border:2px solid orange;
-background: url(${albumCover});
-    background-repeat: no-repeat;
-    border-raidus:8px;
-    justify-content:space-between;
-margin:5%;
-    box-sizing:border-box;
-    width: 110px;
-    height: 110px;
-    &:hover{
-        transform:scale(1.15);
-    
-}
-    `
 const StyledShortContainer = styled.div`
 box-sizing:border-box;
 width:100%;
@@ -46,27 +30,16 @@ justify-content: space-between;
 flex-wrap:wrap;
 `
 
-const ArtistText = styled.h2`
-color:black;
-`
-const TrackText = styled.h3`
-color:red;
-`
-//boxes same size for now, enlarge on hover/click?
 
 const SongShortList = (props) => {
 
     const { userID } = props;
-
-    console.log('userID', userID);
     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
     const [favSongs, setFavSongs] = useState([]);
     useEffect(() => {
         axiosWithAuth()
             .get(`${api}/api/songs/${userID}/favorites`)
             .then(response => {
-
-                console.log("fav response", response);
 
                 // only want to show first 3 songs
                 let shortFilter = [];
@@ -79,7 +52,7 @@ const SongShortList = (props) => {
                 setFavSongs(shortFilter);
             })
             .catch(error => {
-                console.log("error", error);
+                alert("error", error);
             });
 
     }, [userID]);
@@ -109,7 +82,6 @@ const SongShortList = (props) => {
                     
                 </StyledShortContainer>
 
-                {/* <SongItems/> */} {/*commented out for styling*/}
 
             </StyledShortList>
         </div>

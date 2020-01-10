@@ -1,13 +1,11 @@
 //full list of songs here
-//import song items
-//shown on click of "viewl all" from Song Short List
 
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import DashboardSongItem from './DashboardSongItem';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Styledtop, StyledViews, StyledTopHolder, offWhite, popstarPurple } from '../styles';
+import { Styledtop, StyledViews, StyledTopHolder, popstarPurple } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 
 
@@ -31,19 +29,7 @@ const StyledBoxContainer = styled.div`
 
 `
 
-const StyledBoxContent = styled.div`
-box-sizing:border-box;
-`
 
-const ArtistText = styled.h4`
-color:black;
-`
-const TrackText = styled.h5`
-color:${popstarPurple};
-`
-
-const TrackTempo = styled.p`
-color: ${offWhite}`
 //pass props for all songs
 const FavSongList = props => {
     console.log("props", props);
