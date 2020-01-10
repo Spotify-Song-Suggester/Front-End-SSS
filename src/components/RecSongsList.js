@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
 import SongItems from '../components/SongItems';
 import SongCard from '../components/SongCard';
-import { Link, Switch, Route, useRouteMatch, useParams } from 'react-router-dom';
+import { Link, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { Styledtop, StyledViews, StyledTopHolder } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
@@ -54,35 +54,36 @@ color:red;
 `
 //boxes same size for now, enlarge on hover/click?
 
-const RecSongsList = (props) => {
+const RecSongsList = props => {
 
-    const { userID } = props;
+    const { songId } = props;
 
-    console.log('userID', userID);
+    console.log('songID', songId);
+
     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
     const [recSongs, setRecSongs] = useState([]);
     useEffect(() => {
         axiosWithAuth()
-            .get(`${api}/api/songs/${userID}/recommendation`)
+            .get(`${api}/api/songs/${songId}/recommendation`)
             .then(response => {
 
-                console.log("fav response", response);
+                console.log("rec response", response);
 
-                // only want to show first 3 songs
-                let shortFilter = [];
+              
+                let filter = [];
                 for(let i = 0; i < 3; i++) {
                     if(response.data[i]) {
-                        shortFilter.push(response.data[i]);
+                        filter.push(response.data[i]);
                     }
                 }
 
-                setRecSongs(shortFilter);
+                setRecSongs(filter);
             })
             .catch(error => {
                 console.log("error", error);
             });
 
-    }, [userID]);
+    }, [songId]);
 
     return (
         <div className="short-list-details">
@@ -103,12 +104,12 @@ const RecSongsList = (props) => {
                     {recSongs.length ? recSongs.map(song => (
                         <Link to={`/song/${song.id}`} key={song.id}>  <Route path={`/song/${song.id}`}></Route>
                             <StyledShortBoxes>
-                                <SongCard song={song} key={song.id} artist = {song.artist}/>
+                                <SongCard song={song} songId={song.id} artist = {song.artist}/> 
                             </StyledShortBoxes>
                         </Link>
                     ))
                     :
-                    <p>Songs we recommend:</p>
+                    <p>Looking for recommendations..</p>
                     }
                     
                 </StyledShortContainer>

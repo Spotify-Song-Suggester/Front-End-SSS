@@ -52,23 +52,23 @@ color:${popstarPurple};
 const RecSongItems = props => {
     console.log("props", props);
 
-    const { userID } = props;
+    const { songId } = props;
 
-    console.log('userID', userID);
+    console.log('userID', songId);
     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
     const [recSongs, setRecSongs] = useState([]);
     useEffect(() => {
         axiosWithAuth()
-            .get(`${api}/api/songs/${userID}/recommendation`)
+            .get(`${api}/api/songs/${songId}/recommendation`)
             .then(response => {
-
+                console.log("full rec", response)
                 setRecSongs(response.data);
             })
             .catch(error => {
                 console.log("error", error);
             });
 
-    }, [userID]);
+    }, [songId]);
 
 
     return (
@@ -86,6 +86,7 @@ const RecSongItems = props => {
 
                 {recSongs.length ? recSongs.map(song => (
                     
+                    <Link to={`/song/${song.id}`} key={song.id}>  <Route path={`/song/${song.id}`}></Route>
                         <StyledBoxes>
                             <Link to={`/song/${song.id}`} key={song.id}>
                                 <StyledBoxContent>
@@ -98,10 +99,11 @@ const RecSongItems = props => {
                                 
                             </Link>
                         </StyledBoxes>
+                        </Link>
                     
                 ))
                 :
-                <p>Go like some songs!</p>
+                <p>Looking for recommendations..</p>
                 }
                 
 
