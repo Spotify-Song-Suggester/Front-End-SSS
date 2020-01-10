@@ -100,9 +100,6 @@ const SongDetails = props => {
                     <p className="underlined">
                         Artist: {song.artist}
                     </p>
-                    <p className="underlined">
-                        Album: {song.album || 'N/A'}
-                    </p>
                     <p>
                         Track: {song.track}
                     </p>
