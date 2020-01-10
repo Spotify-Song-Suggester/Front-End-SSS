@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import SongActions from './SongActions';
 import SongVisualization from './SongVisualization';
+import SongsLikeThis from './SongsLikeThis';
 import albumCover from '../Images/album-cover.jpg';
 import styled from 'styled-components';
 import { mainText, formLabelFont } from '../styles';
@@ -76,7 +77,11 @@ const SongDetails = props => {
 
     const history = useHistory();
 
-    const [song] = useState(songs && songs.find(s => s.id === parseInt(id)) || null);
+    const [song, setSong] = useState(null);
+
+    useEffect(() => {
+        setSong(songs ? songs.find(s => s.id === parseInt(id)) : null);
+    }, [id]);
 
     const [songActionsOpen, setSongActionsOpen] = useState(false);
 
@@ -103,9 +108,11 @@ const SongDetails = props => {
                     </p>
                 </div>
                 <div className="song-visualization">
-                    {/* TEST VISUALIZATION */}
-                    {/* <img src={sampleVisualization} alt="Song visualization" /> */}
                     <SongVisualization songId={song.id} />
+                </div>
+                <div className="songs-like-this">
+                    <h3>Songs like this</h3>
+                    <SongsLikeThis songId={song.id} />
                 </div>
                 {songActionsOpen && <SongActions song={song} />}
             </div>)
