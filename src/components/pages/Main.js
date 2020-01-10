@@ -14,6 +14,7 @@ import FilterMenu from '../FilterMenu';
 import SongDetails from '../SongDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import UpdateForm from '../UpdateForm';
 
 const StyledNav = styled.nav`
     display: flex;
@@ -68,8 +69,8 @@ const FilterButton = styled.div`
     cursor: pointer;
     color: ${mainText}
 `
-const Main = () => {
-    
+
+const Main = (props) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [ showFilter, setShowFilter ] = useState(false);
 
@@ -97,15 +98,20 @@ const Main = () => {
                 <NavTitle title="Dashboard"/>
                 <UserAvatar/>
             </StyledNav>
-        <StyledSearch>
-            <StyledInput
-                type="text"
-                placeholder="Search"
-                defaultValue={searchTerm}
-                onKeyUp={performSearchOnEnter}
-            />
-            <FilterButton onClick={()=>setShowFilter(!showFilter)}><FontAwesomeIcon icon={faFilter}/></FilterButton>
-        </StyledSearch>
+            <Switch>
+                <Route exact path='/edit'>
+                    <UpdateForm history={history}/>
+                </Route>
+            </Switch>
+                <StyledSearch>
+                    <StyledInput
+                        type="text"
+                        placeholder="Search"
+                        defaultValue={searchTerm}
+                        onKeyUp={performSearchOnEnter}
+                    />
+                    <FilterButton onClick={()=>setShowFilter(!showFilter)}><FontAwesomeIcon icon={faFilter}/></FilterButton>
+                </StyledSearch>
             <Switch>
                 <Route path="/search">
                      {showFilter && <FilterMenu/> }  

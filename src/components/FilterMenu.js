@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { filterSongs, fetchSongs } from '../actions';
 import { MediumButton, Filter } from '../styles';
+import { setState } from 'expect/build/jestMatchersObject';
 
 const FilterMenu = (props) => {
 
@@ -12,10 +13,14 @@ const FilterMenu = (props) => {
             return b[prop] - a[prop];
         });
         const filteredArray = array.filter(song => {
-            return song[prop] >= 0.80
+            return song[prop] >= 0.50
         }).map(song => {return song })
         props.filterSongs(filteredArray);
+        setState({
+            songs:filteredArray
+        })
         console.log(filteredArray)
+        console.log(props.songs)
     };
 
     return (

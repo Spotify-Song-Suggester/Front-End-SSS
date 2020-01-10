@@ -2,7 +2,7 @@
 //import Song items here
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import SongItems from '../components/SongItems';
+import DashboardSongItem from './DashboardSongItem';
 import SongCard from '../components/SongCard';
 import { Link, Switch, Route, useRouteMatch, useParams } from 'react-router-dom';
 import styled from 'styled-components';
@@ -13,12 +13,14 @@ import albumCover from '../Images/album-cover.jpg';
 
 
 const StyledShortList = styled.div`
-box-sizing:border-box;
-width:100%;
-background: #0E0B20;
-display:flex;
-flex-wrap:wrap;
-margin-top:20px;
+    box-sizing: border-box;
+    width: 100%;
+    background: #0E0B20;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+
 `
 const StyledShortBoxes = styled.div`
 border:2px solid orange;
@@ -40,6 +42,7 @@ box-sizing:border-box;
 width:100%;
 background: #0E0B20;
 display:flex;
+justify-content: space-between;
 flex-wrap:wrap;
 `
 
@@ -98,11 +101,7 @@ const SongShortList = (props) => {
                 <StyledShortContainer>
 
                     {favSongs.length ? favSongs.map(song => (
-                        <Link to={`/song/${song.id}`} key={song.id}>  <Route path={`/song/${song.id}`}></Route>
-                            <StyledShortBoxes>
-                                <SongCard song={song} key={song.id} artist = {song.artist}/>
-                            </StyledShortBoxes>
-                        </Link>
+                        <DashboardSongItem song={song} />
                     ))
                     :
                     <p>Go like some songs!</p>
