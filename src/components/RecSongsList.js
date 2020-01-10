@@ -5,23 +5,25 @@
 //import Song items here
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import SongItems from '../components/SongItems';
+import DashboardSongItem from './DashboardSongItem';
 import SongCard from '../components/SongCard';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Link, Switch, Route, useRouteMatch, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Styledtop, StyledViews, StyledTopHolder } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import albumCover from '../Images/album-cover.jpg';
-
+import { getRecommendedSongs } from '../utils/RecSongs';
 
 
 const StyledShortList = styled.div`
-box-sizing:border-box;
-width:100%;
-background: #0E0B20;
-display:flex;
-flex-wrap:wrap;
-margin-top:20px;
+    box-sizing: border-box;
+    width: 100%;
+    background: #0E0B20;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+
 `
 const StyledShortBoxes = styled.div`
 border:2px solid orange;
@@ -43,47 +45,46 @@ box-sizing:border-box;
 width:100%;
 background: #0E0B20;
 display:flex;
+justify-content: space-between;
 flex-wrap:wrap;
 `
 
-const ArtistText = styled.h2`
-color:black;
-`
-const TrackText = styled.h3`
-color:red;
-`
+
+
 //boxes same size for now, enlarge on hover/click?
 
-const RecSongsList = props => {
+const RecSongsList = (props) => {
 
-    const { songId } = props;
+    const { userID } = props;
 
-    console.log('songID', songId);
-
+    console.log('SONGID', userID);
     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
     const [recSongs, setRecSongs] = useState([]);
     useEffect(() => {
         axiosWithAuth()
-            .get(`${api}/api/songs/${songId}/recommendation`)
+            .get(`${api}/api/songs/${userID}/recommendation`)
             .then(response => {
 
-                console.log("rec response", response);
+                console.log("REC response", response);
+                getRecommendedSongs(userID, (recommendedSongs) => {
+                    console.log('our recommended songs', recommendedSongs);
+                 });
 
-              
-                let filter = [];
+                
+                let recFilter = [];
                 for(let i = 0; i < 3; i++) {
                     if(response.data[i]) {
-                        filter.push(response.data[i]);
+                        recFilter.push(response.data[i]);
                     }
                 }
 
-                setRecSongs(filter);
+                setRecSongs(recFilter);
             })
             .catch(error => {
                 console.log("error", error);
             });
 
-    }, [songId]);
+    }, [userID]);
 
     return (
         <div className="short-list-details">
@@ -102,19 +103,15 @@ const RecSongsList = props => {
                 <StyledShortContainer>
 
                     {recSongs.length ? recSongs.map(song => (
-                        <Link to={`/song/${song.id}`} key={song.id}>  <Route path={`/song/${song.id}`}></Route>
-                            <StyledShortBoxes>
-                                <SongCard song={song} songId={song.id} artist = {song.artist}/> 
-                            </StyledShortBoxes>
-                        </Link>
+                        <DashboardSongItem 
+                        song={song}
+                        />
                     ))
                     :
-                    <p>Looking for recommendations..</p>
+                    <p>Here's what we recommend:</p>
                     }
                     
                 </StyledShortContainer>
-
-                {/* <SongItems/> */} {/*commented out for styling*/}
 
             </StyledShortList>
         </div>
@@ -127,3 +124,6 @@ const mapStateToProps = state => {
     }
 }
 export default connect(mapStateToProps)(RecSongsList);
+
+// array of rec songs
+//push array to gfdfj 

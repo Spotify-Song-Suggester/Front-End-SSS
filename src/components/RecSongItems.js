@@ -119,3 +119,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(RecSongItems);
+
+//i dont know what 's goin on but i try. i need to {study.more}
+//{but do, not get over}, wel. .
