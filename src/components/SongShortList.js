@@ -9,43 +9,39 @@ import styled from 'styled-components';
 import { Styledtop, StyledViews, StyledTopHolder } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import albumCover from '../Images/album-cover.jpg';
-import SongCard from '../components/SongCard';
+
 
 
 const StyledShortList = styled.div`
 box-sizing:border-box;
 width:100%;
-background: none;
+background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
 margin-top:20px;
-margin-bottom: 20px;
 `
 const StyledShortBoxes = styled.div`
 border:2px solid orange;
 background: url(${albumCover});
     background-repeat: no-repeat;
-    border-radius:8px;
+    border-raidus:8px;
     justify-content:space-between;
 margin:5%;
     box-sizing:border-box;
     width: 110px;
     height: 110px;
     &:hover{
-        transform:scale(1.12);
+        transform:scale(1.15);
     
 }
     `
 const StyledShortContainer = styled.div`
-
 box-sizing:border-box;
 width:100%;
-background: none;
+background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
 `
-const SongShortList = (props) => {
-const {userID} = props;
 
 const ArtistText = styled.h2`
 color:black;

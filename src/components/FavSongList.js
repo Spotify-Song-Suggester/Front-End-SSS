@@ -1,4 +1,5 @@
 //full list of songs here
+//import song items
 //shown on click of "viewl all" from Song Short List
 
 import React, { useState, useEffect } from 'react';
@@ -22,13 +23,13 @@ flex-wrap:wrap;
 `
 
 const StyledBoxContainer = styled.div`
-
 box-sizing:border-box;
 width:100%;
 background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
 `
+
 const StyledBoxes = styled.div`
 border-radius:4px;
 justify-content:space-between;
@@ -49,6 +50,9 @@ color:black;
 const TrackText = styled.h5`
 color:${popstarPurple};
 `
+
+const TrackTempo = styled.p`
+color: ${offWhite}`
 //pass props for all songs
 const FavSongList = props => {
     console.log("props", props);

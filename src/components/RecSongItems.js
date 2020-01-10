@@ -1,12 +1,12 @@
 //full list of songs here
 //import song items
+//shown on click of "viewl all" from Song Short List
 
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import SongItems from './SongItems';
 import styled from 'styled-components';
 import { Link, Route } from 'react-router-dom';
-import { Styledtop, StyledViews, StyledTopHolder, offWhite, popstarPurple } from '../styles';
+import { Styledtop, StyledViews, StyledTopHolder, popstarPurple } from '../styles';
 import albumCover from '../Images/album-cover.jpg';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 
@@ -18,6 +18,7 @@ background: #0E0B20;
 display:flex;
 flex-wrap:wrap;
 `
+
 const StyledBoxContainer = styled.div`
 box-sizing:border-box;
 width:100%;
@@ -46,25 +47,28 @@ color:black;
 const TrackText = styled.h5`
 color:${popstarPurple};
 `
+
 //pass props for all songs
 const RecSongItems = props => {
-    const { id } = props;
+    console.log("props", props);
 
-    console.log('song id', id);
+    const { userID } = props;
+
+    console.log('userID', userID);
     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
-    const [favSongs, setFavSongs] = useState([]);
+    const [recSongs, setRecSongs] = useState([]);
     useEffect(() => {
         axiosWithAuth()
-            .get(`${api}/api/songs/${id}`)
+            .get(`${api}/api/songs/${userID}/recommendation`)
             .then(response => {
-console.log("recDATA", response);
-                setFavSongs(response.data);
+
+                setRecSongs(response.data);
             })
             .catch(error => {
                 console.log("error", error);
             });
 
-    }, [id]);
+    }, [userID]);
 
 
     return (
@@ -75,27 +79,29 @@ console.log("recDATA", response);
                 <Link to={`/`}><StyledViews>View Less</StyledViews>
                 </Link>
 
+                
             </StyledTopHolder>
 
             <StyledBoxContainer>
-                {favSongs.length ? favSongs.map(song => (
+
+                {recSongs.length ? recSongs.map(song => (
                     
                         <StyledBoxes>
                             <Link to={`/song/${song.id}`} key={song.id}>
                                 <StyledBoxContent>
+                                    {/* key = {index } */}
 
                                     <ArtistText>Artist: {song.artist}</ArtistText>
                                     <TrackText>Track: {song.track}</TrackText>
                                     
-                                </StyledBoxContent>  
+                                </StyledBoxContent>
+                                
                             </Link>
                         </StyledBoxes>
                     
                 ))
                 :
-                <p>
-                    Songs we recommend:
-                </p>
+                <p>Go like some songs!</p>
                 }
                 
 
