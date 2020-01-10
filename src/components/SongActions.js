@@ -6,6 +6,8 @@ import axiosWithAuth from '../utils/AxiosWithAuth';
 import { useHistory } from 'react-router-dom';
 
 const StyledSongActions = styled.div`
+    position: relative;
+    z-index: 3;
     display: flex;
     justify-content: center;
     font-family: ${formLabelFont};
