@@ -13,13 +13,13 @@ import RecSongItems from './components/RecSongItems';
 import SongDetails from './components/SongDetails';
 import FavSongList from './components/FavSongList';
 import RecSongsList from './components/RecSongsList';
+import UpdateForm from './components/UpdateForm';
 
 function App() {
   return (
     
     <Router>
       <div className="App">
-    
         <Route exact path={['/login', '/register']} component={Welcome} />
         <PrivateRoute exact path='/success' component={SuccessPage} />
         <PrivateRoute exact path={[ '/', '/feed']} component={NavTitle} />
