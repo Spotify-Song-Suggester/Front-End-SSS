@@ -9,6 +9,7 @@ import { Link, Route } from 'react-router-dom';
 import { Styledtop, StyledViews, StyledTopHolder, popstarPurple } from '../styles';
 import albumCover from '../Images/album-cover.jpg';
 import axiosWithAuth from '../utils/AxiosWithAuth';
+import { getRecommendedSongs } from '../utils/RecSongs';
 
 const StyledFavContainer = styled.div`
 margin:20px;
@@ -52,23 +53,27 @@ color:${popstarPurple};
 const RecSongItems = props => {
     console.log("props", props);
 
-    const { songId } = props;
+    const { userID } = props;
 
-    console.log('userID', songId);
+    console.log('userID', userID);
     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
     const [recSongs, setRecSongs] = useState([]);
     useEffect(() => {
         axiosWithAuth()
-            .get(`${api}/api/songs/${songId}/recommendation`)
+            .get(`${api}/api/songs/${userID}/recommendation`)
             .then(response => {
-                console.log("full rec", response)
+                getRecommendedSongs(userID, (recommendedSongs) => {
+                    console.log('full recommended songs', recommendedSongs);
+                 });
+
+
                 setRecSongs(response.data);
             })
             .catch(error => {
                 console.log("error", error);
             });
 
-    }, [songId]);
+    }, [userID]);
 
 
     return (

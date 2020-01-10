@@ -6,7 +6,7 @@ export const getRecommendedSongs = (userID, callback) => {
         .then(response => {
             const favoriteSongs = response.data;
             axiosWithAuth()
-                .get(`${api}/api/songs/${favoriteSongs[0].id}/recommendation`)
+                .get(`${api}/api/songs/${favoriteSongs.id}/recommendation`)
                 .then(res => {
                     console.log(res);
                     callback(res.data);
