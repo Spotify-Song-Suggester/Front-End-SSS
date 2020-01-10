@@ -23,7 +23,6 @@ export const formLabelFont = "'Montserrat', sans-serif";
 export const MainContent = styled.div`
     margin: 0 auto;
     width: ${maxContentWidth};
-    
     box-sizing:border-box;
 `;
 
@@ -53,7 +52,6 @@ const button = `
     font-size: 1.8rem;
     padding: 3rem 4rem;
     border: 0;
-    
     color: ${mainText};
     cursor: pointer;
     background: 
@@ -93,9 +91,7 @@ export const CenterText = styled.div`
     text-align: center;
 `;
 
-//styles for "playlist/view more-less at top of pages"
-
-
+//**styles for top of pages section titles/links"
 
 export const StyledTopHolder = styled.div`
 display:flex;
@@ -105,35 +101,26 @@ box-sizing:border-box;
 
 `
 export const Styledtop = styled.span`
-
-
 font-family: Montserrat;
 font-style: normal;
 font-weight: 500;
 font-size: 14px;
-
-
 color: #FFFFFF;
 `
-
-
 export const StyledViews = styled.span`
-
-
 font-family: Montserrat;
 font-style: normal;
 font-weight: 500;
 font-size: 10px;
-
 color: #FFFFFF;
-`
-
-//favs/recommened view ALL view styling for boxes
-
-export const StyledBoxHolder = styled.div`
-
+&:hover{
+    color:#959AB1;
+    text-decoration:underline;
+}
 
 `
+
+
 
 
 

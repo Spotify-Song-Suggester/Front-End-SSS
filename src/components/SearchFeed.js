@@ -5,7 +5,6 @@ import SearchFeedItem from './SearchFeedItem';
 import SongActions from './SongActions';
 import { fetchSongs } from '../actions';
 
-
 const StyledSearchFeed = styled.div`
     
 `;

@@ -1,8 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
-
 const SuccessPage = () => {
     return(
         <div className = "page-container">

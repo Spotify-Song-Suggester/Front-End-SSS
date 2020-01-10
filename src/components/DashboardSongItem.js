@@ -60,7 +60,9 @@ const DashboardSongItem = props => {
             {deleteButton && <DeleteButton className="delete" onClick={deleteSong}>X</DeleteButton>}
             <StyledDashboardSongItem>
                 <span className="track">{song.track}</span>
+              
             </StyledDashboardSongItem>
+      
         </Link>
     );
 }

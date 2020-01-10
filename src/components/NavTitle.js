@@ -1,5 +1,4 @@
-//Navigation dopdown here
-//Will display Dashboard..click will dropdown to route to other pages(signin/featured playlists/..)
+
 import React from 'react';
 import {Link, Route} from 'react-router-dom';
 import styled from 'styled-components';
@@ -22,7 +21,8 @@ font-family:${headingFont};
 `;
     return (
         
-            <Link to={`/`}>  <StyledNavTitle>
+            <Link to={`/`}> 
+             <StyledNavTitle>
               <h2>{props.title}</h2>  
             </StyledNavTitle> 
             <Route path ={`/`}></Route>

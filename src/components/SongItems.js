@@ -1,5 +1,4 @@
 //song items to display here
-//import to song short list
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchSongs } from '../actions'

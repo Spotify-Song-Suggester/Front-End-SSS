@@ -1,4 +1,4 @@
-//parent component for dashboard components held here. Will render Main.js to App.js
+//parent component for dashboard components held here.
 import React, { useState } from 'react';
 import NavTitle from '../NavTitle';
 import UserAvatar from '../UserAvatar';
@@ -6,6 +6,7 @@ import SongShortList from '../SongShortList';
 import RecSongsList from '../RecSongsList';
 import { MainContent, mainText } from '../../styles';
 import logo from '../../Images/Symphinity.png';
+import welcomeBg from '../../Images/welcome-bg.png';
 import styled from 'styled-components';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import SearchFeed from '../SearchFeed';
@@ -14,8 +15,6 @@ import SongDetails from '../SongDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import UpdateForm from '../UpdateForm';
-
-
 
 const StyledNav = styled.nav`
     display: flex;
@@ -45,6 +44,12 @@ const StyledInput = styled.input`
     width: 100%;
     color: ${mainText}
 `;
+const StyledDash = styled.div`
+background: url(${welcomeBg});
+background-repeat: no-repeat;
+border: 1px solid #000000;
+//height: 100vh;
+`
 
 const StyledSearch = styled.div`
     display: flex
@@ -82,6 +87,7 @@ const Main = (props) => {
     }
 
     return (
+        <StyledDash>
         <MainContent>
             <StyledLogo>
                 <a href="https://spotify-song-suggester.github.io/Marketing-Page-SSS/">
@@ -117,15 +123,14 @@ const Main = (props) => {
             </Switch>
             <Switch>
                 <Route exact path="/">
-                    {/* <SongItems/> */}
                     <SongShortList/>
                     <RecSongsList/>
                 </Route>
             </Switch>
         </MainContent>
+        </StyledDash>
       
     );
 };
-
 
 export default Main;

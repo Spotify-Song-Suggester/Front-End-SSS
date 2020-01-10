@@ -5,7 +5,7 @@ import { mainText, headingFont } from '../../styles';
 
 const StyledSignUpWelcome = styled.div`
     margin-bottom: 6rem;
-
+    
     .sign-in {
         display: flex;
         width: 175px;

@@ -1,5 +1,4 @@
 //avatar displayed here with onclick to display dropdown with logout here
-//will route back to Welcome page
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';

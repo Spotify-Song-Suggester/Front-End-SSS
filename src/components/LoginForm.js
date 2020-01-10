@@ -12,8 +12,6 @@ const StyledForm = styled.form`
         text-align: center;
     }
 `;
-
-
 const LoginForm = props => {
     const { handleSubmit, errors, isSubmitting } = props;
 

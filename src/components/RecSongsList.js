@@ -1,78 +1,70 @@
-//short list of Rec songs
+//SHORT list of Rec songs
 //import RecSongItems here
 //will display rec song items component
+//list of songs data to display for each song
+//import Song items here
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import { Link, Switch, Route, NavLink, useParams } from 'react-router-dom';
+import DashboardSongItem from './DashboardSongItem';
+import { Link, Switch, Route} from 'react-router-dom';
 import styled from 'styled-components';
 import { Styledtop, StyledViews, StyledTopHolder } from '../styles';
 import axiosWithAuth from '../utils/AxiosWithAuth';
-import albumCover from '../Images/album-cover.jpg';
-import SongItems from './SongItems';
+import { getRecommendedSongs } from '../utils/RecSongs';
 
 
 const StyledShortList = styled.div`
-margin-top:5px;
+    box-sizing: border-box;
+    width: 100%;
+    background: #0E0B20;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+
+`
+
+const StyledShortContainer = styled.div`
 box-sizing:border-box;
 width:100%;
 background: #0E0B20;
 display:flex;
+justify-content: space-between;
 flex-wrap:wrap;
-
-`
-const StyledShortBoxes = styled.div`
-background: url(${albumCover});
-    background-repeat: no-repeat;
-    border-raidus:8px;
-    justify-content:space-between;
-margin:5%;
-    box-sizing:border-box;
-    width: 110px;
-    height: 110px;
-    &:hover{
-        transform:scale(1.1);
-    
-}
-    `
-const StyledShortContainer = styled.div`
-
-    box-sizing:border-box;
-    width:100%;
-    background: #0E0B20;
-    display:flex;
-    flex-wrap:wrap;
 `
 
-const ArtistText = styled.h2`
-color:black;
-`
-const TrackText = styled.h3`
-color:red;
-`
-//boxes same size for now, enlarge on hover/click?
+const RecSongsList = (props) => {
 
-const RecSongsList = props => {
+    const { userID } = props;
+    const api = 'https://spotify-song-suggester-backend.herokuapp.com';
     const [recSongs, setRecSongs] = useState([]);
+    useEffect(() => {
+        axiosWithAuth()
+            .get(`${api}/api/songs/${userID}/recommendation`)
+            .then(response => {
 
-    //    useEffect (() => {
-    //    const recShortList = ()=>{
-    //     const api = 'https://spotify-song-suggester-backend.herokuapp.com';
-    //        axiosWithAuth()
-    //    .get(`${api}/api/songs/:id/favorites`)
-    //        .then (response =>{
+                console.log("REC response", response);
+                getRecommendedSongs(userID, (recommendedSongs) => {
+                    console.log('our recommended songs', recommendedSongs);
+                 });
 
-    //            console.log("fav response", response);
-    //            setRecSongs(response.data);
-    //        })
-    //        .catch (error =>{
-    //            console.log("error", error);
-    //        });
-    //        }
-    //       recShortList();
-    //    },[id]);
+                
+                let recFilter = [];
+                for(let i = 0; i < 3; i++) {
+                    if(response.data[i]) {
+                        recFilter.push(response.data[i]);
+                    }
+                }
+
+                setRecSongs(recFilter);
+            })
+            .catch(error => {
+                alert("error", error);
+            });
+
+    }, [userID]);
 
     return (
-
         <div className="short-list-details">
 
             <StyledShortList>
@@ -84,32 +76,23 @@ const RecSongsList = props => {
                         <Link to={`/allrecfavorites`}> <StyledViews>View More</StyledViews> </Link>
                         <Route path={`/allrecfavorites`}>
                         </Route>
-
                     </Switch>
                 </StyledTopHolder>
                 <StyledShortContainer>
 
-                    <Link to={`/songdetails`}>  <Route path={`/songdetails`}></Route>
-                        <StyledShortBoxes>
-                            {/* {favSongs.map((favs, index)=>{
-                      return( 
-                     
-              artist=
-                  { favs.artist }
-              track={ favs.track }
-              
-                      );
-                      })} */}
-
-                        </StyledShortBoxes>
-                    </Link>
+                    {recSongs.length ? recSongs.map(song => (
+                        <DashboardSongItem 
+                        song={song}
+                        />
+                    ))
+                    :
+                    <p>Here's what we recommend:</p>
+                    }
+                    
                 </StyledShortContainer>
-
-                {/* <SongItems/> */} {/*commented out for styling*/}
 
             </StyledShortList>
         </div>
-
     );
 }
 const mapStateToProps = state => {
@@ -118,4 +101,5 @@ const mapStateToProps = state => {
 
     }
 }
-export default connect(mapStateToProps, {})(RecSongsList);
+export default connect(mapStateToProps)(RecSongsList);
+
