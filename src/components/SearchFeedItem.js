@@ -63,7 +63,7 @@ const SearchFeedItem = props => {
                 <ul>
                     <li><strong>{song.track}</strong></li>
                     <li>{song.artist}</li>
-                    <li>Length: {song.time_signature}</li>
+                    <li>Duration: {((song.duration_ms / 60000)).toFixed(2)}</li>
                 </ul>
             </div>
             <div className="song-actions" onClick={() => onActionsPress(song)}>
