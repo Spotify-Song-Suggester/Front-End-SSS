@@ -27,21 +27,10 @@ const StyledBoxContainer = styled.div`
     display:flex;
     flex-wrap:wrap;
     justify-content: space-between;
+    margin-top: 3rem;
 
 `
 
-// const StyledBoxes = styled.div`
-
-// border-radius:4px;
-// justify-content:space-between;
-// margin:2%;
-// box-sizing:border-box;
-// width: 160px;
-// height: 160px;
-// background: url(${albumCover});
-//     background-repeat: no-repeat; #311E1C
-
-// `
 const StyledBoxContent = styled.div`
 
 box-sizing:border-box;
