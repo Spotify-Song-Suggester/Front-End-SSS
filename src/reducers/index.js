@@ -11,6 +11,7 @@ const initialState = {
      
     ],
     isFetching: false,
+    isFiltering: false,
     error: '',
     userID: '',
     favorites: []
@@ -22,6 +23,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: true,
+                isFiltering: false,
                 error: ''
             };
         case FETCH_SONGS_SUCCESS:
@@ -45,7 +47,8 @@ export const reducer = (state = initialState, action) => {
         case FILTER_SONGS:
             return {
                 ...state,
-                songs: action.payload
+                songs: action.payload,
+                isFiltering: true
             }
         default:
             return state;

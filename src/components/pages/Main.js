@@ -66,7 +66,6 @@ const FilterButton = styled.div`
 `
 
 const Main = (props) => {
-    console.log('main props', props);
     const [searchTerm, setSearchTerm] = useState('');
     const [ showFilter, setShowFilter ] = useState(false);
 
